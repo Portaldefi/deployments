@@ -1,0 +1,734 @@
+{
+  "address": "0x5500e5f864D07A7026d9abc7Ad49e2364987fFbf",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_tokenAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AlreadyAuthorized",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "IncorrectETHAmount",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "NoExpiredFeeUpdateNotice",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "NotOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "OverflowFeeCap",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "PermissionDeniedToAuthorize",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "Authorized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newFeePercentage",
+          "type": "uint256"
+        }
+      ],
+      "name": "FeeUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "secretHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sellAsset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "sellAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "swapOwner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "swapCreation",
+          "type": "uint256"
+        }
+      ],
+      "name": "OrderCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "swapOwner",
+          "type": "address"
+        }
+      ],
+      "name": "Redeemed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "secret",
+          "type": "bytes32"
+        }
+      ],
+      "name": "Withdrawn",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IDexContract.AuthorizedWithdrawal[]",
+          "name": "withdraws",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "authorize",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "authorized",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "feePercentage",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "feeUpdateNotice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "orders",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "secretHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "sellAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sellAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "swapOwner",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "swapCreation",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "redeem",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "secretHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "sellAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sellAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "swapOwner",
+          "type": "address"
+        }
+      ],
+      "name": "swapOrder",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokenContract",
+      "outputs": [
+        {
+          "internalType": "contract IPortalToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "updateFeeNotice",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_newFeePercentage",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateFeePercentage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "secret",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x3d163b352a4fbea8f513e972447bd9165d560c86ee969bbeff9f646fb5b31f66",
+  "receipt": {
+    "to": null,
+    "from": "0x3F6154a2066C1d0690b626ae0402cEC20D134214",
+    "contractAddress": "0x5500e5f864D07A7026d9abc7Ad49e2364987fFbf",
+    "transactionIndex": 94,
+    "gasUsed": "1441532",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xa151c3dd735066e15594a9ba1141f17333eaf9bc8d4a067d0dbc078a42ca7431",
+    "transactionHash": "0x3d163b352a4fbea8f513e972447bd9165d560c86ee969bbeff9f646fb5b31f66",
+    "logs": [],
+    "blockNumber": 6621255,
+    "cumulativeGasUsed": "21735783",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x4466c7c755FEB90E3868C8D42cE344e7C4F5eA1E"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "7e3273cadf4394700cf7107ba792470f",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_tokenAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"}],\"name\":\"AlreadyAuthorized\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"IncorrectETHAmount\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"NoExpiredFeeUpdateNotice\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"NotOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"OverflowFeeCap\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"PermissionDeniedToAuthorize\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"}],\"name\":\"Authorized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newFeePercentage\",\"type\":\"uint256\"}],\"name\":\"FeeUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"secretHash\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"sellAsset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"sellAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"swapOwner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"swapCreation\",\"type\":\"uint256\"}],\"name\":\"OrderCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"swapOwner\",\"type\":\"address\"}],\"name\":\"Redeemed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"secret\",\"type\":\"bytes32\"}],\"name\":\"Withdrawn\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"struct IDexContract.AuthorizedWithdrawal[]\",\"name\":\"withdraws\",\"type\":\"tuple[]\"}],\"name\":\"authorize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"authorized\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feePercentage\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeUpdateNotice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"orders\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"secretHash\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"sellAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sellAmount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"swapOwner\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"swapCreation\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"}],\"name\":\"redeem\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"secretHash\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"sellAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sellAmount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"swapOwner\",\"type\":\"address\"}],\"name\":\"swapOrder\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokenContract\",\"outputs\":[{\"internalType\":\"contract IPortalToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"updateFeeNotice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_newFeePercentage\",\"type\":\"uint256\"}],\"name\":\"updateFeePercentage\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"secret\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Implementation of the Dex contract which manages swap order creation and all the steps for swap on evm \",\"events\":{\"Authorized(bytes32)\":{\"params\":{\"swapId\":\"Unique identifier for the swap\"}},\"FeeUpdated(uint256)\":{\"params\":{\"newFeePercentage\":\"New fee percentage\"}},\"OrderCreated(bytes32,address,uint256,address,bytes32,uint256)\":{\"params\":{\"secretHash\":\"Hash of the secret for the swap\",\"sellAmount\":\"Amount of the asset to be sold\",\"sellAsset\":\"Asset address to be sold (0x0 for ETH)\",\"swapCreation\":\"Timestamp of swap creation\",\"swapId\":\"Unique identifier\",\"swapOwner\":\"Address of the trader initiating the swap\"}},\"Redeemed(bytes32,address)\":{\"params\":{\"swapId\":\"Unique identifier for the swap\",\"swapOwner\":\"Address of the trader initiating the swap\"}},\"Withdrawn(bytes32,bytes32)\":{\"params\":{\"secret\":\"Secret for the swap\",\"swapId\":\"Unique identifier for the swap\"}}},\"kind\":\"dev\",\"methods\":{\"authorize(bytes32,(address,uint256)[])\":{\"params\":{\"swapId\":\"Unique identifier for the swap\",\"withdraws\":\"Array of authorized addresses and amounts for withdrawal\"}},\"constructor\":{\"params\":{\"_tokenAddress\":\"Address of the Portal Token contract\"}},\"redeem(bytes32)\":{\"params\":{\"swapId\":\"Unique identifier for the swap\"}},\"swapOrder(bytes32,address,uint256,address)\":{\"params\":{\"secretHash\":\"Hash of the secret for the swap\",\"sellAmount\":\"Amount of the asset to be sold\",\"sellAsset\":\"Asset address to be sold (0x0 for ETH)\",\"swapOwner\":\"Address of the trader initiating the swap\"}},\"updateFeePercentage(uint256)\":{\"params\":{\"_newFeePercentage\":\"New fee percentage\"}},\"withdraw(bytes32,bytes32)\":{\"params\":{\"secret\":\"Secret for the swap\",\"swapId\":\"Unique identifier for the swap\"}}},\"title\":\"Dex contract\",\"version\":1},\"userdoc\":{\"events\":{\"Authorized(bytes32)\":{\"notice\":\"Event emitted upon authorization of the order\"},\"FeeUpdated(uint256)\":{\"notice\":\"Event emitted upon fee update\"},\"OrderCreated(bytes32,address,uint256,address,bytes32,uint256)\":{\"notice\":\"Event emitted when the swap order is created\"},\"Redeemed(bytes32,address)\":{\"notice\":\"Event emitted upon redemption\"},\"Withdrawn(bytes32,bytes32)\":{\"notice\":\"Event emitted upon withdrawal\"}},\"kind\":\"user\",\"methods\":{\"authorize(bytes32,(address,uint256)[])\":{\"notice\":\"Function to authorize the swap order\"},\"authorized(bytes32,uint256)\":{\"notice\":\"Mapping to store authorized address and amounts with swapIds\"},\"constructor\":{\"notice\":\"Initialize the contract with portal token contract address, fee percentage, and fee update notice\"},\"feePercentage()\":{\"notice\":\"Fee percentage in basis points (100 basis points = 1%)\"},\"feeUpdateNotice()\":{\"notice\":\"Notice to update fees\"},\"orders(bytes32)\":{\"notice\":\"Mapping to store swap orders with their unique IDs\"},\"redeem(bytes32)\":{\"notice\":\"Function to redeem the swap order when timeout is reached\"},\"swapOrder(bytes32,address,uint256,address)\":{\"notice\":\"Function to create a swap order\"},\"tokenContract()\":{\"notice\":\"Address on the PORTAL Token contract\"},\"updateFeeNotice()\":{\"notice\":\"Function to give the notification to update the fee amount\"},\"updateFeePercentage(uint256)\":{\"notice\":\"Function to update the fee amount\"},\"withdraw(bytes32,bytes32)\":{\"notice\":\"Function to withdraw funds from the swap order\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/DexContract.sol\":\"DexContract\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the value of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the value of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves a `value` amount of tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 value) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets a `value` amount of tokens as the allowance of `spender` over the\\n     * caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 value) external returns (bool);\\n\\n    /**\\n     * @dev Moves a `value` amount of tokens from `from` to `to` using the\\n     * allowance mechanism. `value` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 value) external returns (bool);\\n}\\n\",\"keccak256\":\"0xc6a8ff0ea489379b61faa647490411b80102578440ab9d84e9a957cc12164e70\",\"license\":\"MIT\"},\"contracts/DexContract.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n// solhint-disable-next-line compiler-version\\npragma solidity ^0.8.20;\\nimport \\\"./interfaces/IPortalToken.sol\\\";\\nimport {IDexContract} from \\\"./interfaces/IDexContract.sol\\\";\\n\\n/**\\n * @title Dex contract\\n * @dev Implementation of the Dex contract which manages swap order creation and all the steps for swap on evm \\n */\\ncontract DexContract is IDexContract {\\n    /**\\n     * @notice Address on the PORTAL Token contract\\n     */\\n    IPortalToken public tokenContract;\\n\\n    /**\\n     * @notice Fee percentage in basis points (100 basis points = 1%)\\n     */\\n    uint public feePercentage; \\n\\n    /**\\n     * @notice Notice to update fees\\n     */\\n    uint public feeUpdateNotice;\\n\\n    /**\\n     * @notice Initialize the contract with portal token contract address, fee percentage, and fee update notice\\n     * @param _tokenAddress Address of the Portal Token contract\\n     */\\n    constructor(address _tokenAddress) {\\n        tokenContract = IPortalToken(_tokenAddress); //Loading the portal contract from portal token address\\n        feePercentage = 30; // Initializing with a 0.3% fee\\n        feeUpdateNotice = block.timestamp + 100000 days; //Initializing with higher notice\\n    }\\n\\n    /**\\n     * @notice Modifier to check if the caller is the owner of the token contract\\n     */\\n    modifier onlyOwner() {\\n        if (tokenContract.owner() != msg.sender) {\\n            revert NotOwner(msg.sender);\\n        }\\n        _;\\n    }\\n\\n    /**\\n     * @notice Mapping to store swap orders with their unique IDs\\n     */\\n    mapping(bytes32 => Order) public orders;\\n\\n    /**\\n     * @notice Mapping to store authorized address and amounts with swapIds\\n     */\\n    mapping(bytes32 => AuthorizedWithdrawal[]) public authorized;\\n\\n    /**\\n     * @notice Function to create a swap order\\n     * @param secretHash Hash of the secret for the swap\\n     * @param sellAsset Asset address to be sold (0x0 for ETH)\\n     * @param sellAmount Amount of the asset to be sold\\n     * @param swapOwner Address of the trader initiating the swap\\n     */\\n    function swapOrder(\\n        bytes32 secretHash,\\n        address sellAsset,\\n        uint sellAmount,\\n        address swapOwner\\n    ) public payable {\\n        bytes32 swapId = keccak256(\\n                            abi.encodePacked(\\n                                secretHash,\\n                                sellAsset,\\n                                sellAmount,\\n                                swapOwner\\n                            )\\n                        );\\n\\n        // Ensure no existing swap order with the same ID\\n        require(orders[swapId].sellAmount == 0, \\\"Swap ID already exists\\\");\\n\\n        // Record a new swap order with provided parameters\\n        orders[swapId] = Order({\\n            secretHash: secretHash, // Hash of the secret\\n            sellAsset: sellAsset, // Asset address to be sold (0x0 for ETH)\\n            sellAmount: sellAmount, // Amount of the asset to be sold\\n            swapOwner: swapOwner, // Address of the trader initiating the swap\\n            swapId: swapId, // Unique identifier for the swap\\n            swapCreation: block.timestamp // Timestamp of swap creation\\n        });\\n\\n        // Handle ETH and ERC20 transfers differently\\n        if (sellAsset == address(0x0)) {\\n            if (msg.value != sellAmount) {\\n                revert IncorrectETHAmount(sellAmount);\\n            }\\n        } else {\\n            // Transfer ERC20 tokens from sender to contract\\n            IERC20(sellAsset).transferFrom(\\n                msg.sender,\\n                address(this),\\n                sellAmount\\n            );\\n        }\\n\\n        // Emit an event upon successful recording of the swap order\\n        emit OrderCreated(\\n            secretHash,\\n            sellAsset,\\n            sellAmount,\\n            swapOwner,\\n            swapId,\\n            block.timestamp\\n        );\\n    }\\n\\n    /**\\n     * @notice Function to authorize the swap order\\n     * @param swapId Unique identifier for the swap\\n     * @param withdraws Array of authorized addresses and amounts for withdrawal\\n     */\\n    function authorize(\\n        bytes32 swapId,\\n        AuthorizedWithdrawal[] memory withdraws\\n    ) public {\\n        // Retrieve the swap details\\n        Order storage swap = orders[swapId];\\n\\n        // Ensure validators' multisig or swapOwner sends this transaction\\n\\n        if (\\n            msg.sender != tokenContract.owner() && msg.sender != swap.swapOwner\\n        ) {\\n            revert PermissionDeniedToAuthorize(msg.sender);\\n        }\\n\\n        // Ensure the swap order exists and has a sell amount greater than zero\\n        require(swap.sellAmount > 0, \\\"Invalid or nonexistent swap ID\\\");\\n\\n        // Ensure that authorize has not been previously called for this swapId\\n        if (authorized[swapId].length != 0) {\\n            revert AlreadyAuthorized(swapId);\\n        }\\n        // Set the authorized addresses and amounts for withdrawal\\n        unchecked {\\n            for (uint i = 0; i < withdraws.length; i++) {\\n                authorized[swapId].push(withdraws[i]);\\n            }\\n        }\\n\\n        // Emit an event to signal the authorization\\n        emit Authorized(swapId);\\n        \\n    }\\n\\n    /**\\n     * @notice Function to withdraw funds from the swap order\\n     * @param secret Secret for the swap\\n     * @param swapId Unique identifier for the swap\\n     */\\n    function withdraw(\\n        bytes32 secret,\\n        bytes32 swapId\\n    ) public {\\n        // Retrieve the swap details\\n        Order storage swap = orders[swapId];\\n\\n        bytes32 secretHash = sha256(abi.encodePacked(secret));\\n        bytes32 expectedSwapId = keccak256(\\n                            abi.encodePacked(\\n                                secretHash,\\n                                swap.sellAsset,\\n                                swap.sellAmount,\\n                                swap.swapOwner\\n                            )\\n                        );\\n\\n        // Ensure the swap order exists and has a sell amount greater than zero\\n        require(swapId == expectedSwapId, \\\"Invalid secret for withdrawal\\\");\\n\\n        //calculate fee amount\\n        uint feeAmount = (swap.sellAmount * feePercentage) / 10000;\\n\\n        uint totalWithdrawalSum = 0;\\n        for (uint i = 0; i < authorized[swapId].length; i++) {\\n            totalWithdrawalSum += authorized[swapId][i].amount;\\n        }\\n\\n        require(\\n            totalWithdrawalSum + feeAmount <= swap.sellAmount,\\n            \\\"Withdrawal amount cannot exceed swap amount\\\"\\n        );\\n\\n        // Perform asset transfer based on asset type\\n        if (swap.sellAsset == address(0x0)) {\\n            // Transfer ETH\\n            for (uint i = 0; i < authorized[swapId].length; i++) {\\n                payable(authorized[swapId][i].addr).transfer(\\n                    authorized[swapId][i].amount\\n                ); //Transfer funds to LPs\\n            }\\n            if ((swap.sellAmount - totalWithdrawalSum - feeAmount) > 0)\\n                payable(swap.swapOwner).transfer(\\n                    swap.sellAmount - totalWithdrawalSum - feeAmount\\n                ); //Transfer remaining amount to swapOwner\\n            payable(tokenContract.owner()).transfer(feeAmount); //Transfer fees to validator network\\n        } else {\\n            // Transfer ERC20 tokens from sender to receiver\\n            IERC20(swap.sellAsset).transfer(\\n                swap.swapOwner,\\n                swap.sellAmount - feeAmount\\n            );\\n            IERC20(swap.sellAsset).transfer(tokenContract.owner(), feeAmount);\\n        }\\n\\n        // Delete the swap order and authorization to prevent re-entrancy\\n        delete orders[swapId];\\n        delete authorized[swapId];\\n\\n        // Emit an event to signal the withdrawal\\n        emit Withdrawn(swapId, secret);  \\n    }\\n\\n    /**\\n     * @notice Function to redeem the swap order when timeout is reached\\n     * @param swapId Unique identifier for the swap\\n     */\\n    function redeem(bytes32 swapId) public {\\n        // Ensure the swap exists and is not yet redeemed\\n        Order storage swap = orders[swapId];\\n        require(swap.sellAmount > 0, \\\"Invalid or fulfilled swap ID\\\");\\n\\n        // Ensure the swap time has expired\\n        require(\\n            block.timestamp >= swap.swapCreation + 7 days,\\n            \\\"Swap time not yet expired\\\"\\n        );\\n\\n        //calculate fee amount\\n        uint feeAmount = (swap.sellAmount * feePercentage) / 10000;\\n\\n        // Redeem the swapId\\n        if (swap.sellAsset == address(0x0)) {\\n            payable(swap.swapOwner).transfer(swap.sellAmount - feeAmount); //Transfer funds to swap owner\\n            payable(tokenContract.owner()).transfer(feeAmount); //Transfer fees to validator network\\n        } else {\\n            // Transfer ERC20 tokens back to owner\\n            IERC20(swap.sellAsset).transfer(\\n                swap.swapOwner,\\n                swap.sellAmount - feeAmount\\n            );\\n            IERC20(swap.sellAsset).transfer(tokenContract.owner(), feeAmount);\\n        }\\n\\n        // Delete the swap order and authorization to prevent re-entrancy or double redemption\\n        delete orders[swapId];\\n        delete authorized[swapId];\\n\\n        emit Redeemed(swapId, swap.swapOwner); // Consider adding an event for successful redemption\\n    }\\n\\n    /**\\n     * @notice Function to give the notification to update the fee amount\\n     */\\n    function updateFeeNotice() public onlyOwner {\\n        feeUpdateNotice = block.timestamp + 14 days; // 14 days notice to update fees\\n    }\\n\\n    /**\\n     * @notice Function to update the fee amount\\n     * @param _newFeePercentage New fee percentage\\n    */\\n    function updateFeePercentage(uint _newFeePercentage) public onlyOwner {\\n        if (block.timestamp <= feeUpdateNotice) {\\n            revert NoExpiredFeeUpdateNotice(feeUpdateNotice);\\n        }\\n        if (_newFeePercentage > 400) {\\n            revert OverflowFeeCap(_newFeePercentage); //MaxFee is 4%\\n        }\\n        feePercentage = _newFeePercentage;\\n        emit FeeUpdated(_newFeePercentage);\\n    }\\n}\\n\",\"keccak256\":\"0xd490f7d45ade2727d0921d523c3588bfd2bd644d29692eb88b002c4aeac50696\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/IDexContract.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n// solhint-disable-next-line compiler-version\\npragma solidity ^0.8.20;\\n\\n/**\\n * @title IDexContract\\n * @notice Interface for the DexContract contract deployed on the Ethereum network\\n \\n */\\ninterface IDexContract {\\n    // Define custom errors\\n    error NotOwner(address sender );\\n    error OverflowFeeCap(uint amount);\\n    error IncorrectETHAmount(uint amount);\\n    error PermissionDeniedToAuthorize(address sender);\\n    error AlreadyAuthorized(bytes32 swapId);\\n    error NoExpiredFeeUpdateNotice(uint);\\n\\n        /**\\n     * @notice Structure to store the swap order details\\n     * @param secretHash Hash of the secret for the swap\\n     * @param sellAsset Asset address to be sold (0x0 for ETH)\\n     * @param sellAmount Amount of the asset to be sold\\n     * @param swapOwner Address of the trader initiating the swap\\n     * @param swapId Unique identifier for the swap\\n     * @param swapCreation Timestamp of swap creation\\n     */\\n    struct Order {\\n        bytes32 secretHash;\\n        address sellAsset;\\n        uint sellAmount;\\n        address swapOwner;\\n        bytes32 swapId;\\n        uint swapCreation;\\n    }\\n\\n    /**\\n     * @notice Structure to store the authorized withdrawal details\\n     * @param addr Address authorized for withdrawal\\n     * @param amount Amount authorized for withdrawal\\n     */\\n    struct AuthorizedWithdrawal {\\n        address addr;\\n        uint amount;\\n    }\\n\\n    /**\\n     * Event emitted when the swap order is created\\n     * @param secretHash Hash of the secret for the swap\\n     * @param sellAsset Asset address to be sold (0x0 for ETH)\\n     * @param sellAmount Amount of the asset to be sold\\n     * @param swapOwner Address of the trader initiating the swap\\n     * @param swapId Unique identifier\\n     * @param swapCreation Timestamp of swap creation\\n     */\\n    event OrderCreated(\\n        bytes32 secretHash,\\n        address sellAsset,\\n        uint sellAmount,\\n        address swapOwner,\\n        bytes32 swapId,\\n        uint swapCreation\\n    );\\n\\n    /**\\n     * Event emitted upon authorization of the order\\n     * @param swapId Unique identifier for the swap\\n     */\\n    event Authorized(bytes32 swapId);\\n\\n    /**\\n     * Event emitted upon withdrawal\\n     * @param swapId Unique identifier for the swap\\n     * @param secret Secret for the swap\\n     */\\n    event Withdrawn(bytes32 swapId, bytes32 secret);\\n\\n\\n    /**\\n     * Event emitted upon redemption\\n     * @param swapId Unique identifier for the swap\\n     * @param swapOwner Address of the trader initiating the swap\\n     */\\n    event Redeemed(bytes32 swapId, address swapOwner);\\n\\n    /**\\n     * Event emitted upon fee update\\n     * @param newFeePercentage New fee percentage\\n    */\\n    event FeeUpdated(uint newFeePercentage);\\n}\\n\",\"keccak256\":\"0x60caad1ee4b6f10eab44a05966792374f9c19d7474e39e9310fd6f66059c4b95\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/IPortalToken.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\npragma solidity ^0.8.20;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\n/**\\n * @title IPortalToken\\n * @notice Interface for the PORTAL token contract deployed on the Ethereum network.\\n */\\ninterface IPortalToken is IERC20 {\\n    /**\\n     * @dev Returns the address of the owner of the PORTAL Token contract. This should be the address of the Portal Foundation.\\n     */\\n    function owner() external view returns (address);\\n}\\n\",\"keccak256\":\"0xd30b6f138e07a09cbc3fe0c320d4d87ea960d63315022c06b6771c395aeb5e3b\",\"license\":\"BUSL-1.1\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50604051620018b5380380620018b583398101604081905261003191610069565b600080546001600160a01b0319166001600160a01b038316179055601e60015561006042640202fbf000610099565b600255506100c0565b60006020828403121561007b57600080fd5b81516001600160a01b038116811461009257600080fd5b9392505050565b808201808211156100ba57634e487b7160e01b600052601160045260246000fd5b92915050565b6117e580620000d06000396000f3fe6080604052600436106100bc5760003560e01c806384bb2cdd11610074578063a001ecdd1161004e578063a001ecdd1461025f578063eda1122c14610283578063fd9113d3146102a357600080fd5b806384bb2cdd146101735780639c3f1e90146101b25780639d9d4c661461024a57600080fd5b806365ffaeba116100a557806365ffaeba146101205780636cad3fb0146101405780637168556f1461016057600080fd5b806355a373d6146100c157806363615149146100fe575b600080fd5b3480156100cd57600080fd5b506000546100e1906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b34801561010a57600080fd5b5061011e61011936600461148c565b6102b9565b005b34801561012c57600080fd5b5061011e61013b366004611533565b610930565b34801561014c57600080fd5b5061011e61015b366004611614565b610b63565b61011e61016e36600461162d565b610cb4565b34801561017f57600080fd5b5061019361018e36600461148c565b610f31565b604080516001600160a01b0390931683526020830191909152016100f5565b3480156101be57600080fd5b506102116101cd366004611614565b600360208190526000918252604090912080546001820154600283015493830154600484015460059094015492946001600160a01b03928316949093929091169186565b604080519687526001600160a01b03958616602088015286019390935292166060840152608083019190915260a082015260c0016100f5565b34801561025657600080fd5b5061011e610f77565b34801561026b57600080fd5b5061027560015481565b6040519081526020016100f5565b34801561028f57600080fd5b5061011e61029e366004611614565b61101f565b3480156102af57600080fd5b5061027560025481565b6000818152600360209081526040808320815192830186905292916002910160408051601f19818403018152908290526102f291611677565b602060405180830381855afa15801561030f573d6000803e3d6000fd5b5050506040513d601f19601f8201168201806040525081019061033291906116a6565b6001830154600284015460038501546040805160208082018790526bffffffffffffffffffffffff19606096871b81168385015260548301959095529290941b909216607484015281518084036068018152608890930190915281519101209091508381146103e85760405162461bcd60e51b815260206004820152601d60248201527f496e76616c69642073656372657420666f72207769746864726177616c00000060448201526064015b60405180910390fd5b600061271060015485600201546103ff91906116d5565b61040991906116f2565b90506000805b60008781526004602052604090205481101561047657600087815260046020526040902080548290811061044557610445611714565b90600052602060002090600202016001015482610462919061172a565b91508061046e8161173d565b91505061040f565b506002850154610486838361172a565b11156104fa5760405162461bcd60e51b815260206004820152602b60248201527f5769746864726177616c20616d6f756e742063616e6e6f74206578636565642060448201527f7377617020616d6f756e7400000000000000000000000000000000000000000060648201526084016103df565b60018501546001600160a01b031661070a5760005b6000878152600460205260409020548110156105d857600087815260046020526040902080548290811061054557610545611714565b600091825260208083206002909202909101548983526004909152604090912080546001600160a01b03909216916108fc91908490811061058857610588611714565b9060005260206000209060020201600101549081150290604051600060405180830381858888f193505050501580156105c5573d6000803e3d6000fd5b50806105d08161173d565b91505061050f565b506000828287600201546105ec9190611756565b6105f69190611756565b111561065757600385015460028601546001600160a01b03909116906108fc908490610623908590611756565b61062d9190611756565b6040518115909202916000818181858888f19350505050158015610655573d6000803e3d6000fd5b505b60008054906101000a90046001600160a01b03166001600160a01b0316638da5cb5b6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156106a8573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106cc9190611769565b6001600160a01b03166108fc839081150290604051600060405180830381858888f19350505050158015610704573d6000803e3d6000fd5b50610895565b6001850154600386015460028701546001600160a01b039283169263a9059cbb921690610738908690611756565b6040516001600160e01b031960e085901b1681526001600160a01b03909216600483015260248201526044016020604051808303816000875af1158015610783573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906107a7919061178d565b50600185015460005460408051638da5cb5b60e01b815290516001600160a01b039384169363a9059cbb931691638da5cb5b9160048083019260209291908290030181865afa1580156107fe573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906108229190611769565b6040516001600160e01b031960e084901b1681526001600160a01b039091166004820152602481018590526044016020604051808303816000875af115801561086f573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610893919061178d565b505b60008681526003602081815260408084208481556001810180546001600160a01b03199081169091556002820186905593810180549094169093556004808401859055600590930184905591905281206108ee9161143e565b60408051878152602081018990527f62388c59a1deeef5c43bd1e453c09d8fd255c31f651700e1f606339958b88b1c910160405180910390a150505050505050565b600082815260036020908152604080832092548151638da5cb5b60e01b815291516001600160a01b0390911692638da5cb5b92600480820193918290030181865afa158015610983573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109a79190611769565b6001600160a01b0316336001600160a01b0316141580156109d5575060038101546001600160a01b03163314155b15610a0e576040517fc94f0e530000000000000000000000000000000000000000000000000000000081523360048201526024016103df565b6000816002015411610a625760405162461bcd60e51b815260206004820152601e60248201527f496e76616c6964206f72206e6f6e6578697374656e742073776170204944000060448201526064016103df565b60008381526004602052604090205415610aab576040517fd8a9e667000000000000000000000000000000000000000000000000000000008152600481018490526024016103df565b60005b8251811015610b295760008481526004602052604090208351849083908110610ad957610ad9611714565b602090810291909101810151825460018082018555600094855293839020825160029092020180546001600160a01b0319166001600160a01b039092169190911781559101519082015501610aae565b506040518381527f72e40b363fd6bb99d89cad74fd78040e92227b342c468ba4ec538b635d10f06c906020015b60405180910390a1505050565b60005460408051638da5cb5b60e01b8152905133926001600160a01b031691638da5cb5b9160048083019260209291908290030181865afa158015610bac573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610bd09190611769565b6001600160a01b031614610bf95760405163245aecd360e01b81523360048201526024016103df565b6002544211610c3a576002546040517faf43a7bf0000000000000000000000000000000000000000000000000000000081526004016103df91815260200190565b610190811115610c79576040517fdb1cd6c0000000000000000000000000000000000000000000000000000000008152600481018290526024016103df565b60018190556040518181527f8c4d35e54a3f2ef1134138fd8ea3daee6a3c89e10d2665996babdf70261e2c769060200160405180910390a150565b6040805160208082018790526bffffffffffffffffffffffff19606087811b8216848601526054840187905285901b1660748301528251808303606801815260889092018352815191810191909120600081815260039092529190206002015415610d615760405162461bcd60e51b815260206004820152601660248201527f5377617020494420616c7265616479206578697374730000000000000000000060448201526064016103df565b6040805160c0810182528681526001600160a01b03808716602080840182815284860189815288851660608701908152608087018981524260a0890190815260008b8152600396879052999099209751885592516001880180549188166001600160a01b03199283161790559151600288015551928601805493909516921691909117909255905160048301559151600590910155610e3b57823414610e36576040517fbd3d1d3d000000000000000000000000000000000000000000000000000000008152600481018490526024016103df565b610ecd565b6040517f23b872dd000000000000000000000000000000000000000000000000000000008152336004820152306024820152604481018490526001600160a01b038516906323b872dd906064016020604051808303816000875af1158015610ea7573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610ecb919061178d565b505b604080518681526001600160a01b03868116602083015281830186905284166060820152608081018390524260a082015290517fcf8c667058d3773bf421bedb38a6938759b277329bac254c37f52f8b252548e29181900360c00190a15050505050565b60046020528160005260406000208181548110610f4d57600080fd5b6000918252602090912060029091020180546001909101546001600160a01b039091169250905082565b60005460408051638da5cb5b60e01b8152905133926001600160a01b031691638da5cb5b9160048083019260209291908290030181865afa158015610fc0573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610fe49190611769565b6001600160a01b03161461100d5760405163245aecd360e01b81523360048201526024016103df565b61101a426212750061172a565b600255565b6000818152600360205260409020600281015461107e5760405162461bcd60e51b815260206004820152601c60248201527f496e76616c6964206f722066756c66696c6c656420737761702049440000000060448201526064016103df565b60058101546110909062093a8061172a565b4210156110df5760405162461bcd60e51b815260206004820152601960248201527f537761702074696d65206e6f742079657420657870697265640000000000000060448201526064016103df565b600061271060015483600201546110f691906116d5565b61110091906116f2565b60018301549091506001600160a01b031661121657600382015460028301546001600160a01b03909116906108fc9061113a908490611756565b6040518115909202916000818181858888f19350505050158015611162573d6000803e3d6000fd5b5060008054906101000a90046001600160a01b03166001600160a01b0316638da5cb5b6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156111b4573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906111d89190611769565b6001600160a01b03166108fc829081150290604051600060405180830381858888f19350505050158015611210573d6000803e3d6000fd5b506113a1565b6001820154600383015460028401546001600160a01b039283169263a9059cbb921690611244908590611756565b6040516001600160e01b031960e085901b1681526001600160a01b03909216600483015260248201526044016020604051808303816000875af115801561128f573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906112b3919061178d565b50600182015460005460408051638da5cb5b60e01b815290516001600160a01b039384169363a9059cbb931691638da5cb5b9160048083019260209291908290030181865afa15801561130a573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061132e9190611769565b6040516001600160e01b031960e084901b1681526001600160a01b039091166004820152602481018490526044016020604051808303816000875af115801561137b573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061139f919061178d565b505b60008381526003602081815260408084208481556001810180546001600160a01b03199081169091556002820186905593810180549094169093556004808401859055600590930184905591905281206113fa9161143e565b6003820154604080518581526001600160a01b0390921660208301527fa3364817cc6a3d1dfc5e4970c5ff96bbba39cb4182e88c06bad5ca2feffb1dca9101610b56565b508054600082556002029060005260206000209081019061145f9190611462565b50565b5b808211156114885780546001600160a01b031916815560006001820155600201611463565b5090565b6000806040838503121561149f57600080fd5b50508035926020909101359150565b634e487b7160e01b600052604160045260246000fd5b6040805190810167ffffffffffffffff811182821017156114e7576114e76114ae565b60405290565b604051601f8201601f1916810167ffffffffffffffff81118282101715611516576115166114ae565b604052919050565b6001600160a01b038116811461145f57600080fd5b600080604080848603121561154757600080fd5b8335925060208085013567ffffffffffffffff8082111561156757600080fd5b818701915087601f83011261157b57600080fd5b81358181111561158d5761158d6114ae565b61159b848260051b016114ed565b818152848101925060069190911b8301840190898211156115bb57600080fd5b928401925b818410156116045785848b0312156115d85760008081fd5b6115e06114c4565b84356115eb8161151e565b81528486013586820152835292850192918401916115c0565b8096505050505050509250929050565b60006020828403121561162657600080fd5b5035919050565b6000806000806080858703121561164357600080fd5b8435935060208501356116558161151e565b925060408501359150606085013561166c8161151e565b939692955090935050565b6000825160005b81811015611698576020818601810151858301520161167e565b506000920191825250919050565b6000602082840312156116b857600080fd5b5051919050565b634e487b7160e01b600052601160045260246000fd5b80820281158282048414176116ec576116ec6116bf565b92915050565b60008261170f57634e487b7160e01b600052601260045260246000fd5b500490565b634e487b7160e01b600052603260045260246000fd5b808201808211156116ec576116ec6116bf565b60006001820161174f5761174f6116bf565b5060010190565b818103818111156116ec576116ec6116bf565b60006020828403121561177b57600080fd5b81516117868161151e565b9392505050565b60006020828403121561179f57600080fd5b8151801515811461178657600080fdfea26469706673582212204870db96d907ce18795313f13450b0f4f1d8eeef8619c42a3d48e2da6db41fd964736f6c63430008140033",
+  "deployedBytecode": "0x6080604052600436106100bc5760003560e01c806384bb2cdd11610074578063a001ecdd1161004e578063a001ecdd1461025f578063eda1122c14610283578063fd9113d3146102a357600080fd5b806384bb2cdd146101735780639c3f1e90146101b25780639d9d4c661461024a57600080fd5b806365ffaeba116100a557806365ffaeba146101205780636cad3fb0146101405780637168556f1461016057600080fd5b806355a373d6146100c157806363615149146100fe575b600080fd5b3480156100cd57600080fd5b506000546100e1906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b34801561010a57600080fd5b5061011e61011936600461148c565b6102b9565b005b34801561012c57600080fd5b5061011e61013b366004611533565b610930565b34801561014c57600080fd5b5061011e61015b366004611614565b610b63565b61011e61016e36600461162d565b610cb4565b34801561017f57600080fd5b5061019361018e36600461148c565b610f31565b604080516001600160a01b0390931683526020830191909152016100f5565b3480156101be57600080fd5b506102116101cd366004611614565b600360208190526000918252604090912080546001820154600283015493830154600484015460059094015492946001600160a01b03928316949093929091169186565b604080519687526001600160a01b03958616602088015286019390935292166060840152608083019190915260a082015260c0016100f5565b34801561025657600080fd5b5061011e610f77565b34801561026b57600080fd5b5061027560015481565b6040519081526020016100f5565b34801561028f57600080fd5b5061011e61029e366004611614565b61101f565b3480156102af57600080fd5b5061027560025481565b6000818152600360209081526040808320815192830186905292916002910160408051601f19818403018152908290526102f291611677565b602060405180830381855afa15801561030f573d6000803e3d6000fd5b5050506040513d601f19601f8201168201806040525081019061033291906116a6565b6001830154600284015460038501546040805160208082018790526bffffffffffffffffffffffff19606096871b81168385015260548301959095529290941b909216607484015281518084036068018152608890930190915281519101209091508381146103e85760405162461bcd60e51b815260206004820152601d60248201527f496e76616c69642073656372657420666f72207769746864726177616c00000060448201526064015b60405180910390fd5b600061271060015485600201546103ff91906116d5565b61040991906116f2565b90506000805b60008781526004602052604090205481101561047657600087815260046020526040902080548290811061044557610445611714565b90600052602060002090600202016001015482610462919061172a565b91508061046e8161173d565b91505061040f565b506002850154610486838361172a565b11156104fa5760405162461bcd60e51b815260206004820152602b60248201527f5769746864726177616c20616d6f756e742063616e6e6f74206578636565642060448201527f7377617020616d6f756e7400000000000000000000000000000000000000000060648201526084016103df565b60018501546001600160a01b031661070a5760005b6000878152600460205260409020548110156105d857600087815260046020526040902080548290811061054557610545611714565b600091825260208083206002909202909101548983526004909152604090912080546001600160a01b03909216916108fc91908490811061058857610588611714565b9060005260206000209060020201600101549081150290604051600060405180830381858888f193505050501580156105c5573d6000803e3d6000fd5b50806105d08161173d565b91505061050f565b506000828287600201546105ec9190611756565b6105f69190611756565b111561065757600385015460028601546001600160a01b03909116906108fc908490610623908590611756565b61062d9190611756565b6040518115909202916000818181858888f19350505050158015610655573d6000803e3d6000fd5b505b60008054906101000a90046001600160a01b03166001600160a01b0316638da5cb5b6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156106a8573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106cc9190611769565b6001600160a01b03166108fc839081150290604051600060405180830381858888f19350505050158015610704573d6000803e3d6000fd5b50610895565b6001850154600386015460028701546001600160a01b039283169263a9059cbb921690610738908690611756565b6040516001600160e01b031960e085901b1681526001600160a01b03909216600483015260248201526044016020604051808303816000875af1158015610783573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906107a7919061178d565b50600185015460005460408051638da5cb5b60e01b815290516001600160a01b039384169363a9059cbb931691638da5cb5b9160048083019260209291908290030181865afa1580156107fe573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906108229190611769565b6040516001600160e01b031960e084901b1681526001600160a01b039091166004820152602481018590526044016020604051808303816000875af115801561086f573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610893919061178d565b505b60008681526003602081815260408084208481556001810180546001600160a01b03199081169091556002820186905593810180549094169093556004808401859055600590930184905591905281206108ee9161143e565b60408051878152602081018990527f62388c59a1deeef5c43bd1e453c09d8fd255c31f651700e1f606339958b88b1c910160405180910390a150505050505050565b600082815260036020908152604080832092548151638da5cb5b60e01b815291516001600160a01b0390911692638da5cb5b92600480820193918290030181865afa158015610983573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109a79190611769565b6001600160a01b0316336001600160a01b0316141580156109d5575060038101546001600160a01b03163314155b15610a0e576040517fc94f0e530000000000000000000000000000000000000000000000000000000081523360048201526024016103df565b6000816002015411610a625760405162461bcd60e51b815260206004820152601e60248201527f496e76616c6964206f72206e6f6e6578697374656e742073776170204944000060448201526064016103df565b60008381526004602052604090205415610aab576040517fd8a9e667000000000000000000000000000000000000000000000000000000008152600481018490526024016103df565b60005b8251811015610b295760008481526004602052604090208351849083908110610ad957610ad9611714565b602090810291909101810151825460018082018555600094855293839020825160029092020180546001600160a01b0319166001600160a01b039092169190911781559101519082015501610aae565b506040518381527f72e40b363fd6bb99d89cad74fd78040e92227b342c468ba4ec538b635d10f06c906020015b60405180910390a1505050565b60005460408051638da5cb5b60e01b8152905133926001600160a01b031691638da5cb5b9160048083019260209291908290030181865afa158015610bac573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610bd09190611769565b6001600160a01b031614610bf95760405163245aecd360e01b81523360048201526024016103df565b6002544211610c3a576002546040517faf43a7bf0000000000000000000000000000000000000000000000000000000081526004016103df91815260200190565b610190811115610c79576040517fdb1cd6c0000000000000000000000000000000000000000000000000000000008152600481018290526024016103df565b60018190556040518181527f8c4d35e54a3f2ef1134138fd8ea3daee6a3c89e10d2665996babdf70261e2c769060200160405180910390a150565b6040805160208082018790526bffffffffffffffffffffffff19606087811b8216848601526054840187905285901b1660748301528251808303606801815260889092018352815191810191909120600081815260039092529190206002015415610d615760405162461bcd60e51b815260206004820152601660248201527f5377617020494420616c7265616479206578697374730000000000000000000060448201526064016103df565b6040805160c0810182528681526001600160a01b03808716602080840182815284860189815288851660608701908152608087018981524260a0890190815260008b8152600396879052999099209751885592516001880180549188166001600160a01b03199283161790559151600288015551928601805493909516921691909117909255905160048301559151600590910155610e3b57823414610e36576040517fbd3d1d3d000000000000000000000000000000000000000000000000000000008152600481018490526024016103df565b610ecd565b6040517f23b872dd000000000000000000000000000000000000000000000000000000008152336004820152306024820152604481018490526001600160a01b038516906323b872dd906064016020604051808303816000875af1158015610ea7573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610ecb919061178d565b505b604080518681526001600160a01b03868116602083015281830186905284166060820152608081018390524260a082015290517fcf8c667058d3773bf421bedb38a6938759b277329bac254c37f52f8b252548e29181900360c00190a15050505050565b60046020528160005260406000208181548110610f4d57600080fd5b6000918252602090912060029091020180546001909101546001600160a01b039091169250905082565b60005460408051638da5cb5b60e01b8152905133926001600160a01b031691638da5cb5b9160048083019260209291908290030181865afa158015610fc0573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610fe49190611769565b6001600160a01b03161461100d5760405163245aecd360e01b81523360048201526024016103df565b61101a426212750061172a565b600255565b6000818152600360205260409020600281015461107e5760405162461bcd60e51b815260206004820152601c60248201527f496e76616c6964206f722066756c66696c6c656420737761702049440000000060448201526064016103df565b60058101546110909062093a8061172a565b4210156110df5760405162461bcd60e51b815260206004820152601960248201527f537761702074696d65206e6f742079657420657870697265640000000000000060448201526064016103df565b600061271060015483600201546110f691906116d5565b61110091906116f2565b60018301549091506001600160a01b031661121657600382015460028301546001600160a01b03909116906108fc9061113a908490611756565b6040518115909202916000818181858888f19350505050158015611162573d6000803e3d6000fd5b5060008054906101000a90046001600160a01b03166001600160a01b0316638da5cb5b6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156111b4573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906111d89190611769565b6001600160a01b03166108fc829081150290604051600060405180830381858888f19350505050158015611210573d6000803e3d6000fd5b506113a1565b6001820154600383015460028401546001600160a01b039283169263a9059cbb921690611244908590611756565b6040516001600160e01b031960e085901b1681526001600160a01b03909216600483015260248201526044016020604051808303816000875af115801561128f573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906112b3919061178d565b50600182015460005460408051638da5cb5b60e01b815290516001600160a01b039384169363a9059cbb931691638da5cb5b9160048083019260209291908290030181865afa15801561130a573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061132e9190611769565b6040516001600160e01b031960e084901b1681526001600160a01b039091166004820152602481018490526044016020604051808303816000875af115801561137b573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061139f919061178d565b505b60008381526003602081815260408084208481556001810180546001600160a01b03199081169091556002820186905593810180549094169093556004808401859055600590930184905591905281206113fa9161143e565b6003820154604080518581526001600160a01b0390921660208301527fa3364817cc6a3d1dfc5e4970c5ff96bbba39cb4182e88c06bad5ca2feffb1dca9101610b56565b508054600082556002029060005260206000209081019061145f9190611462565b50565b5b808211156114885780546001600160a01b031916815560006001820155600201611463565b5090565b6000806040838503121561149f57600080fd5b50508035926020909101359150565b634e487b7160e01b600052604160045260246000fd5b6040805190810167ffffffffffffffff811182821017156114e7576114e76114ae565b60405290565b604051601f8201601f1916810167ffffffffffffffff81118282101715611516576115166114ae565b604052919050565b6001600160a01b038116811461145f57600080fd5b600080604080848603121561154757600080fd5b8335925060208085013567ffffffffffffffff8082111561156757600080fd5b818701915087601f83011261157b57600080fd5b81358181111561158d5761158d6114ae565b61159b848260051b016114ed565b818152848101925060069190911b8301840190898211156115bb57600080fd5b928401925b818410156116045785848b0312156115d85760008081fd5b6115e06114c4565b84356115eb8161151e565b81528486013586820152835292850192918401916115c0565b8096505050505050509250929050565b60006020828403121561162657600080fd5b5035919050565b6000806000806080858703121561164357600080fd5b8435935060208501356116558161151e565b925060408501359150606085013561166c8161151e565b939692955090935050565b6000825160005b81811015611698576020818601810151858301520161167e565b506000920191825250919050565b6000602082840312156116b857600080fd5b5051919050565b634e487b7160e01b600052601160045260246000fd5b80820281158282048414176116ec576116ec6116bf565b92915050565b60008261170f57634e487b7160e01b600052601260045260246000fd5b500490565b634e487b7160e01b600052603260045260246000fd5b808201808211156116ec576116ec6116bf565b60006001820161174f5761174f6116bf565b5060010190565b818103818111156116ec576116ec6116bf565b60006020828403121561177b57600080fd5b81516117868161151e565b9392505050565b60006020828403121561179f57600080fd5b8151801515811461178657600080fdfea26469706673582212204870db96d907ce18795313f13450b0f4f1d8eeef8619c42a3d48e2da6db41fd964736f6c63430008140033",
+  "devdoc": {
+    "details": "Implementation of the Dex contract which manages swap order creation and all the steps for swap on evm ",
+    "events": {
+      "Authorized(bytes32)": {
+        "params": {
+          "swapId": "Unique identifier for the swap"
+        }
+      },
+      "FeeUpdated(uint256)": {
+        "params": {
+          "newFeePercentage": "New fee percentage"
+        }
+      },
+      "OrderCreated(bytes32,address,uint256,address,bytes32,uint256)": {
+        "params": {
+          "secretHash": "Hash of the secret for the swap",
+          "sellAmount": "Amount of the asset to be sold",
+          "sellAsset": "Asset address to be sold (0x0 for ETH)",
+          "swapCreation": "Timestamp of swap creation",
+          "swapId": "Unique identifier",
+          "swapOwner": "Address of the trader initiating the swap"
+        }
+      },
+      "Redeemed(bytes32,address)": {
+        "params": {
+          "swapId": "Unique identifier for the swap",
+          "swapOwner": "Address of the trader initiating the swap"
+        }
+      },
+      "Withdrawn(bytes32,bytes32)": {
+        "params": {
+          "secret": "Secret for the swap",
+          "swapId": "Unique identifier for the swap"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "authorize(bytes32,(address,uint256)[])": {
+        "params": {
+          "swapId": "Unique identifier for the swap",
+          "withdraws": "Array of authorized addresses and amounts for withdrawal"
+        }
+      },
+      "constructor": {
+        "params": {
+          "_tokenAddress": "Address of the Portal Token contract"
+        }
+      },
+      "redeem(bytes32)": {
+        "params": {
+          "swapId": "Unique identifier for the swap"
+        }
+      },
+      "swapOrder(bytes32,address,uint256,address)": {
+        "params": {
+          "secretHash": "Hash of the secret for the swap",
+          "sellAmount": "Amount of the asset to be sold",
+          "sellAsset": "Asset address to be sold (0x0 for ETH)",
+          "swapOwner": "Address of the trader initiating the swap"
+        }
+      },
+      "updateFeePercentage(uint256)": {
+        "params": {
+          "_newFeePercentage": "New fee percentage"
+        }
+      },
+      "withdraw(bytes32,bytes32)": {
+        "params": {
+          "secret": "Secret for the swap",
+          "swapId": "Unique identifier for the swap"
+        }
+      }
+    },
+    "title": "Dex contract",
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "Authorized(bytes32)": {
+        "notice": "Event emitted upon authorization of the order"
+      },
+      "FeeUpdated(uint256)": {
+        "notice": "Event emitted upon fee update"
+      },
+      "OrderCreated(bytes32,address,uint256,address,bytes32,uint256)": {
+        "notice": "Event emitted when the swap order is created"
+      },
+      "Redeemed(bytes32,address)": {
+        "notice": "Event emitted upon redemption"
+      },
+      "Withdrawn(bytes32,bytes32)": {
+        "notice": "Event emitted upon withdrawal"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "authorize(bytes32,(address,uint256)[])": {
+        "notice": "Function to authorize the swap order"
+      },
+      "authorized(bytes32,uint256)": {
+        "notice": "Mapping to store authorized address and amounts with swapIds"
+      },
+      "constructor": {
+        "notice": "Initialize the contract with portal token contract address, fee percentage, and fee update notice"
+      },
+      "feePercentage()": {
+        "notice": "Fee percentage in basis points (100 basis points = 1%)"
+      },
+      "feeUpdateNotice()": {
+        "notice": "Notice to update fees"
+      },
+      "orders(bytes32)": {
+        "notice": "Mapping to store swap orders with their unique IDs"
+      },
+      "redeem(bytes32)": {
+        "notice": "Function to redeem the swap order when timeout is reached"
+      },
+      "swapOrder(bytes32,address,uint256,address)": {
+        "notice": "Function to create a swap order"
+      },
+      "tokenContract()": {
+        "notice": "Address on the PORTAL Token contract"
+      },
+      "updateFeeNotice()": {
+        "notice": "Function to give the notification to update the fee amount"
+      },
+      "updateFeePercentage(uint256)": {
+        "notice": "Function to update the fee amount"
+      },
+      "withdraw(bytes32,bytes32)": {
+        "notice": "Function to withdraw funds from the swap order"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 6767,
+        "contract": "contracts/DexContract.sol:DexContract",
+        "label": "tokenContract",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_contract(IPortalToken)8703"
+      },
+      {
+        "astId": 6770,
+        "contract": "contracts/DexContract.sol:DexContract",
+        "label": "feePercentage",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 6773,
+        "contract": "contracts/DexContract.sol:DexContract",
+        "label": "feeUpdateNotice",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 6821,
+        "contract": "contracts/DexContract.sol:DexContract",
+        "label": "orders",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_bytes32,t_struct(Order)8510_storage)"
+      },
+      {
+        "astId": 6828,
+        "contract": "contracts/DexContract.sol:DexContract",
+        "label": "authorized",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_bytes32,t_array(t_struct(AuthorizedWithdrawal)8516_storage)dyn_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_struct(AuthorizedWithdrawal)8516_storage)dyn_storage": {
+        "base": "t_struct(AuthorizedWithdrawal)8516_storage",
+        "encoding": "dynamic_array",
+        "label": "struct IDexContract.AuthorizedWithdrawal[]",
+        "numberOfBytes": "32"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_contract(IPortalToken)8703": {
+        "encoding": "inplace",
+        "label": "contract IPortalToken",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_bytes32,t_array(t_struct(AuthorizedWithdrawal)8516_storage)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => struct IDexContract.AuthorizedWithdrawal[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_struct(AuthorizedWithdrawal)8516_storage)dyn_storage"
+      },
+      "t_mapping(t_bytes32,t_struct(Order)8510_storage)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => struct IDexContract.Order)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Order)8510_storage"
+      },
+      "t_struct(AuthorizedWithdrawal)8516_storage": {
+        "encoding": "inplace",
+        "label": "struct IDexContract.AuthorizedWithdrawal",
+        "members": [
+          {
+            "astId": 8513,
+            "contract": "contracts/DexContract.sol:DexContract",
+            "label": "addr",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 8515,
+            "contract": "contracts/DexContract.sol:DexContract",
+            "label": "amount",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_struct(Order)8510_storage": {
+        "encoding": "inplace",
+        "label": "struct IDexContract.Order",
+        "members": [
+          {
+            "astId": 8499,
+            "contract": "contracts/DexContract.sol:DexContract",
+            "label": "secretHash",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 8501,
+            "contract": "contracts/DexContract.sol:DexContract",
+            "label": "sellAsset",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 8503,
+            "contract": "contracts/DexContract.sol:DexContract",
+            "label": "sellAmount",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 8505,
+            "contract": "contracts/DexContract.sol:DexContract",
+            "label": "swapOwner",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_address"
+          },
+          {
+            "astId": 8507,
+            "contract": "contracts/DexContract.sol:DexContract",
+            "label": "swapId",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 8509,
+            "contract": "contracts/DexContract.sol:DexContract",
+            "label": "swapCreation",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "192"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

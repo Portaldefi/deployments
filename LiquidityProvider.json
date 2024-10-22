@@ -1,0 +1,923 @@
+{
+  "address": "0xd7Cb4589f8F38A01fCd5aCe541697e26F730D55f",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_tokenAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AlreadyAuthorized",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "IncorrectETHAmount",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "NoExpiredFeeUpdateNotice",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "NotOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "OverflowFeeCap",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "PermissionDeniedToAuthorize",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "swapOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "counterParty",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sellAsset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "sellAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "InvoiceCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "secret",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "counterParty",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sellAsset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "sellAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "InvoiceSettled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "liquidityOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "depositAsset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "depositAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "LiquidityDeposited",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "liquidityOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "withdrawalAsset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "withdrawalAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "noticeCompletion",
+          "type": "uint256"
+        }
+      ],
+      "name": "LiquidityRemovalNotice",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "liquidityOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "withdrawalAsset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "withdrawalAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "LiquidityRemoved",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "sellAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sellAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "counterParty",
+          "type": "address"
+        }
+      ],
+      "name": "createInvoice",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "depositAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "depositAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "depositOwner",
+          "type": "address"
+        }
+      ],
+      "name": "depositLiquidity",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "liquidities",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "liquidityTimelocks",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "unlockTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxWithdrawalAmount",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "penaltyAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "penaltyAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "lpPenalty",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "penalties",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "withdrawalAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "withdrawalAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeLiquidity",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "withdrawalAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxWithdrawalAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeLiquidityNotice",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "secret",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "swapId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "settleInvoice",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "stakePercentage",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "stakes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "swaps",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "swapOwner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "sellAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sellAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "swapCreation",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "counterParty",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokenContract",
+      "outputs": [
+        {
+          "internalType": "contract IPortalToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "withdrawAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "withdrawAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawPenalties",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x7cdda2d58d373da631031c7ef15988951e30eb1d63952a243e97a42b984dfb49",
+  "receipt": {
+    "to": null,
+    "from": "0x3F6154a2066C1d0690b626ae0402cEC20D134214",
+    "contractAddress": "0xd7Cb4589f8F38A01fCd5aCe541697e26F730D55f",
+    "transactionIndex": 60,
+    "gasUsed": "1292032",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x6b497957fc4685aeb24c7f2fb46e5fbbf5f8080c2aa0f6b98f71c05a92a4a5e7",
+    "transactionHash": "0x7cdda2d58d373da631031c7ef15988951e30eb1d63952a243e97a42b984dfb49",
+    "logs": [],
+    "blockNumber": 6621257,
+    "cumulativeGasUsed": "6005063",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x4466c7c755FEB90E3868C8D42cE344e7C4F5eA1E"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "7e3273cadf4394700cf7107ba792470f",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_tokenAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"}],\"name\":\"AlreadyAuthorized\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"IncorrectETHAmount\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"NoExpiredFeeUpdateNotice\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"NotOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"OverflowFeeCap\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"PermissionDeniedToAuthorize\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"swapOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"counterParty\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"sellAsset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"sellAmount\",\"type\":\"uint256\"}],\"name\":\"InvoiceCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"secret\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"counterParty\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"sellAsset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"sellAmount\",\"type\":\"uint256\"}],\"name\":\"InvoiceSettled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"liquidityOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"depositAsset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"depositAmount\",\"type\":\"uint256\"}],\"name\":\"LiquidityDeposited\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"liquidityOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"withdrawalAsset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"withdrawalAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"noticeCompletion\",\"type\":\"uint256\"}],\"name\":\"LiquidityRemovalNotice\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"liquidityOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"withdrawalAsset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"withdrawalAmount\",\"type\":\"uint256\"}],\"name\":\"LiquidityRemoved\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"sellAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sellAmount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"counterParty\",\"type\":\"address\"}],\"name\":\"createInvoice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"depositAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"depositAmount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"depositOwner\",\"type\":\"address\"}],\"name\":\"depositLiquidity\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"liquidities\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"liquidityTimelocks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"unlockTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxWithdrawalAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"penaltyAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"penaltyAmount\",\"type\":\"uint256\"}],\"name\":\"lpPenalty\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"penalties\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"withdrawalAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"withdrawalAmount\",\"type\":\"uint256\"}],\"name\":\"removeLiquidity\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"withdrawalAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"maxWithdrawalAmount\",\"type\":\"uint256\"}],\"name\":\"removeLiquidityNotice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"secret\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"swapId\",\"type\":\"bytes32\"}],\"name\":\"settleInvoice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"stakePercentage\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"stakes\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"swaps\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"swapOwner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"sellAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sellAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"swapCreation\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"counterParty\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokenContract\",\"outputs\":[{\"internalType\":\"contract IPortalToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"withdrawAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"withdrawAmount\",\"type\":\"uint256\"}],\"name\":\"withdrawPenalties\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Implementation of the Liquidity Provider which manages liquidity management and dispatching funds for the swap\",\"events\":{\"InvoiceCreated(bytes32,address,address,address,uint256)\":{\"params\":{\"counterParty\":\"Address of the other party in trade\",\"sellAmount\":\"Amount of the asset to be sold\",\"sellAsset\":\"Asset address to be sold (0x0 for ETH)\",\"swapId\":\"Identifier for the swap\",\"swapOwner\":\"Address of the trader initiating the swap\"}},\"InvoiceSettled(bytes32,bytes32,address,address,uint256)\":{\"params\":{\"counterParty\":\"Address of the other party in trade\",\"secret\":\"Secret to unlock the swap\",\"sellAmount\":\"Amount of the asset to be sold\",\"sellAsset\":\"Asset address to be sold (0x0 for ETH)\",\"swapId\":\"Identifier for the swap\"}},\"LiquidityDeposited(address,address,uint256)\":{\"params\":{\"depositAmount\":\"Amount of the asset deposited\",\"depositAsset\":\"Address of the asset deposited\",\"liquidityOwner\":\"Address of the liquidity provider\"}},\"LiquidityRemovalNotice(address,address,uint256,uint256)\":{\"params\":{\"liquidityOwner\":\"Address of the liquidity provider\",\"noticeCompletion\":\"Timestamp of notice completion\",\"withdrawalAmount\":\"Amount of the asset withdrawn\",\"withdrawalAsset\":\"Address of the asset withdrawn\"}},\"LiquidityRemoved(address,address,uint256)\":{\"params\":{\"liquidityOwner\":\"Address of the liquidity provider\",\"withdrawalAmount\":\"Amount of the asset withdrawn\",\"withdrawalAsset\":\"Address of the asset withdrawn\"}}},\"kind\":\"dev\",\"methods\":{\"constructor\":{\"params\":{\"_tokenAddress\":\"Address of the Portal Token contract\"}},\"createInvoice(bytes32,address,uint256,address)\":{\"params\":{\"counterParty\":\"Address of the other party in trade\",\"sellAmount\":\"Amount of the asset to be sold\",\"sellAsset\":\"Asset address to be sold (0x0 for ETH)\",\"swapId\":\"Identifier for the swap\"}},\"depositLiquidity(address,uint256,address)\":{\"params\":{\"depositAmount\":\"Amount of the asset to be deposited\",\"depositAsset\":\"Address of the asset to be deposited\"}},\"lpPenalty(address,address,uint256)\":{\"params\":{\"penaltyAmount\":\"Amount of the asset to be penalized\",\"penaltyAsset\":\"Address of the asset to be penalized\",\"user\":\"Address of the user to be penalized\"}},\"removeLiquidity(address,uint256)\":{\"params\":{\"withdrawalAmount\":\"Amount of the asset to be withdrawn\",\"withdrawalAsset\":\"Address of the asset to be withdrawn\"}},\"removeLiquidityNotice(address,uint256)\":{\"params\":{\"maxWithdrawalAmount\":\"Maximum amount of the asset to be withdrawn\",\"withdrawalAsset\":\"Address of the asset to be withdrawn\"}},\"settleInvoice(bytes32,bytes32)\":{\"params\":{\"secret\":\"Secret to unlock the swap\",\"swapId\":\"Identifier for the swap\"}},\"withdrawPenalties(address,uint256)\":{\"params\":{\"withdrawAmount\":\"Amount of the asset to be withdrawn\",\"withdrawAsset\":\"Address of the asset to be withdrawn\"}}},\"title\":\"Liquidity Provider contract\",\"version\":1},\"userdoc\":{\"events\":{\"InvoiceCreated(bytes32,address,address,address,uint256)\":{\"notice\":\"Event emitted upon Invoice Creation\"},\"InvoiceSettled(bytes32,bytes32,address,address,uint256)\":{\"notice\":\"Event emitted upon Invoice Settlement\"},\"LiquidityDeposited(address,address,uint256)\":{\"notice\":\"Event emitted when liquidity is deposited\"},\"LiquidityRemovalNotice(address,address,uint256,uint256)\":{\"notice\":\"Event emitted when notice to liquidity removal is successfully received\"},\"LiquidityRemoved(address,address,uint256)\":{\"notice\":\"Event emitted when liquidity is removed\"}},\"kind\":\"user\",\"methods\":{\"constructor\":{\"notice\":\"Initialize the contract with the PORTAL Token address and stake percentage\"},\"createInvoice(bytes32,address,uint256,address)\":{\"notice\":\"Function to create an invoice for a swap\"},\"depositLiquidity(address,uint256,address)\":{\"notice\":\"Function to deposit liquidity into the contract\"},\"liquidities(address,address)\":{\"notice\":\"mapping between liquidity asset, liquidity owner and the liquidity amount\"},\"liquidityTimelocks(address,address)\":{\"notice\":\"mapping between liquidity asset, liquidity owner and the withdrawal info\"},\"lpPenalty(address,address,uint256)\":{\"notice\":\"Function to penalize the user for any misconduct\"},\"penalties(address)\":{\"notice\":\"mapping between penalty asset and the penalty amount\"},\"removeLiquidity(address,uint256)\":{\"notice\":\"Function to remove liquidity from the contract\"},\"removeLiquidityNotice(address,uint256)\":{\"notice\":\"Function to give notice to remove liquidity from the contract\"},\"settleInvoice(bytes32,bytes32)\":{\"notice\":\"Function to settle an invoice\"},\"stakePercentage()\":{\"notice\":\"Stake percentage in basis points (100 basis points = 1%)\"},\"stakes(address,address)\":{\"notice\":\"mapping between liquidity asset, liquidity owner and the stake amount\"},\"swaps(bytes32)\":{\"notice\":\"mapping between swapId and the swap order details\"},\"tokenContract()\":{\"notice\":\"Address on the PORTAL Token contract\"},\"withdrawPenalties(address,uint256)\":{\"notice\":\"Function to withdraw penalties\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/LiquidityProvider.sol\":\"LiquidityProvider\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the value of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the value of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves a `value` amount of tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 value) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets a `value` amount of tokens as the allowance of `spender` over the\\n     * caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 value) external returns (bool);\\n\\n    /**\\n     * @dev Moves a `value` amount of tokens from `from` to `to` using the\\n     * allowance mechanism. `value` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 value) external returns (bool);\\n}\\n\",\"keccak256\":\"0xc6a8ff0ea489379b61faa647490411b80102578440ab9d84e9a957cc12164e70\",\"license\":\"MIT\"},\"contracts/LiquidityProvider.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n// solhint-disable-next-line compiler-version\\npragma solidity ^0.8.20;\\nimport \\\"./interfaces/IPortalToken.sol\\\";\\nimport {ILiquidityProvider} from \\\"./interfaces/ILiquidityProvider.sol\\\";\\n\\n/**\\n * @title Liquidity Provider contract\\n * @dev Implementation of the Liquidity Provider which manages liquidity management and dispatching funds for the swap\\n */\\ncontract LiquidityProvider is ILiquidityProvider {\\n    /**\\n     * @notice Address on the PORTAL Token contract\\n     */\\n    IPortalToken public tokenContract;\\n\\n    /**\\n     * @notice Stake percentage in basis points (100 basis points = 1%)\\n     */\\n    uint public stakePercentage;\\n\\n    /**\\n     * @notice Initialize the contract with the PORTAL Token address and stake percentage\\n     * @param _tokenAddress Address of the Portal Token contract\\n     */\\n    constructor(address _tokenAddress) {\\n        tokenContract = IPortalToken(_tokenAddress); //Loading the portal contract from portal token address\\n        stakePercentage = 300; // Initializing with a 3% stake\\n    }\\n\\n    /**\\n     * @notice Modifier to check if the caller is the owner of the token contract\\n     */\\n    modifier onlyOwner() {\\n        if (tokenContract.owner() != msg.sender) {\\n            revert NotOwner(msg.sender);\\n        }\\n        _;\\n    }\\n\\n    /**\\n     * @notice mapping between liquidity asset, liquidity owner and the liquidity amount\\n     */\\n    mapping(address => mapping(address => uint)) public liquidities;\\n\\n    /**\\n     * @notice mapping between liquidity asset, liquidity owner and the stake amount\\n     */\\n    mapping(address => mapping(address => uint)) public stakes;\\n\\n\\n\\n    /**\\n     * Function to deposit liquidity into the contract\\n     * @param depositAsset Address of the asset to be deposited\\n     * @param depositAmount Amount of the asset to be deposited\\n     */\\n    function depositLiquidity(\\n        address depositAsset,\\n        uint depositAmount,\\n        address depositOwner\\n    ) public payable {\\n        // Handle ETH and ERC20 transfers differently\\n        if (depositAsset == address(0x0)) {\\n            if (msg.value != depositAmount) {\\n                revert IncorrectETHAmount(depositAmount);\\n            }\\n        } else {\\n            // Transfer ERC20 tokens from sender to contract\\n            IERC20(depositAsset).transferFrom(\\n                msg.sender,\\n                address(this),\\n                depositAmount\\n            );\\n        }\\n        stakes[depositAsset][depositOwner] +=\\n            (depositAmount * stakePercentage) /\\n            10000;\\n        liquidities[depositAsset][depositOwner] +=\\n            depositAmount -\\n            (depositAmount * stakePercentage) /\\n            10000;\\n\\n        emit LiquidityDeposited(depositOwner, depositAsset, depositAmount);\\n    }\\n\\n    /**\\n     * @notice mapping between penalty asset and the penalty amount\\n     */\\n    mapping(address => uint) public penalties;\\n\\n    /**\\n     * Function to penalize the user for any misconduct\\n     * @param user Address of the user to be penalized\\n     * @param penaltyAsset Address of the asset to be penalized\\n     * @param penaltyAmount Amount of the asset to be penalized\\n     */\\n    function lpPenalty(\\n        address user,\\n        address penaltyAsset,\\n        uint penaltyAmount\\n    ) public onlyOwner {\\n        require(\\n            penaltyAmount <= stakes[penaltyAsset][user],\\n            \\\"penalty should be less than stake\\\"\\n        );\\n        stakes[penaltyAsset][user] -= penaltyAmount;\\n        penalties[penaltyAsset] += penaltyAmount;\\n    }\\n\\n    /**\\n     * Function to withdraw penalties\\n     * @param withdrawAsset Address of the asset to be withdrawn\\n     * @param withdrawAmount Amount of the asset to be withdrawn\\n     */\\n    function withdrawPenalties(\\n        address withdrawAsset,\\n        uint withdrawAmount\\n    ) public onlyOwner {\\n        require(\\n            withdrawAmount <= penalties[withdrawAsset],\\n            \\\"withdrawAmount should be less than penalties\\\"\\n        );\\n        penalties[withdrawAsset] -= withdrawAmount;\\n        if (withdrawAsset == address(0x0)) {\\n            // Handle ETH withdrawal\\n            payable(msg.sender).transfer(withdrawAmount);\\n        } else {\\n            // Handle ERC20 token withdrawal\\n            IERC20(withdrawAsset).transfer(msg.sender, withdrawAmount);\\n        }\\n    }\\n\\n    /**\\n     * @notice mapping between liquidity asset, liquidity owner and the withdrawal info\\n     */\\n    mapping(address => mapping(address => WithdrawalInfo))\\n        public liquidityTimelocks;\\n\\n    /**\\n     * Function to remove liquidity from the contract\\n     * @param withdrawalAsset Address of the asset to be withdrawn\\n     * @param withdrawalAmount Amount of the asset to be withdrawn\\n     */\\n    function removeLiquidity(\\n        address withdrawalAsset,\\n        uint withdrawalAmount\\n    ) public {\\n        require(\\n            liquidities[withdrawalAsset][msg.sender] >= withdrawalAmount,\\n            \\\"Insufficient liquidity\\\"\\n        );\\n        WithdrawalInfo storage info = liquidityTimelocks[withdrawalAsset][\\n            msg.sender\\n        ];\\n        require(\\n            info.unlockTime < block.timestamp,\\n            \\\"Wait till notice completion\\\"\\n        );\\n        require(\\n            withdrawalAmount <= info.maxWithdrawalAmount,\\n            \\\"Withdrawal amount exceeds limit\\\"\\n        );\\n        // Decrement the max withdrawal amount by the amount being withdrawn\\n        info.maxWithdrawalAmount -= withdrawalAmount;\\n        liquidities[withdrawalAsset][msg.sender] -= withdrawalAmount;\\n\\n        uint stakeRequired = ((liquidities[withdrawalAsset][msg.sender] +\\n            stakes[withdrawalAsset][msg.sender]) * stakePercentage) / 10000;\\n\\n        uint stakeRefund = 0;\\n        if (stakeRequired < stakes[withdrawalAsset][msg.sender]) {\\n            stakeRefund = stakes[withdrawalAsset][msg.sender] - stakeRequired;\\n            stakes[withdrawalAsset][msg.sender] = stakeRequired;\\n        }\\n\\n        if (withdrawalAsset == address(0x0)) {\\n            // Handle ETH withdrawal\\n            payable(msg.sender).transfer(withdrawalAmount + stakeRefund);\\n        } else {\\n            // Handle ERC20 token withdrawal\\n            IERC20(withdrawalAsset).transfer(\\n                msg.sender,\\n                withdrawalAmount + stakeRefund\\n            );\\n        }\\n        emit LiquidityRemoved(\\n            msg.sender,\\n            withdrawalAsset,\\n            withdrawalAmount + stakeRefund\\n        );\\n    }\\n\\n    /**\\n     * Function to give notice to remove liquidity from the contract\\n     * @param withdrawalAsset Address of the asset to be withdrawn\\n     * @param maxWithdrawalAmount Maximum amount of the asset to be withdrawn\\n     */\\n    function removeLiquidityNotice(\\n        address withdrawalAsset,\\n        uint maxWithdrawalAmount\\n    ) public {\\n        liquidityTimelocks[withdrawalAsset][msg.sender] = WithdrawalInfo({\\n            unlockTime: block.timestamp + 2 days, // 2 days notice to remove liquidity\\n            maxWithdrawalAmount: maxWithdrawalAmount\\n        });\\n\\n        emit LiquidityRemovalNotice(\\n            msg.sender,\\n            withdrawalAsset,\\n            maxWithdrawalAmount,\\n            block.timestamp + 2 days\\n        );\\n    }\\n\\n    /**\\n     * @notice mapping between swapId and the swap order details\\n     */\\n    mapping(bytes32 => Order) public swaps;\\n\\n    /**\\n     * Function to create an invoice for a swap\\n     * @param swapId Identifier for the swap\\n     * @param sellAsset Asset address to be sold (0x0 for ETH)\\n     * @param sellAmount Amount of the asset to be sold\\n     * @param counterParty Address of the other party in trade\\n     */\\n    function createInvoice(\\n        bytes32 swapId,\\n        address sellAsset,\\n        uint sellAmount,\\n        address counterParty\\n    ) public {\\n        require(swaps[swapId].sellAmount == 0, \\\"swapId already exists\\\");\\n        require(\\n            liquidities[sellAsset][msg.sender] >= sellAmount,\\n            \\\"Add more liquidity\\\"\\n        );\\n        liquidities[sellAsset][msg.sender] -= sellAmount;\\n        swaps[swapId] = Order({\\n            swapOwner: msg.sender, // Address of the trader initiating the swap\\n            sellAsset: sellAsset, // Asset address to be sold (0x0 for ETH)\\n            sellAmount: sellAmount, // Amount of the asset to be sold\\n            swapCreation: block.timestamp, // Timestamp of swap creation\\n            counterParty: counterParty // Address of the other party in trade\\n        });\\n        emit InvoiceCreated(\\n            swapId,\\n            msg.sender,\\n            counterParty,\\n            swaps[swapId].sellAsset,\\n            swaps[swapId].sellAmount\\n        );\\n    }\\n\\n    /**\\n     * Function to settle an invoice\\n     * @param secret Secret to unlock the swap\\n     * @param swapId Identifier for the swap\\n     */\\n    function settleInvoice(bytes32 secret, bytes32 swapId) public {\\n        // Ensure the swap order exists and has a sell amount greater than zero\\n        require(swaps[swapId].sellAmount > 0, \\\"Invalid secret for withdrawal\\\");\\n        address payee;\\n\\n        if (swaps[swapId].swapCreation + 2 days >= block.timestamp) {\\n            require(\\n                swapId == sha256(abi.encodePacked(secret)),\\n                \\\"swapId must be matched with secret\\\"\\n            );\\n            payee = swaps[swapId].counterParty;\\n        } else {\\n            payee = swaps[swapId].swapOwner;\\n        }\\n        // transfer the asset to the payee\\n        if (swaps[swapId].sellAsset == address(0x0)) {\\n            payable(payee).transfer(swaps[swapId].sellAmount);\\n        } else {\\n            IERC20 erc20 = IERC20(swaps[swapId].sellAsset);\\n            erc20.transfer(payee, swaps[swapId].sellAmount);\\n        }\\n        // Emit an event for successful invoice settlement\\n        emit InvoiceSettled(\\n            swapId,\\n            secret,\\n            payee,\\n            swaps[swapId].sellAsset,\\n            swaps[swapId].sellAmount\\n        );\\n        delete swaps[swapId];\\n    }\\n}\\n\",\"keccak256\":\"0x4b754dc329e5135ab7aaf8562cfe194c192a5e29791fcaf06bb7c9a599797b93\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/ILiquidityProvider.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n// solhint-disable-next-line compiler-version\\npragma solidity ^0.8.20;\\n\\n/**\\n * @title ILiquidityProvider\\n * @notice Interface for the LiquidityProvider contract deployed on the Ethereum network\\n */\\ninterface ILiquidityProvider {\\n    // Define custom errors\\n    error NotOwner(address sender );\\n    error OverflowFeeCap(uint amount);\\n    error IncorrectETHAmount(uint amount);\\n    error PermissionDeniedToAuthorize(address sender);\\n    error AlreadyAuthorized(bytes32 swapId);\\n    error NoExpiredFeeUpdateNotice(uint);\\n\\n        /**\\n     * @notice Structure to store the max withdrawal amount by unlock time\\n     */\\n    struct WithdrawalInfo {\\n        uint unlockTime;\\n        uint maxWithdrawalAmount;\\n    }\\n\\n        /**\\n     * @notice Structure to store the swap order details\\n     * @param swapOwner Address of the trader initiating the swap\\n     * @param sellAsset Asset address to be sold (0x0 for ETH)\\n     * @param sellAmount Amount of the asset to be sold\\n     * @param swapCreation Timestamp of swap creation\\n     * @param counterParty Address of the other party in trade\\n     */\\n    struct Order {\\n        address swapOwner;\\n        address sellAsset;\\n        uint sellAmount;\\n        uint swapCreation;\\n        address counterParty;\\n    }\\n\\n        /**\\n     * @notice Event emitted when liquidity is deposited\\n     * @param liquidityOwner Address of the liquidity provider\\n     * @param depositAsset Address of the asset deposited\\n     * @param depositAmount Amount of the asset deposited\\n     */\\n    event LiquidityDeposited(\\n        address indexed liquidityOwner,\\n        address indexed depositAsset,\\n        uint depositAmount\\n    );\\n\\n        /**\\n     * Event emitted when notice to liquidity removal is successfully received\\n     * @param liquidityOwner Address of the liquidity provider\\n     * @param withdrawalAsset Address of the asset withdrawn\\n     * @param withdrawalAmount Amount of the asset withdrawn\\n     * @param noticeCompletion Timestamp of notice completion\\n     */\\n    event LiquidityRemovalNotice(\\n        address indexed liquidityOwner,\\n        address indexed withdrawalAsset,\\n        uint withdrawalAmount,\\n        uint noticeCompletion\\n    );\\n\\n    /**\\n     * @notice Event emitted when liquidity is removed\\n     * @param liquidityOwner Address of the liquidity provider\\n     * @param withdrawalAsset Address of the asset withdrawn\\n     * @param withdrawalAmount Amount of the asset withdrawn\\n        */\\n    event LiquidityRemoved(\\n        address indexed liquidityOwner,\\n        address indexed withdrawalAsset,\\n        uint withdrawalAmount\\n    );\\n\\n        /**\\n     * Event emitted upon Invoice Creation\\n     * @param swapId Identifier for the swap\\n     * @param swapOwner Address of the trader initiating the swap\\n     * @param counterParty Address of the other party in trade\\n     * @param sellAsset Asset address to be sold (0x0 for ETH)\\n     * @param sellAmount Amount of the asset to be sold\\n     */\\n    event InvoiceCreated(\\n        bytes32 indexed swapId,\\n        address indexed swapOwner,\\n        address indexed counterParty,\\n        address sellAsset,\\n        uint sellAmount\\n    );\\n\\n        /**\\n     * Event emitted upon Invoice Settlement\\n     * @param swapId Identifier for the swap\\n     * @param secret Secret to unlock the swap\\n     * @param counterParty Address of the other party in trade\\n     * @param sellAsset Asset address to be sold (0x0 for ETH)\\n     * @param sellAmount Amount of the asset to be sold\\n     */\\n    event InvoiceSettled(\\n        bytes32 indexed swapId,\\n        bytes32 indexed secret,\\n        address indexed counterParty,\\n        address sellAsset,\\n        uint sellAmount\\n    );\\n}\\n\",\"keccak256\":\"0x828ad7370f60f068b2e7ee9677efb82429c931a6851914a1a1e68c476f38e0d0\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/IPortalToken.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\npragma solidity ^0.8.20;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\n/**\\n * @title IPortalToken\\n * @notice Interface for the PORTAL token contract deployed on the Ethereum network.\\n */\\ninterface IPortalToken is IERC20 {\\n    /**\\n     * @dev Returns the address of the owner of the PORTAL Token contract. This should be the address of the Portal Foundation.\\n     */\\n    function owner() external view returns (address);\\n}\\n\",\"keccak256\":\"0xd30b6f138e07a09cbc3fe0c320d4d87ea960d63315022c06b6771c395aeb5e3b\",\"license\":\"BUSL-1.1\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161163338038061163383398101604081905261002f9161005a565b600080546001600160a01b0319166001600160a01b039290921691909117905561012c60015561008a565b60006020828403121561006c57600080fd5b81516001600160a01b038116811461008357600080fd5b9392505050565b61159a806100996000396000f3fe6080604052600436106100dd5760003560e01c8063a4e47b661161007f578063eb84e7f211610059578063eb84e7f21461029e578063f668091014610329578063f9201ff61461033c578063fc7e3b7c1461037457600080fd5b8063a4e47b66146101fc578063c1a70d1414610234578063eb22629e1461024a57600080fd5b806331e8d9a6116100bb57806331e8d9a61461014457806354e8724f1461018457806355a373d6146101a4578063a201ccf6146101dc57600080fd5b8063068a2ccb146100e25780632640d2ea1461010457806328ea8ccf14610124575b600080fd5b3480156100ee57600080fd5b506101026100fd3660046112d1565b610394565b005b34801561011057600080fd5b5061010261011f366004611312565b610538565b34801561013057600080fd5b5061010261013f36600461135c565b610725565b34801561015057600080fd5b5061017161015f36600461137e565b60046020526000908152604090205481565b6040519081526020015b60405180910390f35b34801561019057600080fd5b5061010261019f3660046113a2565b610a79565b3480156101b057600080fd5b506000546101c4906001600160a01b031681565b6040516001600160a01b03909116815260200161017b565b3480156101e857600080fd5b506101026101f73660046113a2565b610c7b565b34801561020857600080fd5b506101716102173660046113ce565b600360209081526000928352604080842090915290825290205481565b34801561024057600080fd5b5061017160015481565b34801561025657600080fd5b506102896102653660046113ce565b60056020908152600092835260408084209091529082529020805460019091015482565b6040805192835260208301919091520161017b565b3480156102aa57600080fd5b506102f56102b9366004611407565b600660205260009081526040902080546001820154600283015460038401546004909401546001600160a01b0393841694928416939192911685565b604080516001600160a01b03968716815294861660208601528401929092526060830152909116608082015260a00161017b565b610102610337366004611420565b61102a565b34801561034857600080fd5b506101716103573660046113ce565b600260209081526000928352604080842090915290825290205481565b34801561038057600080fd5b5061010261038f3660046113a2565b611217565b60005460408051638da5cb5b60e01b8152905133926001600160a01b031691638da5cb5b9160048083019260209291908290030181865afa1580156103dd573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104019190611462565b6001600160a01b03161461042f5760405163245aecd360e01b81523360048201526024015b60405180910390fd5b6001600160a01b038083166000908152600360209081526040808320938716835292905220548111156104ca5760405162461bcd60e51b815260206004820152602160248201527f70656e616c74792073686f756c64206265206c657373207468616e207374616b60448201527f65000000000000000000000000000000000000000000000000000000000000006064820152608401610426565b6001600160a01b03808316600090815260036020908152604080832093871683529290529081208054839290610501908490611495565b90915550506001600160a01b0382166000908152600460205260408120805483929061052e9084906114ae565b9091555050505050565b600084815260066020526040902060020154156105975760405162461bcd60e51b815260206004820152601560248201527f73776170496420616c72656164792065786973747300000000000000000000006044820152606401610426565b6001600160a01b038316600090815260026020908152604080832033845290915290205482111561060a5760405162461bcd60e51b815260206004820152601260248201527f416464206d6f7265206c697175696469747900000000000000000000000000006044820152606401610426565b6001600160a01b03831660009081526002602090815260408083203384529091528120805484929061063d908490611495565b90915550506040805160a081018252338082526001600160a01b03868116602080850191825284860188815242606087019081528885166080880181815260008e8152600686528a90209851895490881673ffffffffffffffffffffffffffffffffffffffff19918216178a55955160018a01805491891691881682179055935160028a01819055925160038a0155516004909801805498909616979094169690961790935585519283528201939093529192909187917f8a34f297a78dbe631d7c866ca1c9e04586da2b3c62316bebfb9e2e9ebfacff1f910160405180910390a450505050565b6000818152600660205260409020600201546107835760405162461bcd60e51b815260206004820152601d60248201527f496e76616c69642073656372657420666f72207769746864726177616c0000006044820152606401610426565b60008181526006602052604081206003015442906107a4906202a3006114ae565b106108ad576002836040516020016107be91815260200190565b60408051601f19818403018152908290526107d8916114c1565b602060405180830381855afa1580156107f5573d6000803e3d6000fd5b5050506040513d601f19601f8201168201806040525081019061081891906114f0565b821461088c5760405162461bcd60e51b815260206004820152602260248201527f737761704964206d757374206265206d6174636865642077697468207365637260448201527f65740000000000000000000000000000000000000000000000000000000000006064820152608401610426565b506000818152600660205260409020600401546001600160a01b03166108c7565b506000818152600660205260409020546001600160a01b03165b6000828152600660205260409020600101546001600160a01b0316610932576000828152600660205260408082206002015490516001600160a01b0384169282156108fc02929190818181858888f1935050505015801561092c573d6000803e3d6000fd5b506109c5565b600082815260066020526040908190206001810154600290910154915163a9059cbb60e01b81526001600160a01b0384811660048301526024820193909352911690819063a9059cbb906044016020604051808303816000875af115801561099e573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109c29190611509565b50505b600082815260066020908152604091829020600181015460029091015483516001600160a01b03928316815292830152831691859185917f2ccea7e7475b767ccbea60b8c84fccdfa4f66d7be32e177ae5629cc42d8ccb3f910160405180910390a4506000908152600660205260408120805473ffffffffffffffffffffffffffffffffffffffff199081168255600182018054821690556002820183905560038201929092556004018054909116905550565b60005460408051638da5cb5b60e01b8152905133926001600160a01b031691638da5cb5b9160048083019260209291908290030181865afa158015610ac2573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610ae69190611462565b6001600160a01b031614610b0f5760405163245aecd360e01b8152336004820152602401610426565b6001600160a01b038216600090815260046020526040902054811115610b9d5760405162461bcd60e51b815260206004820152602c60248201527f7769746864726177416d6f756e742073686f756c64206265206c65737320746860448201527f616e2070656e616c7469657300000000000000000000000000000000000000006064820152608401610426565b6001600160a01b03821660009081526004602052604081208054839290610bc5908490611495565b90915550506001600160a01b038216610c0a57604051339082156108fc029083906000818181858888f19350505050158015610c05573d6000803e3d6000fd5b505050565b60405163a9059cbb60e01b8152336004820152602481018290526001600160a01b0383169063a9059cbb906044016020604051808303816000875af1158015610c57573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610c059190611509565b6001600160a01b0382166000908152600260209081526040808320338452909152902054811115610cee5760405162461bcd60e51b815260206004820152601660248201527f496e73756666696369656e74206c6971756964697479000000000000000000006044820152606401610426565b6001600160a01b0382166000908152600560209081526040808320338452909152902080544211610d615760405162461bcd60e51b815260206004820152601b60248201527f576169742074696c6c206e6f7469636520636f6d706c6574696f6e00000000006044820152606401610426565b8060010154821115610db55760405162461bcd60e51b815260206004820152601f60248201527f5769746864726177616c20616d6f756e742065786365656473206c696d6974006044820152606401610426565b81816001016000828254610dc99190611495565b90915550506001600160a01b038316600090815260026020908152604080832033845290915281208054849290610e01908490611495565b90915550506001546001600160a01b03841660008181526003602090815260408083203380855290835281842054948452600283528184209084529091528120549092612710929091610e5491906114ae565b610e5e919061152b565b610e689190611542565b6001600160a01b038516600090815260036020908152604080832033845290915281205491925090821015610eef576001600160a01b0385166000908152600360209081526040808320338452909152902054610ec6908390611495565b6001600160a01b0386166000908152600360209081526040808320338452909152902083905590505b6001600160a01b038516610f3957336108fc610f0b83876114ae565b6040518115909202916000818181858888f19350505050158015610f33573d6000803e3d6000fd5b50610fdc565b6001600160a01b03851663a9059cbb33610f5384886114ae565b6040517fffffffff0000000000000000000000000000000000000000000000000000000060e085901b1681526001600160a01b03909216600483015260248201526044016020604051808303816000875af1158015610fb6573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610fda9190611509565b505b6001600160a01b038516337f983e86fda8e7b1e2eae380201830eaf1cac55772e8e39583da349865e817886361101284886114ae565b60405190815260200160405180910390a35050505050565b6001600160a01b03831661107957813414611074576040517fbd3d1d3d00000000000000000000000000000000000000000000000000000000815260048101839052602401610426565b61110b565b6040517f23b872dd000000000000000000000000000000000000000000000000000000008152336004820152306024820152604481018390526001600160a01b038416906323b872dd906064016020604051808303816000875af11580156110e5573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906111099190611509565b505b6127106001548361111c919061152b565b6111269190611542565b6001600160a01b0380851660009081526003602090815260408083209386168352929052908120805490919061115d9084906114ae565b909155505060015461271090611173908461152b565b61117d9190611542565b6111879083611495565b6001600160a01b038085166000908152600260209081526040808320938616835292905290812080549091906111be9084906114ae565b92505081905550826001600160a01b0316816001600160a01b03167fc72a439d25ca984ced5b3d76fd3fa4c85e46f52177e4f18cbcbe98433a58cc868460405161120a91815260200190565b60405180910390a3505050565b6040518060400160405280426202a30061123191906114ae565b815260209081018390526001600160a01b03841660008181526005835260408082203380845290855291208451815593909201516001909301929092557f57d4b7b5d7a8bfb5a5db7c1a52ff349407eba3c746734912d9cfa1260eae44f88361129d426202a3006114ae565b6040805192835260208301919091520160405180910390a35050565b6001600160a01b03811681146112ce57600080fd5b50565b6000806000606084860312156112e657600080fd5b83356112f1816112b9565b92506020840135611301816112b9565b929592945050506040919091013590565b6000806000806080858703121561132857600080fd5b84359350602085013561133a816112b9565b9250604085013591506060850135611351816112b9565b939692955090935050565b6000806040838503121561136f57600080fd5b50508035926020909101359150565b60006020828403121561139057600080fd5b813561139b816112b9565b9392505050565b600080604083850312156113b557600080fd5b82356113c0816112b9565b946020939093013593505050565b600080604083850312156113e157600080fd5b82356113ec816112b9565b915060208301356113fc816112b9565b809150509250929050565b60006020828403121561141957600080fd5b5035919050565b60008060006060848603121561143557600080fd5b8335611440816112b9565b9250602084013591506040840135611457816112b9565b809150509250925092565b60006020828403121561147457600080fd5b815161139b816112b9565b634e487b7160e01b600052601160045260246000fd5b818103818111156114a8576114a861147f565b92915050565b808201808211156114a8576114a861147f565b6000825160005b818110156114e257602081860181015185830152016114c8565b506000920191825250919050565b60006020828403121561150257600080fd5b5051919050565b60006020828403121561151b57600080fd5b8151801515811461139b57600080fd5b80820281158282048414176114a8576114a861147f565b60008261155f57634e487b7160e01b600052601260045260246000fd5b50049056fea2646970667358221220e4ff8f81b80383dab886f93d1790abc61ed77f6a45cfcd80ae532b9ce297585c64736f6c63430008140033",
+  "deployedBytecode": "0x6080604052600436106100dd5760003560e01c8063a4e47b661161007f578063eb84e7f211610059578063eb84e7f21461029e578063f668091014610329578063f9201ff61461033c578063fc7e3b7c1461037457600080fd5b8063a4e47b66146101fc578063c1a70d1414610234578063eb22629e1461024a57600080fd5b806331e8d9a6116100bb57806331e8d9a61461014457806354e8724f1461018457806355a373d6146101a4578063a201ccf6146101dc57600080fd5b8063068a2ccb146100e25780632640d2ea1461010457806328ea8ccf14610124575b600080fd5b3480156100ee57600080fd5b506101026100fd3660046112d1565b610394565b005b34801561011057600080fd5b5061010261011f366004611312565b610538565b34801561013057600080fd5b5061010261013f36600461135c565b610725565b34801561015057600080fd5b5061017161015f36600461137e565b60046020526000908152604090205481565b6040519081526020015b60405180910390f35b34801561019057600080fd5b5061010261019f3660046113a2565b610a79565b3480156101b057600080fd5b506000546101c4906001600160a01b031681565b6040516001600160a01b03909116815260200161017b565b3480156101e857600080fd5b506101026101f73660046113a2565b610c7b565b34801561020857600080fd5b506101716102173660046113ce565b600360209081526000928352604080842090915290825290205481565b34801561024057600080fd5b5061017160015481565b34801561025657600080fd5b506102896102653660046113ce565b60056020908152600092835260408084209091529082529020805460019091015482565b6040805192835260208301919091520161017b565b3480156102aa57600080fd5b506102f56102b9366004611407565b600660205260009081526040902080546001820154600283015460038401546004909401546001600160a01b0393841694928416939192911685565b604080516001600160a01b03968716815294861660208601528401929092526060830152909116608082015260a00161017b565b610102610337366004611420565b61102a565b34801561034857600080fd5b506101716103573660046113ce565b600260209081526000928352604080842090915290825290205481565b34801561038057600080fd5b5061010261038f3660046113a2565b611217565b60005460408051638da5cb5b60e01b8152905133926001600160a01b031691638da5cb5b9160048083019260209291908290030181865afa1580156103dd573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104019190611462565b6001600160a01b03161461042f5760405163245aecd360e01b81523360048201526024015b60405180910390fd5b6001600160a01b038083166000908152600360209081526040808320938716835292905220548111156104ca5760405162461bcd60e51b815260206004820152602160248201527f70656e616c74792073686f756c64206265206c657373207468616e207374616b60448201527f65000000000000000000000000000000000000000000000000000000000000006064820152608401610426565b6001600160a01b03808316600090815260036020908152604080832093871683529290529081208054839290610501908490611495565b90915550506001600160a01b0382166000908152600460205260408120805483929061052e9084906114ae565b9091555050505050565b600084815260066020526040902060020154156105975760405162461bcd60e51b815260206004820152601560248201527f73776170496420616c72656164792065786973747300000000000000000000006044820152606401610426565b6001600160a01b038316600090815260026020908152604080832033845290915290205482111561060a5760405162461bcd60e51b815260206004820152601260248201527f416464206d6f7265206c697175696469747900000000000000000000000000006044820152606401610426565b6001600160a01b03831660009081526002602090815260408083203384529091528120805484929061063d908490611495565b90915550506040805160a081018252338082526001600160a01b03868116602080850191825284860188815242606087019081528885166080880181815260008e8152600686528a90209851895490881673ffffffffffffffffffffffffffffffffffffffff19918216178a55955160018a01805491891691881682179055935160028a01819055925160038a0155516004909801805498909616979094169690961790935585519283528201939093529192909187917f8a34f297a78dbe631d7c866ca1c9e04586da2b3c62316bebfb9e2e9ebfacff1f910160405180910390a450505050565b6000818152600660205260409020600201546107835760405162461bcd60e51b815260206004820152601d60248201527f496e76616c69642073656372657420666f72207769746864726177616c0000006044820152606401610426565b60008181526006602052604081206003015442906107a4906202a3006114ae565b106108ad576002836040516020016107be91815260200190565b60408051601f19818403018152908290526107d8916114c1565b602060405180830381855afa1580156107f5573d6000803e3d6000fd5b5050506040513d601f19601f8201168201806040525081019061081891906114f0565b821461088c5760405162461bcd60e51b815260206004820152602260248201527f737761704964206d757374206265206d6174636865642077697468207365637260448201527f65740000000000000000000000000000000000000000000000000000000000006064820152608401610426565b506000818152600660205260409020600401546001600160a01b03166108c7565b506000818152600660205260409020546001600160a01b03165b6000828152600660205260409020600101546001600160a01b0316610932576000828152600660205260408082206002015490516001600160a01b0384169282156108fc02929190818181858888f1935050505015801561092c573d6000803e3d6000fd5b506109c5565b600082815260066020526040908190206001810154600290910154915163a9059cbb60e01b81526001600160a01b0384811660048301526024820193909352911690819063a9059cbb906044016020604051808303816000875af115801561099e573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109c29190611509565b50505b600082815260066020908152604091829020600181015460029091015483516001600160a01b03928316815292830152831691859185917f2ccea7e7475b767ccbea60b8c84fccdfa4f66d7be32e177ae5629cc42d8ccb3f910160405180910390a4506000908152600660205260408120805473ffffffffffffffffffffffffffffffffffffffff199081168255600182018054821690556002820183905560038201929092556004018054909116905550565b60005460408051638da5cb5b60e01b8152905133926001600160a01b031691638da5cb5b9160048083019260209291908290030181865afa158015610ac2573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610ae69190611462565b6001600160a01b031614610b0f5760405163245aecd360e01b8152336004820152602401610426565b6001600160a01b038216600090815260046020526040902054811115610b9d5760405162461bcd60e51b815260206004820152602c60248201527f7769746864726177416d6f756e742073686f756c64206265206c65737320746860448201527f616e2070656e616c7469657300000000000000000000000000000000000000006064820152608401610426565b6001600160a01b03821660009081526004602052604081208054839290610bc5908490611495565b90915550506001600160a01b038216610c0a57604051339082156108fc029083906000818181858888f19350505050158015610c05573d6000803e3d6000fd5b505050565b60405163a9059cbb60e01b8152336004820152602481018290526001600160a01b0383169063a9059cbb906044016020604051808303816000875af1158015610c57573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610c059190611509565b6001600160a01b0382166000908152600260209081526040808320338452909152902054811115610cee5760405162461bcd60e51b815260206004820152601660248201527f496e73756666696369656e74206c6971756964697479000000000000000000006044820152606401610426565b6001600160a01b0382166000908152600560209081526040808320338452909152902080544211610d615760405162461bcd60e51b815260206004820152601b60248201527f576169742074696c6c206e6f7469636520636f6d706c6574696f6e00000000006044820152606401610426565b8060010154821115610db55760405162461bcd60e51b815260206004820152601f60248201527f5769746864726177616c20616d6f756e742065786365656473206c696d6974006044820152606401610426565b81816001016000828254610dc99190611495565b90915550506001600160a01b038316600090815260026020908152604080832033845290915281208054849290610e01908490611495565b90915550506001546001600160a01b03841660008181526003602090815260408083203380855290835281842054948452600283528184209084529091528120549092612710929091610e5491906114ae565b610e5e919061152b565b610e689190611542565b6001600160a01b038516600090815260036020908152604080832033845290915281205491925090821015610eef576001600160a01b0385166000908152600360209081526040808320338452909152902054610ec6908390611495565b6001600160a01b0386166000908152600360209081526040808320338452909152902083905590505b6001600160a01b038516610f3957336108fc610f0b83876114ae565b6040518115909202916000818181858888f19350505050158015610f33573d6000803e3d6000fd5b50610fdc565b6001600160a01b03851663a9059cbb33610f5384886114ae565b6040517fffffffff0000000000000000000000000000000000000000000000000000000060e085901b1681526001600160a01b03909216600483015260248201526044016020604051808303816000875af1158015610fb6573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610fda9190611509565b505b6001600160a01b038516337f983e86fda8e7b1e2eae380201830eaf1cac55772e8e39583da349865e817886361101284886114ae565b60405190815260200160405180910390a35050505050565b6001600160a01b03831661107957813414611074576040517fbd3d1d3d00000000000000000000000000000000000000000000000000000000815260048101839052602401610426565b61110b565b6040517f23b872dd000000000000000000000000000000000000000000000000000000008152336004820152306024820152604481018390526001600160a01b038416906323b872dd906064016020604051808303816000875af11580156110e5573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906111099190611509565b505b6127106001548361111c919061152b565b6111269190611542565b6001600160a01b0380851660009081526003602090815260408083209386168352929052908120805490919061115d9084906114ae565b909155505060015461271090611173908461152b565b61117d9190611542565b6111879083611495565b6001600160a01b038085166000908152600260209081526040808320938616835292905290812080549091906111be9084906114ae565b92505081905550826001600160a01b0316816001600160a01b03167fc72a439d25ca984ced5b3d76fd3fa4c85e46f52177e4f18cbcbe98433a58cc868460405161120a91815260200190565b60405180910390a3505050565b6040518060400160405280426202a30061123191906114ae565b815260209081018390526001600160a01b03841660008181526005835260408082203380845290855291208451815593909201516001909301929092557f57d4b7b5d7a8bfb5a5db7c1a52ff349407eba3c746734912d9cfa1260eae44f88361129d426202a3006114ae565b6040805192835260208301919091520160405180910390a35050565b6001600160a01b03811681146112ce57600080fd5b50565b6000806000606084860312156112e657600080fd5b83356112f1816112b9565b92506020840135611301816112b9565b929592945050506040919091013590565b6000806000806080858703121561132857600080fd5b84359350602085013561133a816112b9565b9250604085013591506060850135611351816112b9565b939692955090935050565b6000806040838503121561136f57600080fd5b50508035926020909101359150565b60006020828403121561139057600080fd5b813561139b816112b9565b9392505050565b600080604083850312156113b557600080fd5b82356113c0816112b9565b946020939093013593505050565b600080604083850312156113e157600080fd5b82356113ec816112b9565b915060208301356113fc816112b9565b809150509250929050565b60006020828403121561141957600080fd5b5035919050565b60008060006060848603121561143557600080fd5b8335611440816112b9565b9250602084013591506040840135611457816112b9565b809150509250925092565b60006020828403121561147457600080fd5b815161139b816112b9565b634e487b7160e01b600052601160045260246000fd5b818103818111156114a8576114a861147f565b92915050565b808201808211156114a8576114a861147f565b6000825160005b818110156114e257602081860181015185830152016114c8565b506000920191825250919050565b60006020828403121561150257600080fd5b5051919050565b60006020828403121561151b57600080fd5b8151801515811461139b57600080fd5b80820281158282048414176114a8576114a861147f565b60008261155f57634e487b7160e01b600052601260045260246000fd5b50049056fea2646970667358221220e4ff8f81b80383dab886f93d1790abc61ed77f6a45cfcd80ae532b9ce297585c64736f6c63430008140033",
+  "devdoc": {
+    "details": "Implementation of the Liquidity Provider which manages liquidity management and dispatching funds for the swap",
+    "events": {
+      "InvoiceCreated(bytes32,address,address,address,uint256)": {
+        "params": {
+          "counterParty": "Address of the other party in trade",
+          "sellAmount": "Amount of the asset to be sold",
+          "sellAsset": "Asset address to be sold (0x0 for ETH)",
+          "swapId": "Identifier for the swap",
+          "swapOwner": "Address of the trader initiating the swap"
+        }
+      },
+      "InvoiceSettled(bytes32,bytes32,address,address,uint256)": {
+        "params": {
+          "counterParty": "Address of the other party in trade",
+          "secret": "Secret to unlock the swap",
+          "sellAmount": "Amount of the asset to be sold",
+          "sellAsset": "Asset address to be sold (0x0 for ETH)",
+          "swapId": "Identifier for the swap"
+        }
+      },
+      "LiquidityDeposited(address,address,uint256)": {
+        "params": {
+          "depositAmount": "Amount of the asset deposited",
+          "depositAsset": "Address of the asset deposited",
+          "liquidityOwner": "Address of the liquidity provider"
+        }
+      },
+      "LiquidityRemovalNotice(address,address,uint256,uint256)": {
+        "params": {
+          "liquidityOwner": "Address of the liquidity provider",
+          "noticeCompletion": "Timestamp of notice completion",
+          "withdrawalAmount": "Amount of the asset withdrawn",
+          "withdrawalAsset": "Address of the asset withdrawn"
+        }
+      },
+      "LiquidityRemoved(address,address,uint256)": {
+        "params": {
+          "liquidityOwner": "Address of the liquidity provider",
+          "withdrawalAmount": "Amount of the asset withdrawn",
+          "withdrawalAsset": "Address of the asset withdrawn"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "constructor": {
+        "params": {
+          "_tokenAddress": "Address of the Portal Token contract"
+        }
+      },
+      "createInvoice(bytes32,address,uint256,address)": {
+        "params": {
+          "counterParty": "Address of the other party in trade",
+          "sellAmount": "Amount of the asset to be sold",
+          "sellAsset": "Asset address to be sold (0x0 for ETH)",
+          "swapId": "Identifier for the swap"
+        }
+      },
+      "depositLiquidity(address,uint256,address)": {
+        "params": {
+          "depositAmount": "Amount of the asset to be deposited",
+          "depositAsset": "Address of the asset to be deposited"
+        }
+      },
+      "lpPenalty(address,address,uint256)": {
+        "params": {
+          "penaltyAmount": "Amount of the asset to be penalized",
+          "penaltyAsset": "Address of the asset to be penalized",
+          "user": "Address of the user to be penalized"
+        }
+      },
+      "removeLiquidity(address,uint256)": {
+        "params": {
+          "withdrawalAmount": "Amount of the asset to be withdrawn",
+          "withdrawalAsset": "Address of the asset to be withdrawn"
+        }
+      },
+      "removeLiquidityNotice(address,uint256)": {
+        "params": {
+          "maxWithdrawalAmount": "Maximum amount of the asset to be withdrawn",
+          "withdrawalAsset": "Address of the asset to be withdrawn"
+        }
+      },
+      "settleInvoice(bytes32,bytes32)": {
+        "params": {
+          "secret": "Secret to unlock the swap",
+          "swapId": "Identifier for the swap"
+        }
+      },
+      "withdrawPenalties(address,uint256)": {
+        "params": {
+          "withdrawAmount": "Amount of the asset to be withdrawn",
+          "withdrawAsset": "Address of the asset to be withdrawn"
+        }
+      }
+    },
+    "title": "Liquidity Provider contract",
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "InvoiceCreated(bytes32,address,address,address,uint256)": {
+        "notice": "Event emitted upon Invoice Creation"
+      },
+      "InvoiceSettled(bytes32,bytes32,address,address,uint256)": {
+        "notice": "Event emitted upon Invoice Settlement"
+      },
+      "LiquidityDeposited(address,address,uint256)": {
+        "notice": "Event emitted when liquidity is deposited"
+      },
+      "LiquidityRemovalNotice(address,address,uint256,uint256)": {
+        "notice": "Event emitted when notice to liquidity removal is successfully received"
+      },
+      "LiquidityRemoved(address,address,uint256)": {
+        "notice": "Event emitted when liquidity is removed"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "constructor": {
+        "notice": "Initialize the contract with the PORTAL Token address and stake percentage"
+      },
+      "createInvoice(bytes32,address,uint256,address)": {
+        "notice": "Function to create an invoice for a swap"
+      },
+      "depositLiquidity(address,uint256,address)": {
+        "notice": "Function to deposit liquidity into the contract"
+      },
+      "liquidities(address,address)": {
+        "notice": "mapping between liquidity asset, liquidity owner and the liquidity amount"
+      },
+      "liquidityTimelocks(address,address)": {
+        "notice": "mapping between liquidity asset, liquidity owner and the withdrawal info"
+      },
+      "lpPenalty(address,address,uint256)": {
+        "notice": "Function to penalize the user for any misconduct"
+      },
+      "penalties(address)": {
+        "notice": "mapping between penalty asset and the penalty amount"
+      },
+      "removeLiquidity(address,uint256)": {
+        "notice": "Function to remove liquidity from the contract"
+      },
+      "removeLiquidityNotice(address,uint256)": {
+        "notice": "Function to give notice to remove liquidity from the contract"
+      },
+      "settleInvoice(bytes32,bytes32)": {
+        "notice": "Function to settle an invoice"
+      },
+      "stakePercentage()": {
+        "notice": "Stake percentage in basis points (100 basis points = 1%)"
+      },
+      "stakes(address,address)": {
+        "notice": "mapping between liquidity asset, liquidity owner and the stake amount"
+      },
+      "swaps(bytes32)": {
+        "notice": "mapping between swapId and the swap order details"
+      },
+      "tokenContract()": {
+        "notice": "Address on the PORTAL Token contract"
+      },
+      "withdrawPenalties(address,uint256)": {
+        "notice": "Function to withdraw penalties"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 7392,
+        "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+        "label": "tokenContract",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_contract(IPortalToken)8703"
+      },
+      {
+        "astId": 7395,
+        "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+        "label": "stakePercentage",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 7437,
+        "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+        "label": "liquidities",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 7444,
+        "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+        "label": "stakes",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 7526,
+        "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+        "label": "penalties",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 7625,
+        "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+        "label": "liquidityTimelocks",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_struct(WithdrawalInfo)8600_storage))"
+      },
+      {
+        "astId": 7825,
+        "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+        "label": "swaps",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_bytes32,t_struct(Order)8612_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_contract(IPortalToken)8703": {
+        "encoding": "inplace",
+        "label": "contract IPortalToken",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_struct(WithdrawalInfo)8600_storage))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => struct ILiquidityProvider.WithdrawalInfo))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_struct(WithdrawalInfo)8600_storage)"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_struct(WithdrawalInfo)8600_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct ILiquidityProvider.WithdrawalInfo)",
+        "numberOfBytes": "32",
+        "value": "t_struct(WithdrawalInfo)8600_storage"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_bytes32,t_struct(Order)8612_storage)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => struct ILiquidityProvider.Order)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Order)8612_storage"
+      },
+      "t_struct(Order)8612_storage": {
+        "encoding": "inplace",
+        "label": "struct ILiquidityProvider.Order",
+        "members": [
+          {
+            "astId": 8603,
+            "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+            "label": "swapOwner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 8605,
+            "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+            "label": "sellAsset",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 8607,
+            "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+            "label": "sellAmount",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 8609,
+            "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+            "label": "swapCreation",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 8611,
+            "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+            "label": "counterParty",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_address"
+          }
+        ],
+        "numberOfBytes": "160"
+      },
+      "t_struct(WithdrawalInfo)8600_storage": {
+        "encoding": "inplace",
+        "label": "struct ILiquidityProvider.WithdrawalInfo",
+        "members": [
+          {
+            "astId": 8597,
+            "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+            "label": "unlockTime",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 8599,
+            "contract": "contracts/LiquidityProvider.sol:LiquidityProvider",
+            "label": "maxWithdrawalAmount",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

@@ -1,0 +1,852 @@
+{
+  "address": "0x87CE5275011e1E0d31eb80ddA08B541756E144aE",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "factory",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "nft",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "router",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IPoolManager.UniswapParams",
+          "name": "_uniswapParams",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "NoAdmin",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "poolFee",
+          "type": "uint256"
+        }
+      ],
+      "name": "NoEnabledTickSpacing",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sellAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "buyAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint160",
+          "name": "fee",
+          "type": "uint160"
+        }
+      ],
+      "name": "NoInitialSqrtPrice",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MIN_SWAP_OUT_AMOUNT",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sellAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "buyAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint24",
+          "name": "poolFee",
+          "type": "uint24"
+        }
+      ],
+      "name": "createPool",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountDesired",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountMin",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPoolManager.LpToken",
+          "name": "sellAsset",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountDesired",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountMin",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPoolManager.LpToken",
+          "name": "buyAsset",
+          "type": "tuple"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint24",
+          "name": "poolFee",
+          "type": "uint24"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        },
+        {
+          "internalType": "int24",
+          "name": "tickLower",
+          "type": "int24"
+        },
+        {
+          "internalType": "int24",
+          "name": "tickUpper",
+          "type": "int24"
+        }
+      ],
+      "name": "createPosition",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount0Min",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount1Min",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        }
+      ],
+      "name": "decreaseLiquidity",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenIn",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenOut",
+          "type": "address"
+        },
+        {
+          "internalType": "uint24",
+          "name": "fee",
+          "type": "uint24"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountIn",
+          "type": "uint256"
+        }
+      ],
+      "name": "exactInputSingle",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "amountOut",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "factory",
+      "outputs": [
+        {
+          "internalType": "contract IUniswapV3Factory",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenA",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenB",
+          "type": "address"
+        },
+        {
+          "internalType": "uint24",
+          "name": "fee",
+          "type": "uint24"
+        }
+      ],
+      "name": "getPool",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenA",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenB",
+          "type": "address"
+        },
+        {
+          "internalType": "uint24",
+          "name": "fee",
+          "type": "uint24"
+        }
+      ],
+      "name": "getPoolPrice",
+      "outputs": [
+        {
+          "internalType": "uint160",
+          "name": "sqrtPriceX96",
+          "type": "uint160"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountDesired",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountMin",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPoolManager.LpToken",
+          "name": "sellAsset",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountDesired",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountMin",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPoolManager.LpToken",
+          "name": "buyAsset",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        }
+      ],
+      "name": "increaseLiquidity",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "initialSqrtPrice",
+      "outputs": [
+        {
+          "internalType": "uint160",
+          "name": "",
+          "type": "uint160"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "liquidities",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "positionManager",
+      "outputs": [
+        {
+          "internalType": "contract IUniswapPositionManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "router",
+      "outputs": [
+        {
+          "internalType": "contract ISwapRouter",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sellToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "buyToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint24",
+          "name": "fee",
+          "type": "uint24"
+        },
+        {
+          "internalType": "uint160",
+          "name": "sqrtPriceX96",
+          "type": "uint160"
+        }
+      ],
+      "name": "setInitialSqrtPrice",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x3afd68b8b938915ff9302092ac7e576cf3ccac25455e74c3b4ccc8b5c7928d81",
+  "receipt": {
+    "to": null,
+    "from": "0xecF71FaeDabB5f47D3cC386Eaa45A41f29B8A7eb",
+    "contractAddress": "0x87CE5275011e1E0d31eb80ddA08B541756E144aE",
+    "transactionIndex": 0,
+    "gasUsed": "1297349",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x30b51df190dca2e781e4a9a359b56d06db1b019c00ff812aad8e1399dd0a8569",
+    "transactionHash": "0x3afd68b8b938915ff9302092ac7e576cf3ccac25455e74c3b4ccc8b5c7928d81",
+    "logs": [],
+    "blockNumber": 311961,
+    "cumulativeGasUsed": "1297349",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    {
+      "admin": "0x6ac76948F29A12Dde050b928D35F1506aFC3c0f2",
+      "factory": "0x5140A77E94Db57EEc83A607A40C295A43474d345",
+      "nft": "0xF91265aFA642f11fA0B12a2d3a0AB6a304367361",
+      "router": "0xBB47D2a339dcFce541F1080E43396ae84cd72Bf1"
+    }
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "2fd20d911d8de013566405c6f17dd1a7",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"factory\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"nft\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"router\",\"type\":\"address\"}],\"internalType\":\"struct IPoolManager.UniswapParams\",\"name\":\"_uniswapParams\",\"type\":\"tuple\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"NoAdmin\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"poolFee\",\"type\":\"uint256\"}],\"name\":\"NoEnabledTickSpacing\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sellAsset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"buyAsset\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"fee\",\"type\":\"uint160\"}],\"name\":\"NoInitialSqrtPrice\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MIN_SWAP_OUT_AMOUNT\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"admin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sellAsset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"buyAsset\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"poolFee\",\"type\":\"uint24\"}],\"name\":\"createPool\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountDesired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountMin\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolManager.LpToken\",\"name\":\"sellAsset\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountDesired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountMin\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolManager.LpToken\",\"name\":\"buyAsset\",\"type\":\"tuple\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"poolFee\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"int24\",\"name\":\"tickLower\",\"type\":\"int24\"},{\"internalType\":\"int24\",\"name\":\"tickUpper\",\"type\":\"int24\"}],\"name\":\"createPosition\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount0Min\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1Min\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"decreaseLiquidity\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenIn\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenOut\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"}],\"name\":\"exactInputSingle\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"contract IUniswapV3Factory\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"}],\"name\":\"getPool\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pool\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"}],\"name\":\"getPoolPrice\",\"outputs\":[{\"internalType\":\"uint160\",\"name\":\"sqrtPriceX96\",\"type\":\"uint160\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountDesired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountMin\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolManager.LpToken\",\"name\":\"sellAsset\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountDesired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountMin\",\"type\":\"uint256\"}],\"internalType\":\"struct IPoolManager.LpToken\",\"name\":\"buyAsset\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"increaseLiquidity\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"initialSqrtPrice\",\"outputs\":[{\"internalType\":\"uint160\",\"name\":\"\",\"type\":\"uint160\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"liquidities\",\"outputs\":[{\"internalType\":\"uint128\",\"name\":\"\",\"type\":\"uint128\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"positionManager\",\"outputs\":[{\"internalType\":\"contract IUniswapPositionManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"router\",\"outputs\":[{\"internalType\":\"contract ISwapRouter\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sellToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"buyToken\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"uint160\",\"name\":\"sqrtPriceX96\",\"type\":\"uint160\"}],\"name\":\"setInitialSqrtPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"The  Pool Manager contract manages liquidity pools and positions on Uniswap V3.\",\"errors\":{\"NoAdmin(address)\":[{\"details\":\"Error thrown when no admin is found for the given address.\",\"params\":{\"sender\":\"The address for which no admin was found.\"}}],\"NoEnabledTickSpacing(uint256)\":[{\"details\":\"Error thrown when no enabled tick spacing is found for the given pool fee.\",\"params\":{\"poolFee\":\"The pool fee for which no enabled tick spacing was found.\"}}],\"NoInitialSqrtPrice(address,address,uint160)\":[{\"details\":\"Error thrown when no initial sqrt price is set for the given sell and buy assets.\",\"params\":{\"buyAsset\":\"The address of the buy asset.\",\"fee\":\"The fee of the pool.\",\"sellAsset\":\"The address of the sell asset.\"}}]},\"kind\":\"dev\",\"methods\":{\"constructor\":{\"details\":\"Constructor to initialize the contract.\",\"params\":{\"_uniswapParams\":\"The Uniswap parameters.\"}},\"createPool(address,address,uint24)\":{\"details\":\"Creates a new pool for the given tokens and fee.\",\"params\":{\"buyAsset\":\"The address of the buy asset.\",\"poolFee\":\"The fee of the pool.\",\"sellAsset\":\"The address of the sell asset.\"}},\"createPosition((address,uint256,uint256),(address,uint256,uint256),address,uint24,uint256,int24,int24)\":{\"details\":\"Creates a new liquidity position for the given assets and owner.\",\"params\":{\"buyAsset\":\"The LP token for the buy asset.\",\"deadline\":\"The deadline for the transaction.\",\"owner\":\"The address of the owner.\",\"poolFee\":\"The fee of the pool.\",\"sellAsset\":\"The LP token for the sell asset.\",\"tickLower\":\"The lower tick for the position.\",\"tickUpper\":\"The upper tick for the position.\"}},\"decreaseLiquidity(address,uint256,uint256,uint256)\":{\"details\":\"Decreases liquidity for a given position.\",\"params\":{\"amount0Min\":\"Minimum amount of token0.\",\"amount1Min\":\"Minimum amount of token1.\",\"deadline\":\"Deadline for the transaction.\",\"owner\":\"Address of the position owner.\"}},\"exactInputSingle(address,address,uint24,uint256)\":{\"details\":\"Executes a swap operation with exact input amount.\",\"params\":{\"amountIn\":\"Input token amount.\",\"fee\":\"Fee tier of the pool.\",\"tokenIn\":\"Address of the input token.\",\"tokenOut\":\"Address of the output token.\"},\"returns\":{\"amountOut\":\"Output token amount.\"}},\"getPool(address,address,uint24)\":{\"details\":\"Returns the address of the pool for the given tokens and fee.\",\"params\":{\"fee\":\"The fee of the pool.\",\"tokenA\":\"The address of token A.\",\"tokenB\":\"The address of token B.\"},\"returns\":{\"pool\":\"The address of the pool.\"}},\"getPoolPrice(address,address,uint24)\":{\"details\":\"Gets the price of a pool.\",\"params\":{\"fee\":\"Fee tier of the pool.\",\"tokenA\":\"Address of the first token.\",\"tokenB\":\"Address of the second token.\"},\"returns\":{\"sqrtPriceX96\":\"Current sqrt price of the pool.\"}},\"increaseLiquidity(uint256,(address,uint256,uint256),(address,uint256,uint256),uint256)\":{\"details\":\"Increases liquidity for a given position.\",\"params\":{\"buyAsset\":\"Details of the buy asset.\",\"deadline\":\"Deadline for the transaction.\",\"sellAsset\":\"Details of the sell asset.\",\"tokenId\":\"Token ID of the position.\"}},\"setInitialSqrtPrice(address,address,uint24,uint160)\":{\"details\":\"Sets the initial sqrt price for a pool.\",\"params\":{\"buyToken\":\"Address of the buy token.\",\"fee\":\"Fee tier of the pool.\",\"sellToken\":\"Address of the sell token.\",\"sqrtPriceX96\":\"Initial sqrt price of the pool.\"}}},\"stateVariables\":{\"MIN_SWAP_OUT_AMOUNT\":{\"details\":\"Minimum swap out amount.\"},\"admin\":{\"details\":\"The admin address.\"},\"factory\":{\"details\":\"The Uniswap V3 factory contract.\"},\"initialSqrtPrice\":{\"details\":\"Mapping of pool IDs to initial sqrt prices.\"},\"liquidities\":{\"details\":\"Mapping of token IDs to liquidity amounts.\"},\"positionManager\":{\"details\":\"The Uniswap position manager contract.\"},\"router\":{\"details\":\"The swap router contract.\"},\"tokenIds\":{\"details\":\"Mapping of token IDs to EnumerableSet of uints.\"}},\"title\":\"PoolManager\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"This contract is used to interact with Uniswap V3 pools and positions.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/PoolManager.sol\":\"PoolManager\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[],\"viaIR\":true},\"sources\":{\"@openzeppelin/contracts/utils/structs/EnumerableSet.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/structs/EnumerableSet.sol)\\n// This file was procedurally generated from scripts/generate/templates/EnumerableSet.js.\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Library for managing\\n * https://en.wikipedia.org/wiki/Set_(abstract_data_type)[sets] of primitive\\n * types.\\n *\\n * Sets have the following properties:\\n *\\n * - Elements are added, removed, and checked for existence in constant time\\n * (O(1)).\\n * - Elements are enumerated in O(n). No guarantees are made on the ordering.\\n *\\n * ```solidity\\n * contract Example {\\n *     // Add the library methods\\n *     using EnumerableSet for EnumerableSet.AddressSet;\\n *\\n *     // Declare a set state variable\\n *     EnumerableSet.AddressSet private mySet;\\n * }\\n * ```\\n *\\n * As of v3.3.0, sets of type `bytes32` (`Bytes32Set`), `address` (`AddressSet`)\\n * and `uint256` (`UintSet`) are supported.\\n *\\n * [WARNING]\\n * ====\\n * Trying to delete such a structure from storage will likely result in data corruption, rendering the structure\\n * unusable.\\n * See https://github.com/ethereum/solidity/pull/11843[ethereum/solidity#11843] for more info.\\n *\\n * In order to clean an EnumerableSet, you can either remove all elements one by one or create a fresh instance using an\\n * array of EnumerableSet.\\n * ====\\n */\\nlibrary EnumerableSet {\\n    // To implement this library for multiple types with as little code\\n    // repetition as possible, we write it in terms of a generic Set type with\\n    // bytes32 values.\\n    // The Set implementation uses private functions, and user-facing\\n    // implementations (such as AddressSet) are just wrappers around the\\n    // underlying Set.\\n    // This means that we can only create new EnumerableSets for types that fit\\n    // in bytes32.\\n\\n    struct Set {\\n        // Storage of set values\\n        bytes32[] _values;\\n        // Position is the index of the value in the `values` array plus 1.\\n        // Position 0 is used to mean a value is not in the set.\\n        mapping(bytes32 value => uint256) _positions;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function _add(Set storage set, bytes32 value) private returns (bool) {\\n        if (!_contains(set, value)) {\\n            set._values.push(value);\\n            // The value is stored at length-1, but we add 1 to all indexes\\n            // and use 0 as a sentinel value\\n            set._positions[value] = set._values.length;\\n            return true;\\n        } else {\\n            return false;\\n        }\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function _remove(Set storage set, bytes32 value) private returns (bool) {\\n        // We cache the value's position to prevent multiple reads from the same storage slot\\n        uint256 position = set._positions[value];\\n\\n        if (position != 0) {\\n            // Equivalent to contains(set, value)\\n            // To delete an element from the _values array in O(1), we swap the element to delete with the last one in\\n            // the array, and then remove the last element (sometimes called as 'swap and pop').\\n            // This modifies the order of the array, as noted in {at}.\\n\\n            uint256 valueIndex = position - 1;\\n            uint256 lastIndex = set._values.length - 1;\\n\\n            if (valueIndex != lastIndex) {\\n                bytes32 lastValue = set._values[lastIndex];\\n\\n                // Move the lastValue to the index where the value to delete is\\n                set._values[valueIndex] = lastValue;\\n                // Update the tracked position of the lastValue (that was just moved)\\n                set._positions[lastValue] = position;\\n            }\\n\\n            // Delete the slot where the moved value was stored\\n            set._values.pop();\\n\\n            // Delete the tracked position for the deleted slot\\n            delete set._positions[value];\\n\\n            return true;\\n        } else {\\n            return false;\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function _contains(Set storage set, bytes32 value) private view returns (bool) {\\n        return set._positions[value] != 0;\\n    }\\n\\n    /**\\n     * @dev Returns the number of values on the set. O(1).\\n     */\\n    function _length(Set storage set) private view returns (uint256) {\\n        return set._values.length;\\n    }\\n\\n    /**\\n     * @dev Returns the value stored at position `index` in the set. O(1).\\n     *\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function _at(Set storage set, uint256 index) private view returns (bytes32) {\\n        return set._values[index];\\n    }\\n\\n    /**\\n     * @dev Return the entire set in an array\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the set grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function _values(Set storage set) private view returns (bytes32[] memory) {\\n        return set._values;\\n    }\\n\\n    // Bytes32Set\\n\\n    struct Bytes32Set {\\n        Set _inner;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function add(Bytes32Set storage set, bytes32 value) internal returns (bool) {\\n        return _add(set._inner, value);\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function remove(Bytes32Set storage set, bytes32 value) internal returns (bool) {\\n        return _remove(set._inner, value);\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function contains(Bytes32Set storage set, bytes32 value) internal view returns (bool) {\\n        return _contains(set._inner, value);\\n    }\\n\\n    /**\\n     * @dev Returns the number of values in the set. O(1).\\n     */\\n    function length(Bytes32Set storage set) internal view returns (uint256) {\\n        return _length(set._inner);\\n    }\\n\\n    /**\\n     * @dev Returns the value stored at position `index` in the set. O(1).\\n     *\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(Bytes32Set storage set, uint256 index) internal view returns (bytes32) {\\n        return _at(set._inner, index);\\n    }\\n\\n    /**\\n     * @dev Return the entire set in an array\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the set grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function values(Bytes32Set storage set) internal view returns (bytes32[] memory) {\\n        bytes32[] memory store = _values(set._inner);\\n        bytes32[] memory result;\\n\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            result := store\\n        }\\n\\n        return result;\\n    }\\n\\n    // AddressSet\\n\\n    struct AddressSet {\\n        Set _inner;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function add(AddressSet storage set, address value) internal returns (bool) {\\n        return _add(set._inner, bytes32(uint256(uint160(value))));\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function remove(AddressSet storage set, address value) internal returns (bool) {\\n        return _remove(set._inner, bytes32(uint256(uint160(value))));\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function contains(AddressSet storage set, address value) internal view returns (bool) {\\n        return _contains(set._inner, bytes32(uint256(uint160(value))));\\n    }\\n\\n    /**\\n     * @dev Returns the number of values in the set. O(1).\\n     */\\n    function length(AddressSet storage set) internal view returns (uint256) {\\n        return _length(set._inner);\\n    }\\n\\n    /**\\n     * @dev Returns the value stored at position `index` in the set. O(1).\\n     *\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(AddressSet storage set, uint256 index) internal view returns (address) {\\n        return address(uint160(uint256(_at(set._inner, index))));\\n    }\\n\\n    /**\\n     * @dev Return the entire set in an array\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the set grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function values(AddressSet storage set) internal view returns (address[] memory) {\\n        bytes32[] memory store = _values(set._inner);\\n        address[] memory result;\\n\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            result := store\\n        }\\n\\n        return result;\\n    }\\n\\n    // UintSet\\n\\n    struct UintSet {\\n        Set _inner;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function add(UintSet storage set, uint256 value) internal returns (bool) {\\n        return _add(set._inner, bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function remove(UintSet storage set, uint256 value) internal returns (bool) {\\n        return _remove(set._inner, bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function contains(UintSet storage set, uint256 value) internal view returns (bool) {\\n        return _contains(set._inner, bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Returns the number of values in the set. O(1).\\n     */\\n    function length(UintSet storage set) internal view returns (uint256) {\\n        return _length(set._inner);\\n    }\\n\\n    /**\\n     * @dev Returns the value stored at position `index` in the set. O(1).\\n     *\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(UintSet storage set, uint256 index) internal view returns (uint256) {\\n        return uint256(_at(set._inner, index));\\n    }\\n\\n    /**\\n     * @dev Return the entire set in an array\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the set grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function values(UintSet storage set) internal view returns (uint256[] memory) {\\n        bytes32[] memory store = _values(set._inner);\\n        uint256[] memory result;\\n\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            result := store\\n        }\\n\\n        return result;\\n    }\\n}\\n\",\"keccak256\":\"0x86c1470cbfd878491e5de030072b647352d36bd27122cffb928970b1945282aa\",\"license\":\"MIT\"},\"@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-2.0-or-later\\npragma solidity >=0.5.0;\\n\\n/// @title Callback for IUniswapV3PoolActions#swap\\n/// @notice Any contract that calls IUniswapV3PoolActions#swap must implement this interface\\ninterface IUniswapV3SwapCallback {\\n    /// @notice Called to `msg.sender` after executing a swap via IUniswapV3Pool#swap.\\n    /// @dev In the implementation you must pay the pool tokens owed for the swap.\\n    /// The caller of this method must be checked to be a UniswapV3Pool deployed by the canonical UniswapV3Factory.\\n    /// amount0Delta and amount1Delta can both be 0 if no tokens were swapped.\\n    /// @param amount0Delta The amount of token0 that was sent (negative) or must be received (positive) by the pool by\\n    /// the end of the swap. If positive, the callback must send that amount of token0 to the pool.\\n    /// @param amount1Delta The amount of token1 that was sent (negative) or must be received (positive) by the pool by\\n    /// the end of the swap. If positive, the callback must send that amount of token1 to the pool.\\n    /// @param data Any data passed through by the caller via the IUniswapV3PoolActions#swap call\\n    function uniswapV3SwapCallback(\\n        int256 amount0Delta,\\n        int256 amount1Delta,\\n        bytes calldata data\\n    ) external;\\n}\\n\",\"keccak256\":\"0x3f485fb1a44e8fbeadefb5da07d66edab3cfe809f0ac4074b1e54e3eb3c4cf69\",\"license\":\"GPL-2.0-or-later\"},\"contracts/PoolManager.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n// solhint-disable-next-line compiler-version\\npragma solidity ^0.8.20;\\nimport {IUniswapPool} from \\\"./interfaces/IUniswapPool.sol\\\";\\nimport \\\"./uniswap/core/contracts/interfaces/IUniswapV3Factory.sol\\\";\\nimport \\\"./interfaces/IUniswapPositionManager.sol\\\";\\nimport \\\"./uniswap/periphery/interfaces/ISwapRouter.sol\\\";\\nimport \\\"./uniswap/core/contracts/libraries/TickMath.sol\\\";\\nimport \\\"./interfaces/IPoolManager.sol\\\";\\nimport {EnumerableSet} from \\\"@openzeppelin/contracts/utils/structs/EnumerableSet.sol\\\";\\n\\n/**\\n * @title PoolManager\\n * @dev The  Pool Manager contract manages liquidity pools and positions on Uniswap V3.\\n * @notice This contract is used to interact with Uniswap V3 pools and positions.\\n */\\ncontract PoolManager is IPoolManager {\\n    /**\\n     * @dev The Uniswap V3 factory contract.\\n     */\\n    IUniswapV3Factory public override factory;\\n\\n    /**\\n     * @dev The Uniswap position manager contract.\\n     */\\n    IUniswapPositionManager public positionManager;\\n\\n    /**\\n     * @dev The swap router contract.\\n     */\\n    ISwapRouter public router;\\n\\n    /**\\n     * @dev The admin address.\\n     */\\n    address public admin;\\n\\n    using EnumerableSet for *;\\n\\n    /**\\n     * @dev Mapping of token IDs to EnumerableSet of uints.\\n     */\\n    mapping(address => EnumerableSet.UintSet) private tokenIds;\\n\\n    /**\\n     * @dev Mapping of token IDs to liquidity amounts.\\n     */\\n    mapping(uint => uint128) public liquidities;\\n\\n    /**\\n     * @dev Mapping of pool IDs to initial sqrt prices.\\n     */\\n    mapping(bytes32 => uint160) public initialSqrtPrice;\\n\\n    /**\\n     * @dev Minimum swap out amount.\\n     */\\n    uint public constant MIN_SWAP_OUT_AMOUNT = 1;\\n\\n    /**\\n     * @dev Modifier to check if the caller is the admin.\\n     */\\n    modifier onlyAdmin() {\\n        if (admin != msg.sender) {\\n            revert NoAdmin(msg.sender);\\n        }\\n        _;\\n    }\\n\\n    /**\\n     * @dev Constructor to initialize the contract.\\n     * @param _uniswapParams The Uniswap parameters.\\n     */\\n    constructor(UniswapParams memory _uniswapParams) {\\n        admin = _uniswapParams.admin;\\n        factory = IUniswapV3Factory(_uniswapParams.factory);\\n        positionManager = IUniswapPositionManager(_uniswapParams.nft);\\n        router = ISwapRouter(_uniswapParams.router);\\n    }\\n\\n    /**\\n     * @dev Returns the address of the pool for the given tokens and fee.\\n     * @param tokenA The address of token A.\\n     * @param tokenB The address of token B.\\n     * @param fee The fee of the pool.\\n     * @return pool The address of the pool.\\n     */\\n\\n    function getPool(\\n        address tokenA,\\n        address tokenB,\\n        uint24 fee\\n    ) external view returns (address pool) {\\n        return factory.getPool(tokenA, tokenB, fee);\\n    }\\n\\n    /**\\n     * @dev Creates a new pool for the given tokens and fee.\\n     * @param sellAsset The address of the sell asset.\\n     * @param buyAsset The address of the buy asset.\\n     * @param poolFee The fee of the pool.\\n     */\\n    function createPool(\\n        address sellAsset,\\n        address buyAsset,\\n        uint24 poolFee\\n    ) external onlyAdmin {\\n        // Sort the tokens for the uniswap position manager.\\n        // Sorted tokens addresses are not used everywhere, just for position manager call: createAndInitializePoolIfNecessary\\n        (address token0, address token1) = sellAsset < buyAsset\\n            ? (sellAsset, buyAsset)\\n            : (buyAsset, sellAsset);\\n        // Initialize Uniswap contracts\\n        int24 tickSpacing = factory.feeAmountTickSpacing(uint24(poolFee));\\n        if (tickSpacing == 0) {\\n            factory.enableFeeAmount(uint24(poolFee), 10);\\n        }\\n\\n        // create uniswap pool. because we are using different fee according to the pool.\\n        uint160 sqrtPriceX96 = initialSqrtPrice[\\n            _generatePoolId(sellAsset, buyAsset, poolFee)\\n        ];\\n        if (sqrtPriceX96 == 0) {\\n            revert NoInitialSqrtPrice(sellAsset, buyAsset, poolFee);\\n        }\\n        positionManager.createAndInitializePoolIfNecessary(\\n            token0,\\n            token1,\\n            poolFee,\\n            sqrtPriceX96\\n        );\\n    }\\n\\n    /**\\n     * @dev Creates a new liquidity position for the given assets and owner.\\n     * @param sellAsset The LP token for the sell asset.\\n     * @param buyAsset The LP token for the buy asset.\\n     * @param owner The address of the owner.\\n     * @param poolFee The fee of the pool.\\n     * @param deadline The deadline for the transaction.\\n     * @param tickLower The lower tick for the position.\\n     * @param tickUpper The upper tick for the position.\\n     */\\n    function createPosition(\\n        LpToken calldata sellAsset,\\n        LpToken calldata buyAsset,\\n        address owner,\\n        uint24 poolFee,\\n        uint deadline,\\n        int24 tickLower,\\n        int24 tickUpper\\n    ) external onlyAdmin {\\n        _verifyTickSpacing(poolFee);\\n        _createPosition(\\n            sellAsset,\\n            buyAsset,\\n            owner,\\n            poolFee,\\n            deadline,\\n            tickLower,\\n            tickUpper\\n        );\\n    }\\n\\n    /**\\n     * @dev Verifies the tick spacing for a given fee tier.\\n     * @param poolFee Fee tier of the pool.\\n     */\\n    function _verifyTickSpacing(uint24 poolFee) private view {\\n        int24 tickSpacing = factory.feeAmountTickSpacing(poolFee);\\n        if (tickSpacing == 0) {\\n            revert NoEnabledTickSpacing(poolFee);\\n        }\\n    }\\n\\n    /**\\n     * @dev Creates a new liquidity position in a Uniswap pool.\\n     * @param sellAsset Details of the sell asset.\\n     * @param buyAsset Details of the buy asset.\\n     * @param owner Address of the position owner.\\n     * @param poolFee Fee tier of the pool.\\n     * @param deadline Deadline for the transaction.\\n     * @param tickLower Lower tick of the position.\\n     * @param tickUpper Upper tick of the position.\\n     */\\n    function _createPosition(\\n        LpToken calldata sellAsset,\\n        LpToken calldata buyAsset,\\n        address owner,\\n        uint24 poolFee,\\n        uint deadline,\\n        int24 tickLower,\\n        int24 tickUpper\\n    ) private {\\n        // Functionality to create position\\n        factory.addAdmin(address(positionManager));\\n        IUniswapPositionManager.MintParams\\n            memory params = IUniswapPositionManager.MintParams(\\n                sellAsset.addr,\\n                buyAsset.addr,\\n                poolFee,\\n                tickLower,\\n                tickUpper,\\n                sellAsset.amountDesired,\\n                buyAsset.amountDesired,\\n                sellAsset.amountMin,\\n                buyAsset.amountMin,\\n                owner,\\n                deadline\\n            );\\n        (uint tokenId, uint128 liquidity, , ) = positionManager.mint(params);\\n        // remove authority to mint token to position manager.\\n        factory.removeAdmin(address(positionManager));\\n        tokenIds[owner].add(tokenId);\\n        liquidities[tokenId] = liquidity;\\n    }\\n\\n    /**\\n     * @dev Increases liquidity for a given position.\\n     * @param tokenId Token ID of the position.\\n     * @param sellAsset Details of the sell asset.\\n     * @param buyAsset Details of the buy asset.\\n     * @param deadline Deadline for the transaction.\\n     */\\n    function increaseLiquidity(\\n        uint256 tokenId,\\n        LpToken calldata sellAsset,\\n        LpToken calldata buyAsset,\\n        uint deadline\\n    ) external onlyAdmin {\\n        IUniswapPositionManager.IncreaseLiquidityParams\\n            memory params = IUniswapPositionManager.IncreaseLiquidityParams(\\n                tokenId,\\n                sellAsset.amountDesired,\\n                buyAsset.amountDesired,\\n                sellAsset.amountMin,\\n                buyAsset.amountMin,\\n                deadline\\n            );\\n        positionManager.increaseLiquidity(params);\\n    }\\n\\n    // function getTokenAmounts(uint tokenId) private view returns (uint256 token0, uint256 token1) {\\n    //     (,,,,,,,,,token0, token1,) = positionManager.positions(tokenId);\\n    // }\\n    // // Assume, one user don't try to make 100+ liquidity position to same pool.\\n    /**\\n     * @dev Decreases liquidity for a given position.\\n     * @param owner Address of the position owner.\\n     * @param amount0Min Minimum amount of token0.\\n     * @param amount1Min Minimum amount of token1.\\n     * @param deadline Deadline for the transaction.\\n     */\\n    function decreaseLiquidity(\\n        address owner,\\n        uint256 amount0Min,\\n        uint256 amount1Min,\\n        uint256 deadline\\n    ) external onlyAdmin {\\n        EnumerableSet.UintSet storage ids = tokenIds[owner];\\n        IUniswapPositionManager.DecreaseLiquidityParams memory params;\\n        for (uint i = 0; i < ids.length(); i++) {\\n            uint tokenId = ids.at(i);\\n            uint liquidity = liquidities[tokenId];\\n            //(uint256 token0, uint256 token1) = getTokenAmounts(tokenId);\\n            uint256 token0 = 0;\\n            uint256 token1 = 1;\\n\\n            if (amount0Min < token0 || amount1Min < token1) {\\n                params = IUniswapPositionManager.DecreaseLiquidityParams(\\n                    tokenId,\\n                    uint128(liquidity),\\n                    amount0Min,\\n                    amount1Min,\\n                    deadline\\n                );\\n                positionManager.decreaseLiquidity(params);\\n            } else {\\n                amount0Min -= token0;\\n                amount1Min -= token1;\\n                params = IUniswapPositionManager.DecreaseLiquidityParams(\\n                    tokenId,\\n                    uint128(liquidity),\\n                    token0,\\n                    token1,\\n                    deadline\\n                );\\n                positionManager.decreaseLiquidity(params);\\n            }\\n        }\\n    }\\n\\n    /**\\n     * @dev Executes a swap operation with exact input amount.\\n     * @param tokenIn Address of the input token.\\n     * @param tokenOut Address of the output token.\\n     * @param fee Fee tier of the pool.\\n     * @param amountIn Input token amount.\\n     * @return amountOut Output token amount.\\n     */\\n    function exactInputSingle(\\n        address tokenIn,\\n        address tokenOut,\\n        uint24 fee,\\n        uint256 amountIn\\n    ) external payable returns (uint256 amountOut) {\\n        uint160 priceSqrtLimit = 0;\\n        if (uint160(tokenIn) < uint160(tokenOut)) {\\n            priceSqrtLimit = 4295128740; // This is a large integer, fits within uint256\\n        } else {\\n            priceSqrtLimit = 1461446703485210103287273052203988822378723970341;\\n        }\\n        ISwapRouter.ExactInputSingleParams memory swapParams = ISwapRouter\\n            .ExactInputSingleParams(\\n                tokenIn,\\n                tokenOut,\\n                fee,\\n                msg.sender,\\n                block.timestamp,\\n                amountIn,\\n                MIN_SWAP_OUT_AMOUNT,\\n                priceSqrtLimit\\n            );\\n        if (!factory.isAdmin(address(router))) {\\n            factory.addAdmin(address(router));\\n        }\\n        amountOut = router.exactInputSingle(swapParams);\\n        factory.removeAdmin(address(router));\\n    }\\n\\n    /**\\n     * @dev Sets the initial sqrt price for a pool.\\n     * @param sellToken Address of the sell token.\\n     * @param buyToken Address of the buy token.\\n     * @param fee Fee tier of the pool.\\n     * @param sqrtPriceX96 Initial sqrt price of the pool.\\n     */\\n    function setInitialSqrtPrice(\\n        address sellToken,\\n        address buyToken,\\n        uint24 fee,\\n        uint160 sqrtPriceX96\\n    ) external onlyAdmin {\\n        initialSqrtPrice[\\n            _generatePoolId(sellToken, buyToken, fee)\\n        ] = sqrtPriceX96;\\n    }\\n\\n    /**\\n     * @dev Generates a unique pool ID based on token addresses and fee tier.\\n     * @param sellToken Address of the sell token.\\n     * @param buyToken Address of the buy token.\\n     * @param fee Fee tier of the pool.\\n     * @return Pool ID.\\n     */\\n    function _generatePoolId(\\n        address sellToken,\\n        address buyToken,\\n        uint24 fee\\n    ) private pure returns (bytes32) {\\n        return keccak256(abi.encodePacked(sellToken, buyToken, fee));\\n    }\\n\\n    /**\\n     * @dev Gets the price of a pool.\\n     * @param tokenA Address of the first token.\\n     * @param tokenB Address of the second token.\\n     * @param fee Fee tier of the pool.\\n     * @return sqrtPriceX96 Current sqrt price of the pool.\\n     */\\n    function getPoolPrice(\\n        address tokenA,\\n        address tokenB,\\n        uint24 fee\\n    ) external view returns (uint160 sqrtPriceX96) {\\n        address pool = factory.getPool(tokenA, tokenB, fee);\\n        (sqrtPriceX96, , , , , , ) = IUniswapPool(pool).slot0();\\n    }\\n\\n    // function logPositions(address owner) public view {\\n    //     EnumerableSet.UintSet storage ids = tokenIds[owner];\\n    //     for (uint i = 0; i < ids.length(); i++) {\\n    //         uint tokenId = ids.at(i);\\n    //         uint liquidity = liquidities[tokenId];\\n\\n    //         (\\n    //             ,\\n    //             address operator,\\n    //             address tokenA,\\n    //             address tokenB,\\n    //             ,\\n    //             int24 tickLower,\\n    //             int24 tickUpper,\\n    //             uint256 liquidity,\\n    //             ,\\n    //             ,\\n    //             uint256 token0,\\n    //             uint token1\\n    //         ) = positionManager.positions(tokenId);\\n    //         console.log(\\\"====Start===\\\");\\n    //         console.log(\\\"tokenId:\\\", tokenId);\\n    //         console.log(\\\"liquidity:\\\", liquidity);\\n    //         console.log(\\\"operator:\\\", operator);\\n    //         console.log(\\\"tokenAAddr:\\\", tokenA);\\n    //         console.log(\\\"tokenBAddr:\\\", tokenB);\\n    //         console.log(\\\"tokenAAmount:\\\", token0);\\n    //         console.log(\\\"tokenBAmount:\\\", token1);\\n    //         console.log(\\\"tickLower:\\\", uint24(tickLower));\\n    //         console.log(\\\"tickUpper:\\\", uint24(tickUpper));\\n    //         console.log(\\\"=====END====\\\");\\n    //     }\\n    // }\\n}\\n\",\"keccak256\":\"0xa1a06fe4ee94842a99f6958429adf373b35245a62e3e6b9ccdd64f6fcf57a4cc\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/IPoolManager.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n// solhint-disable-next-line compiler-version\\npragma solidity ^0.8.20;\\nimport \\\"./IUniswapPositionManager.sol\\\";\\nimport \\\"../uniswap/core/contracts/interfaces/IUniswapV3Factory.sol\\\";\\n\\n/**\\n * @title IPoolManager\\n * @dev The  Pool Manager interface defines the functions for managing liquidity pools and positions on Uniswap V3.\\n * @notice This interface is used to interact with the  Pool Manager contract.\\n */\\ninterface IPoolManager {\\n    /**\\n     * @dev Struct to represent Uniswap parameters.\\n     * @param admin The address of the admin.\\n     * @param factory The address of the Uniswap V3 factory.\\n     * @param nft The address of the NFT.\\n     * @param router The address of the router.\\n     */\\n    struct UniswapParams {\\n        address admin;\\n        address factory;\\n        address nft;\\n        address router;\\n    }\\n\\n    /**\\n     * @dev Struct to represent a liquidity position.\\n     * @param tokenId The ID of the liquidity token.\\n     * @param liquidity The amount of liquidity.\\n     */\\n    struct LiquidityPosition {\\n        uint tokenId;\\n        uint128 liquidity;\\n    }\\n\\n    /**\\n     * @dev Struct to represent an LP token.\\n     * @param addr The address of the LP token.\\n     * @param amountDesired The desired amount of the LP token.\\n     * @param amountMin The minimum amount of the LP token.\\n     */\\n\\n    struct LpToken {\\n        address addr;\\n        uint256 amountDesired;\\n        uint256 amountMin;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the pool for the given tokens and fee.\\n     * @param tokenA The address of token A.\\n     * @param tokenB The address of token B.\\n     * @param fee The fee of the pool.\\n     * @return pool The address of the pool.\\n     */\\n    function getPool(\\n        address tokenA,\\n        address tokenB,\\n        uint24 fee\\n    ) external view returns (address pool);\\n\\n    /**\\n     * @dev Creates a new pool for the given tokens and fee.\\n     * @param sellAsset The address of the sell asset.\\n     * @param buyAsset The address of the buy asset.\\n     * @param poolFee The fee of the pool.\\n     */\\n    function createPool(\\n        address sellAsset,\\n        address buyAsset,\\n        uint24 poolFee\\n    ) external;\\n\\n    /**\\n     * @dev Creates a new liquidity position for the given assets and owner.\\n     * @param sellAsset The LP token for the sell asset.\\n     * @param buyAsset The LP token for the buy asset.\\n     * @param owner The address of the owner.\\n     * @param poolFee The fee of the pool.\\n     * @param deadline The deadline for the transaction.\\n     * @param tickLower The lower tick for the position.\\n     * @param tickUpper The upper tick for the position.\\n     */\\n    function createPosition(\\n        LpToken calldata sellAsset,\\n        LpToken calldata buyAsset,\\n        address owner,\\n        uint24 poolFee,\\n        uint deadline,\\n        int24 tickLower,\\n        int24 tickUpper\\n    ) external;\\n\\n    /**\\n     * @dev Increases the liquidity of the given position.\\n     * @param tokenId The ID of the liquidity token.\\n     * @param sellAsset The LP token for the sell asset.\\n     * @param buyAsset The LP token for the buy asset.\\n     * @param deadline The deadline for the transaction.\\n     */\\n    function increaseLiquidity(\\n        uint256 tokenId,\\n        LpToken calldata sellAsset,\\n        LpToken calldata buyAsset,\\n        uint deadline\\n    ) external;\\n\\n    /**\\n     * @dev Decreases the liquidity of the given position.\\n     * @param owner The address of the owner.\\n     * @param amount0Min The minimum amount of token 0.\\n     * @param amount1Min The minimum amount of token 1.\\n     * @param deadline The deadline for the transaction.\\n     */\\n    function decreaseLiquidity(\\n        address owner,\\n        uint256 amount0Min,\\n        uint256 amount1Min,\\n        uint256 deadline\\n    ) external;\\n\\n    /**\\n     * @dev Executes an exact input single swap.\\n     * @param tokenIn The address of the input token.\\n     * @param tokenOut The address of the output token.\\n     * @param fee The fee of the pool.\\n     * @param amountIn The amount of the input token.\\n     * @return amountOut The amount of the output token.\\n     */\\n    function exactInputSingle(\\n        address tokenIn,\\n        address tokenOut,\\n        uint24 fee,\\n        uint256 amountIn\\n    ) external payable returns (uint256 amountOut);\\n\\n    /**\\n     * @dev Returns the address of the Uniswap V3 factory.\\n     * @return pool The address of the factory.\\n     */\\n    function factory() external view returns (IUniswapV3Factory pool);\\n\\n    /**\\n     * @dev Sets the initial sqrt price for the given pool.\\n     * @param sellToken The address of the sell token.\\n     * @param buyToken The address of the buy token.\\n     * @param fee The fee of the pool.\\n     * @param sqrtPriceX96 The initial sqrt price.\\n     */\\n    function setInitialSqrtPrice(\\n        address sellToken,\\n        address buyToken,\\n        uint24 fee,\\n        uint160 sqrtPriceX96\\n    ) external;\\n\\n    /**\\n     * @dev Returns the current sqrt price for the given pool.\\n     * @param tokenA The address of token A.\\n     * @param tokenB The address of token B.\\n     * @param fee The fee of the pool.\\n     * @return sqrtPriceX96 The current sqrt price.\\n     */\\n    function getPoolPrice(\\n        address tokenA,\\n        address tokenB,\\n        uint24 fee\\n    ) external view returns (uint160 sqrtPriceX96);\\n\\n    /**\\n     * @dev Error thrown when no enabled tick spacing is found for the given pool fee.\\n     * @param poolFee The pool fee for which no enabled tick spacing was found.\\n     */\\n    error NoEnabledTickSpacing(uint poolFee);\\n\\n    /**\\n     * @dev Error thrown when no admin is found for the given address.\\n     * @param sender The address for which no admin was found.\\n     */\\n    error NoAdmin(address sender);\\n\\n    /**\\n     * @dev Error thrown when no initial sqrt price is set for the given sell and buy assets.\\n     * @param sellAsset The address of the sell asset.\\n     * @param buyAsset The address of the buy asset.\\n     * @param fee The fee of the pool.\\n     */\\n    error NoInitialSqrtPrice(address sellAsset, address buyAsset, uint160 fee);\\n}\\n\",\"keccak256\":\"0xcfeaf33724474193c7b2fcd64790e34990fb3e37c15b8261cc4ca3f2521be0f2\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/IUniswapPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.20;\\ninterface IUniswapPool {\\n    function slot0()\\n        external\\n        view\\n        returns (\\n            uint160 sqrtPriceX96,\\n            int24 tick,\\n            uint16 observationIndex,\\n            uint16 observationCardinality,\\n            uint16 observationCardinalityNext,\\n            uint8 feeProtocol,\\n            bool unlocked\\n        );\\n\\n    function feeGrowthGlobal0X128() external view returns (uint256);\\n\\n    /// @notice The fee growth as a Q128.128 fees of token1 collected per unit of liquidity for the entire life of the pool\\n    /// @dev This value can overflow the uint256\\n    function feeGrowthGlobal1X128() external view returns (uint256);\\n\\n\\n}\",\"keccak256\":\"0xa21ab4d0e43a491e6fc46533181fad72ec92501ce8ac8da7b1adceae68bcd6cb\",\"license\":\"MIT\"},\"contracts/interfaces/IUniswapPositionManager.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.20;\\n\\ninterface IUniswapPositionManager {\\n\\n     function positions(uint256 tokenId)\\n        external\\n        view\\n        returns (\\n            uint96 nonce,\\n            address operator,\\n            address token0,\\n            address token1,\\n            uint24 fee,\\n            int24 tickLower,\\n            int24 tickUpper,\\n            uint128 liquidity,\\n            uint256 feeGrowthInside0LastX128,\\n            uint256 feeGrowthInside1LastX128,\\n            uint128 tokensOwed0,\\n            uint128 tokensOwed1\\n        );\\n\\n    function createAndInitializePoolIfNecessary(\\n        address token0,\\n        address token1,\\n        uint24 fee,\\n        uint160 sqrtPriceX96\\n    ) external payable returns (address pool);\\n\\n    struct MintParams {\\n        address token0;\\n        address token1;\\n        uint24 fee;\\n        int24 tickLower;\\n        int24 tickUpper;\\n        uint256 amount0Desired;\\n        uint256 amount1Desired;\\n        uint256 amount0Min;\\n        uint256 amount1Min;\\n        address recipient;\\n        uint256 deadline;\\n    }\\n\\n    /// @notice Creates a new position wrapped in a NFT\\n    /// @dev Call this when the pool does exist and is initialized. Note that if the pool is created but not initialized\\n    /// a method does not exist, i.e. the pool is assumed to be initialized.\\n    /// @param params The params necessary to mint a position, encoded as `MintParams` in calldata\\n    /// @return tokenId The ID of the token that represents the minted position\\n    /// @return liquidity The amount of liquidity for this position\\n    /// @return amount0 The amount of token0\\n    /// @return amount1 The amount of token1\\n    function mint(MintParams calldata params)\\n        external\\n        payable\\n        returns (\\n            uint256 tokenId,\\n            uint128 liquidity,\\n            uint256 amount0,\\n            uint256 amount1\\n        );\\n\\n    struct IncreaseLiquidityParams {\\n        uint256 tokenId;\\n        uint256 amount0Desired;\\n        uint256 amount1Desired;\\n        uint256 amount0Min;\\n        uint256 amount1Min;\\n        uint256 deadline;\\n    }\\n\\n    /// @notice Increases the amount of liquidity in a position, with tokens paid by the `msg.sender`\\n    /// @param params tokenId The ID of the token for which liquidity is being increased,\\n    /// amount0Desired The desired amount of token0 to be spent,\\n    /// amount1Desired The desired amount of token1 to be spent,\\n    /// amount0Min The minimum amount of token0 to spend, which serves as a slippage check,\\n    /// amount1Min The minimum amount of token1 to spend, which serves as a slippage check,\\n    /// deadline The time by which the transaction must be included to effect the change\\n    /// @return liquidity The new liquidity amount as a result of the increase\\n    /// @return amount0 The amount of token0 to acheive resulting liquidity\\n    /// @return amount1 The amount of token1 to acheive resulting liquidity\\n    function increaseLiquidity(IncreaseLiquidityParams calldata params)\\n        external\\n        payable\\n        returns (\\n            uint128 liquidity,\\n            uint256 amount0,\\n            uint256 amount1\\n        );\\n\\n    struct DecreaseLiquidityParams {\\n        uint256 tokenId;\\n        uint128 liquidity;\\n        uint256 amount0Min;\\n        uint256 amount1Min;\\n        uint256 deadline;\\n    }\\n\\n    /// @notice Decreases the amount of liquidity in a position and accounts it to the position\\n    /// @param params tokenId The ID of the token for which liquidity is being decreased,\\n    /// amount The amount by which liquidity will be decreased,\\n    /// amount0Min The minimum amount of token0 that should be accounted for the burned liquidity,\\n    /// amount1Min The minimum amount of token1 that should be accounted for the burned liquidity,\\n    /// deadline The time by which the transaction must be included to effect the change\\n    /// @return amount0 The amount of token0 accounted to the position's tokens owed\\n    /// @return amount1 The amount of token1 accounted to the position's tokens owed\\n    function decreaseLiquidity(DecreaseLiquidityParams calldata params)\\n        external\\n        payable\\n        returns (uint256 amount0, uint256 amount1);\\n}\\n\",\"keccak256\":\"0xe5ce33d7d711685028dea5041d1577d259cf18e0fa0bae6f6510acb879445b59\",\"license\":\"MIT\"},\"contracts/uniswap/core/contracts/interfaces/IUniswapV3Factory.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\npragma solidity >=0.7.6;\\n\\n/// @title The interface for the Uniswap V3 Factory\\n/// @notice The Uniswap V3 Factory facilitates creation of Uniswap V3 pools and control over the protocol fees\\ninterface IUniswapV3Factory {\\n    /// @notice Emitted when the owner of the factory is changed\\n    /// @param oldOwner The owner before the owner was changed\\n    /// @param newOwner The owner after the owner was changed\\n    event OwnerChanged(address indexed oldOwner, address indexed newOwner);\\n\\n    /// @notice Emitted when a pool is created\\n    /// @param token0 The first token of the pool by address sort order\\n    /// @param token1 The second token of the pool by address sort order\\n    /// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip\\n    /// @param tickSpacing The minimum number of ticks between initialized ticks\\n    /// @param pool The address of the created pool\\n    event PoolCreated(\\n        address indexed token0,\\n        address indexed token1,\\n        uint24 indexed fee,\\n        int24 tickSpacing,\\n        address pool\\n    );\\n\\n    /// @notice Emitted when a new fee amount is enabled for pool creation via the factory\\n    /// @param fee The enabled fee, denominated in hundredths of a bip\\n    /// @param tickSpacing The minimum number of ticks between initialized ticks for pools created with the given fee\\n    event FeeAmountEnabled(uint24 indexed fee, int24 indexed tickSpacing);\\n\\n\\n    /// @notice Returns the tick spacing for a given fee amount, if enabled, or 0 if not enabled\\n    /// @dev A fee amount can never be removed, so this value should be hard coded or cached in the calling context\\n    /// @param fee The enabled fee, denominated in hundredths of a bip. Returns 0 in case of unenabled fee\\n    /// @return The tick spacing\\n    function feeAmountTickSpacing(uint24 fee) external view returns (int24);\\n\\n    /// @notice Returns the pool address for a given pair of tokens and a fee, or address 0 if it does not exist\\n    /// @dev tokenA and tokenB may be passed in either token0/token1 or token1/token0 order\\n    /// @param tokenA The contract address of either token0 or token1\\n    /// @param tokenB The contract address of the other token\\n    /// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip\\n    /// @return pool The pool address\\n    function getPool(\\n        address tokenA,\\n        address tokenB,\\n        uint24 fee\\n    ) external view returns (address pool);\\n\\n    /// @notice Creates a pool for the given two tokens and fee\\n    /// @param tokenA One of the two tokens in the desired pool\\n    /// @param tokenB The other of the two tokens in the desired pool\\n    /// @param fee The desired fee for the pool\\n    /// @dev tokenA and tokenB may be passed in either order: token0/token1 or token1/token0. tickSpacing is retrieved\\n    /// from the fee. The call will revert if the pool already exists, the fee is invalid, or the token arguments\\n    /// are invalid.\\n    /// @return pool The address of the newly created pool\\n    function createPool(\\n        address tokenA,\\n        address tokenB,\\n        uint24 fee\\n    ) external returns (address pool);\\n\\n    /// @notice Enables a fee amount with the given tickSpacing\\n    /// @dev Fee amounts may never be removed once enabled\\n    /// @param fee The fee amount to enable, denominated in hundredths of a bip (i.e. 1e-6)\\n    /// @param tickSpacing The spacing between ticks to be enforced for all pools created with the given fee amount\\n    function enableFeeAmount(uint24 fee, int24 tickSpacing) external;\\n    function addAdmin(address _admin) external;\\n    function removeAdmin(address _admin) external;\\n    function isAdmin(address _admin) external returns(bool);\\n}\\n\",\"keccak256\":\"0x621d53fca98182df53d027cde387973cd7aadca7948d173bc2332c3380ac1bfd\",\"license\":\"BUSL-1.1\"},\"contracts/uniswap/core/contracts/libraries/TickMath.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-2.0-or-later\\npragma solidity >=0.5.0;\\n\\n/// @title Math library for computing sqrt prices from ticks and vice versa\\n/// @notice Computes sqrt price for ticks of size 1.0001, i.e. sqrt(1.0001^tick) as fixed point Q64.96 numbers. Supports\\n/// prices between 2**-128 and 2**128\\nlibrary TickMath {\\n    /// @dev The minimum tick that may be passed to #getSqrtRatioAtTick computed from log base 1.0001 of 2**-128\\n    int24 internal constant MIN_TICK = -887272;\\n    /// @dev The maximum tick that may be passed to #getSqrtRatioAtTick computed from log base 1.0001 of 2**128\\n    int24 internal constant MAX_TICK = -MIN_TICK;\\n\\n    /// @dev The minimum value that can be returned from #getSqrtRatioAtTick. Equivalent to getSqrtRatioAtTick(MIN_TICK)\\n    uint160 internal constant MIN_SQRT_RATIO = 4295128739;\\n    /// @dev The maximum value that can be returned from #getSqrtRatioAtTick. Equivalent to getSqrtRatioAtTick(MAX_TICK)\\n    uint160 internal constant MAX_SQRT_RATIO = 1461446703485210103287273052203988822378723970342;\\n\\n    /// @notice Calculates sqrt(1.0001^tick) * 2^96\\n    /// @dev Throws if |tick| > max tick\\n    /// @param tick The input tick for the above formula\\n    /// @return sqrtPriceX96 A Fixed point Q64.96 number representing the sqrt of the ratio of the two assets (token1/token0)\\n    /// at the given tick\\n    function getSqrtRatioAtTick(int24 tick) internal pure returns (uint160 sqrtPriceX96) {\\n        uint256 absTick = tick < 0 ? uint256(-int256(tick)) : uint256(int256(tick));\\n        require(absTick <= uint256(uint24(MAX_TICK)), 'T');\\n\\n        uint256 ratio = absTick & 0x1 != 0 ? 0xfffcb933bd6fad37aa2d162d1a594001 : 0x100000000000000000000000000000000;\\n        if (absTick & 0x2 != 0) ratio = (ratio * 0xfff97272373d413259a46990580e213a) >> 128;\\n        if (absTick & 0x4 != 0) ratio = (ratio * 0xfff2e50f5f656932ef12357cf3c7fdcc) >> 128;\\n        if (absTick & 0x8 != 0) ratio = (ratio * 0xffe5caca7e10e4e61c3624eaa0941cd0) >> 128;\\n        if (absTick & 0x10 != 0) ratio = (ratio * 0xffcb9843d60f6159c9db58835c926644) >> 128;\\n        if (absTick & 0x20 != 0) ratio = (ratio * 0xff973b41fa98c081472e6896dfb254c0) >> 128;\\n        if (absTick & 0x40 != 0) ratio = (ratio * 0xff2ea16466c96a3843ec78b326b52861) >> 128;\\n        if (absTick & 0x80 != 0) ratio = (ratio * 0xfe5dee046a99a2a811c461f1969c3053) >> 128;\\n        if (absTick & 0x100 != 0) ratio = (ratio * 0xfcbe86c7900a88aedcffc83b479aa3a4) >> 128;\\n        if (absTick & 0x200 != 0) ratio = (ratio * 0xf987a7253ac413176f2b074cf7815e54) >> 128;\\n        if (absTick & 0x400 != 0) ratio = (ratio * 0xf3392b0822b70005940c7a398e4b70f3) >> 128;\\n        if (absTick & 0x800 != 0) ratio = (ratio * 0xe7159475a2c29b7443b29c7fa6e889d9) >> 128;\\n        if (absTick & 0x1000 != 0) ratio = (ratio * 0xd097f3bdfd2022b8845ad8f792aa5825) >> 128;\\n        if (absTick & 0x2000 != 0) ratio = (ratio * 0xa9f746462d870fdf8a65dc1f90e061e5) >> 128;\\n        if (absTick & 0x4000 != 0) ratio = (ratio * 0x70d869a156d2a1b890bb3df62baf32f7) >> 128;\\n        if (absTick & 0x8000 != 0) ratio = (ratio * 0x31be135f97d08fd981231505542fcfa6) >> 128;\\n        if (absTick & 0x10000 != 0) ratio = (ratio * 0x9aa508b5b7a84e1c677de54f3e99bc9) >> 128;\\n        if (absTick & 0x20000 != 0) ratio = (ratio * 0x5d6af8dedb81196699c329225ee604) >> 128;\\n        if (absTick & 0x40000 != 0) ratio = (ratio * 0x2216e584f5fa1ea926041bedfe98) >> 128;\\n        if (absTick & 0x80000 != 0) ratio = (ratio * 0x48a170391f7dc42444e8fa2) >> 128;\\n\\n        if (tick > 0) ratio = type(uint256).max / ratio;\\n\\n        // this divides by 1<<32 rounding up to go from a Q128.128 to a Q128.96.\\n        // we then downcast because we know the result always fits within 160 bits due to our tick input constraint\\n        // we round up in the division so getTickAtSqrtRatio of the output price is always consistent\\n        sqrtPriceX96 = uint160((ratio >> 32) + (ratio % (1 << 32) == 0 ? 0 : 1));\\n    }\\n\\n    /// @notice Calculates the greatest tick value such that getRatioAtTick(tick) <= ratio\\n    /// @dev Throws in case sqrtPriceX96 < MIN_SQRT_RATIO, as MIN_SQRT_RATIO is the lowest value getRatioAtTick may\\n    /// ever return.\\n    /// @param sqrtPriceX96 The sqrt ratio for which to compute the tick as a Q64.96\\n    /// @return tick The greatest tick for which the ratio is less than or equal to the input ratio\\n    function getTickAtSqrtRatio(uint160 sqrtPriceX96) internal pure returns (int24 tick) {\\n        // second inequality must be < because the price can never reach the price at the max tick\\n        require(sqrtPriceX96 >= MIN_SQRT_RATIO && sqrtPriceX96 < MAX_SQRT_RATIO, 'R');\\n        uint256 ratio = uint256(sqrtPriceX96) << 32;\\n\\n        uint256 r = ratio;\\n        uint256 msb = 0;\\n\\n        assembly {\\n            let f := shl(7, gt(r, 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF))\\n            msb := or(msb, f)\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            let f := shl(6, gt(r, 0xFFFFFFFFFFFFFFFF))\\n            msb := or(msb, f)\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            let f := shl(5, gt(r, 0xFFFFFFFF))\\n            msb := or(msb, f)\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            let f := shl(4, gt(r, 0xFFFF))\\n            msb := or(msb, f)\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            let f := shl(3, gt(r, 0xFF))\\n            msb := or(msb, f)\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            let f := shl(2, gt(r, 0xF))\\n            msb := or(msb, f)\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            let f := shl(1, gt(r, 0x3))\\n            msb := or(msb, f)\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            let f := gt(r, 0x1)\\n            msb := or(msb, f)\\n        }\\n\\n        if (msb >= 128) r = ratio >> (msb - 127);\\n        else r = ratio << (127 - msb);\\n\\n        int256 log_2 = (int256(msb) - 128) << 64;\\n\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(63, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(62, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(61, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(60, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(59, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(58, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(57, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(56, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(55, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(54, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(53, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(52, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(51, f))\\n            r := shr(f, r)\\n        }\\n        assembly {\\n            r := shr(127, mul(r, r))\\n            let f := shr(128, r)\\n            log_2 := or(log_2, shl(50, f))\\n        }\\n\\n        int256 log_sqrt10001 = log_2 * 255738958999603826347141; // 128.128 number\\n\\n        int24 tickLow = int24((log_sqrt10001 - 3402992956809132418596140100660247210) >> 128);\\n        int24 tickHi = int24((log_sqrt10001 + 291339464771989622907027621153398088495) >> 128);\\n\\n        tick = tickLow == tickHi ? tickLow : getSqrtRatioAtTick(tickHi) <= sqrtPriceX96 ? tickHi : tickLow;\\n    }\\n\\n\\n    // New function: Calculates the minimum tick for a given tick spacing\\n    function getMinTick(int24 tickSpacing) internal pure returns (int24) {\\n        require(tickSpacing > 0, \\\"Invalid tick spacing\\\");\\n        return (MIN_TICK / tickSpacing) * tickSpacing;\\n    }\\n\\n    // New function: Calculates the maximum tick for a given tick spacing\\n    function getMaxTick(int24 tickSpacing) internal pure returns (int24) {\\n        require(tickSpacing > 0, \\\"Invalid tick spacing\\\");\\n        return (MAX_TICK / tickSpacing) * tickSpacing;\\n    }\\n\\n    // New function: Calculates the maximum liquidity per tick for a given tick spacing\\n    function getMaxLiquidityPerTick(int24 tickSpacing) internal pure returns (uint256) {\\n        require(tickSpacing > 0, \\\"Invalid tick spacing\\\");\\n        int24 minTick = getMinTick(tickSpacing);\\n        int24 maxTick = getMaxTick(tickSpacing);\\n        uint256 tickRange = uint256(int256(maxTick - minTick) / int256(tickSpacing) + 1);\\n        return type(uint256).max / tickRange;\\n    }\\n\\n    \\n}\\n\",\"keccak256\":\"0x93cbaf83475a84d63176363de2b480402a3d45b7919d86929399181b3417cabd\",\"license\":\"GPL-2.0-or-later\"},\"contracts/uniswap/periphery/interfaces/ISwapRouter.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-2.0-or-later\\npragma solidity >=0.7.5;\\npragma abicoder v2;\\n\\nimport '@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol';\\n\\n/// @title Router token swapping functionality\\n/// @notice Functions for swapping tokens via Uniswap V3\\ninterface ISwapRouter is IUniswapV3SwapCallback {\\n    struct ExactInputSingleParams {\\n        address tokenIn;\\n        address tokenOut;\\n        uint24 fee;\\n        address recipient;\\n        uint256 deadline;\\n        uint256 amountIn;\\n        uint256 amountOutMinimum;\\n        uint160 sqrtPriceLimitX96;\\n    }\\n\\n    /// @notice Swaps `amountIn` of one token for as much as possible of another token\\n    /// @param params The parameters necessary for the swap, encoded as `ExactInputSingleParams` in calldata\\n    /// @return amountOut The amount of the received token\\n    function exactInputSingle(ExactInputSingleParams calldata params) external payable returns (uint256 amountOut);\\n\\n    struct ExactInputParams {\\n        bytes path;\\n        address recipient;\\n        uint256 deadline;\\n        uint256 amountIn;\\n        uint256 amountOutMinimum;\\n    }\\n\\n    /// @notice Swaps `amountIn` of one token for as much as possible of another along the specified path\\n    /// @param params The parameters necessary for the multi-hop swap, encoded as `ExactInputParams` in calldata\\n    /// @return amountOut The amount of the received token\\n    function exactInput(ExactInputParams calldata params) external payable returns (uint256 amountOut);\\n\\n    struct ExactOutputSingleParams {\\n        address tokenIn;\\n        address tokenOut;\\n        uint24 fee;\\n        address recipient;\\n        uint256 deadline;\\n        uint256 amountOut;\\n        uint256 amountInMaximum;\\n        uint160 sqrtPriceLimitX96;\\n    }\\n\\n    /// @notice Swaps as little as possible of one token for `amountOut` of another token\\n    /// @param params The parameters necessary for the swap, encoded as `ExactOutputSingleParams` in calldata\\n    /// @return amountIn The amount of the input token\\n    function exactOutputSingle(ExactOutputSingleParams calldata params) external payable returns (uint256 amountIn);\\n\\n    struct ExactOutputParams {\\n        bytes path;\\n        address recipient;\\n        uint256 deadline;\\n        uint256 amountOut;\\n        uint256 amountInMaximum;\\n    }\\n\\n    /// @notice Swaps as little as possible of one token for `amountOut` of another along the specified path (reversed)\\n    /// @param params The parameters necessary for the multi-hop swap, encoded as `ExactOutputParams` in calldata\\n    /// @return amountIn The amount of the input token\\n    function exactOutput(ExactOutputParams calldata params) external payable returns (uint256 amountIn);\\n}\\n\",\"keccak256\":\"0x9bfaf1feb32814623e627ab70f2409760b15d95f1f9b058e2b3399a8bb732975\",\"license\":\"GPL-2.0-or-later\"}},\"version\":1}",
+  "bytecode": "0x6080346200010857601f620015fe38819003918201601f19168301926001600160401b0392909183851183861017620000f257816080928492604097885283398101031262000108578251916080830190811183821017620000f257835260606200006a826200010d565b928381526200007c602084016200010d565b90816020820152620000a283620000958887016200010d565b958689850152016200010d565b928391015260018060a01b03928380928160018060a01b03199716876003541617600355168560005416176000551683600154161760015516906002541617600255516114db9081620001238239f35b634e487b7160e01b600052604160045260246000fd5b600080fd5b51906001600160a01b0382168203620001085756fe608080604052600436101561001357600080fd5b600090813560e01c9081630713051d14611237575080631698ee82146111825780632316690a14610d3e57806324f8c1be14610d225780633307452214610a6357806354908d89146108cf5780636834155b146107a9578063791b98bc14610782578063819a566014610472578063a16712951461022d578063a67f3e3b1461016f578063ab2ce1241461013c578063c45a015514610116578063f851a440146100ef5763f887ea40146100c657600080fd5b346100ec57806003193601126100ec5760206001600160a01b0360025416604051908152f35b80fd5b50346100ec57806003193601126100ec5760206001600160a01b0360035416604051908152f35b50346100ec57806003193601126100ec576001600160a01b036020915416604051908152f35b50346100ec5760203660031901126100ec576001600160a01b036040602092600435815260068452205416604051908152f35b50346100ec5760803660031901126100ec57610189611270565b610191611286565b9061019a61129c565b606435926001600160a01b03808516809503610229576003541633036101f9576101c39261141d565b8252600660205260408220907fffffffffffffffffffffffff000000000000000000000000000000000000000082541617905580f35b60246040517f98592959000000000000000000000000000000000000000000000000000000008152336004820152fd5b8580fd5b50346100ec5760603660031901126100ec57610247611270565b61024f611286565b9061025861129c565b6001600160a01b0390816003541633036101f957828216908483168083101561046a57849286955b8589541693604051986322afcccb60e01b8a528a62ffffff8316968760048d015260209b8c81602481855afa908115610372578391610431575b5060020b156103ba575b50506102cf9261141d565b8852600687528460408920541691821561037d575050918660849285948896600154169186604051998a9889977f13ead562000000000000000000000000000000000000000000000000000000008952166004880152166024860152604485015260648401525af1801561037257610345578280f35b8161036492903d1061036b575b61035c81836112de565b810190611300565b5038808280f35b503d610352565b6040513d85823e3d90fd5b9083606492604051927f1140bfd4000000000000000000000000000000000000000000000000000000008452600484015260248301526044820152fd5b803b1561042d578180916044604051809481937f8a7c195f0000000000000000000000000000000000000000000000000000000083528d6004840152600a60248401525af1801561042257156102c457610413906112ae565b61041e578a386102c4565b8a80fd5b6040513d84823e3d90fd5b5080fd5b90508c81813d8311610463575b61044881836112de565b8101031261045f576104599061131f565b386102ba565b8280fd5b503d61043e565b859285610280565b5060803660031901126100ec57610487611270565b61048f611286565b6001600160a01b03806104a061129c565b9316911680821015610767576401000276a4905b6040519361010085019185831067ffffffffffffffff841117610751576001600160a01b039462ffffff936040528652602086015216604084015233606084015242608084015260643560a0840152600160c08401521660e08201528160206001600160a01b0382541660246001600160a01b036002541660405194859384927f24d7806c00000000000000000000000000000000000000000000000000000000845260048401525af1908115610372578391610717575b50156106b3575b602060e06101046001600160a01b039385856002541660405196879586947f414bf389000000000000000000000000000000000000000000000000000000008652828151166004870152828982015116602487015262ffffff60408201511660448701528260608201511660648701526080810151608487015260a081015160a487015260c081015160c487015201511660e48401525af1908115610422578291610681575b50816001600160a01b038154166001600160a01b036002541690803b1561045f576024839260405194859384926305e17d4f60e21b845260048401525af180156103725761066d575b602082604051908152f35b61067783916112ae565b61042d5781610662565b90506020813d6020116106ab575b8161069c602093836112de565b8101031261042d575138610619565b3d915061068f565b816001600160a01b038154166001600160a01b0360025416813b1561045f578291602483926040519485938492637048027560e01b845260048401525af1801561042257610703575b5050610573565b61070c906112ae565b61042d5781386106fc565b90506020813d602011610749575b81610732602093836112de565b8101031261045f5761074390611410565b3861056c565b3d9150610725565b634e487b7160e01b600052604160045260246000fd5b73fffd8963efd1fc6a506488495d951d5263988d25906104b4565b50346100ec57806003193601126100ec5760206001600160a01b0360015416604051908152f35b50346100ec576101003660031901126100ec5760608060231936011261042d578060831936011261042d576001600160a01b0390816003541633036101f95760405160c081019080821067ffffffffffffffff831117610751578291604052600435815260c46020820191604435835286604082019660a4358852858301906064358252608084018535815260a085019160e435835260015416926040519a8b9889977f219f5d170000000000000000000000000000000000000000000000000000000089525160048901525160248801525160448701525160648601525160848501525160a48401525af18015610372576108a3578280f35b81813d83116108c8575b6108b781836112de565b8101031261042d576103649061132d565b503d6108ad565b50346100ec5760603660031901126100ec576108e9611270565b9061094660206108f7611286565b9361090061129c565b8454604051630b4c774160e11b81526001600160a01b039384166004820152968316602488015262ffffff90911660448701529094928391861690829081906064820190565b03915afa90811561042257839160e0918491610a45575b506004604051809681937f3850c7bd000000000000000000000000000000000000000000000000000000008352165afa918215610a395780926109a8575b6020838360405191168152f35b90915060e0833d60e011610a31575b816109c460e093836112de565b810103126100ec5782519082821682036100ec576109e46020850161131f565b506109f160408501611496565b506109fe60608501611496565b50610a0b60808501611496565b5060a084015160ff8116036100ec5750610a2960c060209401611410565b50903861099b565b3d91506109b7565b604051903d90823e3d90fd5b610a5d915060203d811161036b5761035c81836112de565b3861095d565b50346100ec5760808060031936011261042d57610a7e611270565b91606435906001600160a01b03916003928084541633036101f9576024948535928260443598168552602091600483526040862098604051610abf816112c2565b8781528785820152876040820152878360609282848201520152875b8b54811015610d1e5788610aef828e61134a565b9054908c1b1c8082526005885260408220546001906fffffffffffffffffffffffffffffffff1681871015610c1557918a610ba792604094855193610b33856112c2565b84528c8401528d8584015288888401528a8a8401525416908351948580948193630624e65f60e11b83526004830191909160808060a0830194805184526fffffffffffffffffffffffffffffffff602082015116602085015260408101516040850152606081015160608501520151910152565b03925af18015610c0a57610bdc575b505b6000198114610bc957600101610adb565b8a89634e487b7160e01b81526011600452fd5b610bfd9060403d604011610c03575b610bf581836112de565b8101906113fa565b50610bb6565b503d610beb565b6040513d8c823e3d90fd5b959a909192610d0b57996000198101908111610cf6576000928a604093610cb79398855193610c43856112c2565b84528c840152858584015280888401528a8a8401525416908351948580948193630624e65f60e11b83526004830191909160808060a0830194805184526fffffffffffffffffffffffffffffffff602082015116602085015260408101516040850152606081015160608501520151910152565b03925af18015610cea57610ccc575b50610bb8565b610ce49060403d604011610c0357610bf581836112de565b50610cc6565b6040513d6000823e3d90fd5b8d634e487b7160e01b60005260116004526000fd5b8d8c634e487b7160e01b81526011600452fd5b8880f35b50346100ec57806003193601126100ec57602060405160018152f35b50346100ec57610160366003190181811261045f5760601361042d57606036606319011261042d5760c435906001600160a01b038216820361045f5760e4359062ffffff8216820361109757610124358060020b810361117e5761014435918260020b8303610229576001600160a01b036003541633036101f9576001600160a01b038654166040516322afcccb60e01b815262ffffff86166004820152602081602481855afa908115611173578891611135575b5060020b156110ff5786906001600160a01b036001541690803b1561045f57602483926040519485938492637048027560e01b845260048401525af180156110f4576110e1575b50600435936001600160a01b03851685036110dc57606435946001600160a01b03861686036110dc5760405195868481011067ffffffffffffffff8589011117610751576001600160a01b03809262ffffff95890160405216875216602086015216604084015260020b606083015260020b608082015260243560a082015260843560c082015260443560e082015260a4356101008201526001600160a01b0382166101208201526101043561014082015260806101406101646001600160a01b0360015416938660405195869485937f883164560000000000000000000000000000000000000000000000000000000085526001600160a01b0381511660048601526001600160a01b03602082015116602486015262ffffff6040820151166044860152606081015160020b60648601528781015160020b608486015260a081015160a486015260c081015160c486015260e081015160e48601526101008101516101048601526001600160a01b036101208201511661012486015201516101448401525af1918215610372578391849361109b575b50836001600160a01b038154166001600160a01b0360015416813b1561045f5782916024839260405194859384926305e17d4f60e21b845260048401525af1801561042257611083575b50506001600160a01b03168352600460205261103a8160408520611378565b50825260056020526fffffffffffffffffffffffffffffffff6040832091167fffffffffffffffffffffffffffffffff0000000000000000000000000000000082541617905580f35b61108c906112ae565b61109757833861101b565b8380fd5b915091506080813d82116110d4575b816110b7608093836112de565b8101031261045f576110cd60208251920161132d565b9138610fd1565b3d91506110aa565b600080fd5b6110ed909691966112ae565b9438610e3a565b6040513d89823e3d90fd5b60248562ffffff604051917f7da9b5c3000000000000000000000000000000000000000000000000000000008352166004820152fd5b90506020813d60201161116b575b81611150602093836112de565b81010312611167576111619061131f565b38610df3565b8780fd5b3d9150611143565b6040513d8a823e3d90fd5b8480fd5b50346100ec5760603660031901126100ec576111fa61119f611270565b60206111a9611286565b916111b261129c565b8554604051630b4c774160e11b81526001600160a01b039384166004820152948316602486015262ffffff909116604485015292939092849190841690829081906064820190565b03915afa9182156103725760209392611218575b5060405191168152f35b611230919250833d811161036b5761035c81836112de565b903861120e565b90503461042d57602036600319011261042d576fffffffffffffffffffffffffffffffff60406020936004358152600585522054168152f35b600435906001600160a01b03821682036110dc57565b602435906001600160a01b03821682036110dc57565b6044359062ffffff821682036110dc57565b67ffffffffffffffff811161075157604052565b60a0810190811067ffffffffffffffff82111761075157604052565b90601f8019910116810190811067ffffffffffffffff82111761075157604052565b908160209103126110dc57516001600160a01b03811681036110dc5790565b51908160020b82036110dc57565b51906fffffffffffffffffffffffffffffffff821682036110dc57565b80548210156113625760005260206000200190600090565b634e487b7160e01b600052603260045260246000fd5b919060018301600090828252806020526040822054156000146113f457845494680100000000000000008610156113e0576113bd86600160409697980183558261134a565b81549060031b9087821b91600019901b1916179055549382526020522055600190565b602483634e487b7160e01b81526041600452fd5b50925050565b91908260409103126110dc576020825192015190565b519081151582036110dc57565b90917fffffff0000000000000000000000000000000000000000000000000000000000906040519260208401946bffffffffffffffffffffffff19809260601b16865260601b16603484015260e81b166048820152602b81526060810181811067ffffffffffffffff8211176107515760405251902090565b519061ffff821682036110dc5756fea264697066735822122004e0250dd2869564f9e8b318c6c87a9844085f6d6b23bc8eb8eb95cb3251cd9464736f6c63430008140033",
+  "deployedBytecode": "0x608080604052600436101561001357600080fd5b600090813560e01c9081630713051d14611237575080631698ee82146111825780632316690a14610d3e57806324f8c1be14610d225780633307452214610a6357806354908d89146108cf5780636834155b146107a9578063791b98bc14610782578063819a566014610472578063a16712951461022d578063a67f3e3b1461016f578063ab2ce1241461013c578063c45a015514610116578063f851a440146100ef5763f887ea40146100c657600080fd5b346100ec57806003193601126100ec5760206001600160a01b0360025416604051908152f35b80fd5b50346100ec57806003193601126100ec5760206001600160a01b0360035416604051908152f35b50346100ec57806003193601126100ec576001600160a01b036020915416604051908152f35b50346100ec5760203660031901126100ec576001600160a01b036040602092600435815260068452205416604051908152f35b50346100ec5760803660031901126100ec57610189611270565b610191611286565b9061019a61129c565b606435926001600160a01b03808516809503610229576003541633036101f9576101c39261141d565b8252600660205260408220907fffffffffffffffffffffffff000000000000000000000000000000000000000082541617905580f35b60246040517f98592959000000000000000000000000000000000000000000000000000000008152336004820152fd5b8580fd5b50346100ec5760603660031901126100ec57610247611270565b61024f611286565b9061025861129c565b6001600160a01b0390816003541633036101f957828216908483168083101561046a57849286955b8589541693604051986322afcccb60e01b8a528a62ffffff8316968760048d015260209b8c81602481855afa908115610372578391610431575b5060020b156103ba575b50506102cf9261141d565b8852600687528460408920541691821561037d575050918660849285948896600154169186604051998a9889977f13ead562000000000000000000000000000000000000000000000000000000008952166004880152166024860152604485015260648401525af1801561037257610345578280f35b8161036492903d1061036b575b61035c81836112de565b810190611300565b5038808280f35b503d610352565b6040513d85823e3d90fd5b9083606492604051927f1140bfd4000000000000000000000000000000000000000000000000000000008452600484015260248301526044820152fd5b803b1561042d578180916044604051809481937f8a7c195f0000000000000000000000000000000000000000000000000000000083528d6004840152600a60248401525af1801561042257156102c457610413906112ae565b61041e578a386102c4565b8a80fd5b6040513d84823e3d90fd5b5080fd5b90508c81813d8311610463575b61044881836112de565b8101031261045f576104599061131f565b386102ba565b8280fd5b503d61043e565b859285610280565b5060803660031901126100ec57610487611270565b61048f611286565b6001600160a01b03806104a061129c565b9316911680821015610767576401000276a4905b6040519361010085019185831067ffffffffffffffff841117610751576001600160a01b039462ffffff936040528652602086015216604084015233606084015242608084015260643560a0840152600160c08401521660e08201528160206001600160a01b0382541660246001600160a01b036002541660405194859384927f24d7806c00000000000000000000000000000000000000000000000000000000845260048401525af1908115610372578391610717575b50156106b3575b602060e06101046001600160a01b039385856002541660405196879586947f414bf389000000000000000000000000000000000000000000000000000000008652828151166004870152828982015116602487015262ffffff60408201511660448701528260608201511660648701526080810151608487015260a081015160a487015260c081015160c487015201511660e48401525af1908115610422578291610681575b50816001600160a01b038154166001600160a01b036002541690803b1561045f576024839260405194859384926305e17d4f60e21b845260048401525af180156103725761066d575b602082604051908152f35b61067783916112ae565b61042d5781610662565b90506020813d6020116106ab575b8161069c602093836112de565b8101031261042d575138610619565b3d915061068f565b816001600160a01b038154166001600160a01b0360025416813b1561045f578291602483926040519485938492637048027560e01b845260048401525af1801561042257610703575b5050610573565b61070c906112ae565b61042d5781386106fc565b90506020813d602011610749575b81610732602093836112de565b8101031261045f5761074390611410565b3861056c565b3d9150610725565b634e487b7160e01b600052604160045260246000fd5b73fffd8963efd1fc6a506488495d951d5263988d25906104b4565b50346100ec57806003193601126100ec5760206001600160a01b0360015416604051908152f35b50346100ec576101003660031901126100ec5760608060231936011261042d578060831936011261042d576001600160a01b0390816003541633036101f95760405160c081019080821067ffffffffffffffff831117610751578291604052600435815260c46020820191604435835286604082019660a4358852858301906064358252608084018535815260a085019160e435835260015416926040519a8b9889977f219f5d170000000000000000000000000000000000000000000000000000000089525160048901525160248801525160448701525160648601525160848501525160a48401525af18015610372576108a3578280f35b81813d83116108c8575b6108b781836112de565b8101031261042d576103649061132d565b503d6108ad565b50346100ec5760603660031901126100ec576108e9611270565b9061094660206108f7611286565b9361090061129c565b8454604051630b4c774160e11b81526001600160a01b039384166004820152968316602488015262ffffff90911660448701529094928391861690829081906064820190565b03915afa90811561042257839160e0918491610a45575b506004604051809681937f3850c7bd000000000000000000000000000000000000000000000000000000008352165afa918215610a395780926109a8575b6020838360405191168152f35b90915060e0833d60e011610a31575b816109c460e093836112de565b810103126100ec5782519082821682036100ec576109e46020850161131f565b506109f160408501611496565b506109fe60608501611496565b50610a0b60808501611496565b5060a084015160ff8116036100ec5750610a2960c060209401611410565b50903861099b565b3d91506109b7565b604051903d90823e3d90fd5b610a5d915060203d811161036b5761035c81836112de565b3861095d565b50346100ec5760808060031936011261042d57610a7e611270565b91606435906001600160a01b03916003928084541633036101f9576024948535928260443598168552602091600483526040862098604051610abf816112c2565b8781528785820152876040820152878360609282848201520152875b8b54811015610d1e5788610aef828e61134a565b9054908c1b1c8082526005885260408220546001906fffffffffffffffffffffffffffffffff1681871015610c1557918a610ba792604094855193610b33856112c2565b84528c8401528d8584015288888401528a8a8401525416908351948580948193630624e65f60e11b83526004830191909160808060a0830194805184526fffffffffffffffffffffffffffffffff602082015116602085015260408101516040850152606081015160608501520151910152565b03925af18015610c0a57610bdc575b505b6000198114610bc957600101610adb565b8a89634e487b7160e01b81526011600452fd5b610bfd9060403d604011610c03575b610bf581836112de565b8101906113fa565b50610bb6565b503d610beb565b6040513d8c823e3d90fd5b959a909192610d0b57996000198101908111610cf6576000928a604093610cb79398855193610c43856112c2565b84528c840152858584015280888401528a8a8401525416908351948580948193630624e65f60e11b83526004830191909160808060a0830194805184526fffffffffffffffffffffffffffffffff602082015116602085015260408101516040850152606081015160608501520151910152565b03925af18015610cea57610ccc575b50610bb8565b610ce49060403d604011610c0357610bf581836112de565b50610cc6565b6040513d6000823e3d90fd5b8d634e487b7160e01b60005260116004526000fd5b8d8c634e487b7160e01b81526011600452fd5b8880f35b50346100ec57806003193601126100ec57602060405160018152f35b50346100ec57610160366003190181811261045f5760601361042d57606036606319011261042d5760c435906001600160a01b038216820361045f5760e4359062ffffff8216820361109757610124358060020b810361117e5761014435918260020b8303610229576001600160a01b036003541633036101f9576001600160a01b038654166040516322afcccb60e01b815262ffffff86166004820152602081602481855afa908115611173578891611135575b5060020b156110ff5786906001600160a01b036001541690803b1561045f57602483926040519485938492637048027560e01b845260048401525af180156110f4576110e1575b50600435936001600160a01b03851685036110dc57606435946001600160a01b03861686036110dc5760405195868481011067ffffffffffffffff8589011117610751576001600160a01b03809262ffffff95890160405216875216602086015216604084015260020b606083015260020b608082015260243560a082015260843560c082015260443560e082015260a4356101008201526001600160a01b0382166101208201526101043561014082015260806101406101646001600160a01b0360015416938660405195869485937f883164560000000000000000000000000000000000000000000000000000000085526001600160a01b0381511660048601526001600160a01b03602082015116602486015262ffffff6040820151166044860152606081015160020b60648601528781015160020b608486015260a081015160a486015260c081015160c486015260e081015160e48601526101008101516101048601526001600160a01b036101208201511661012486015201516101448401525af1918215610372578391849361109b575b50836001600160a01b038154166001600160a01b0360015416813b1561045f5782916024839260405194859384926305e17d4f60e21b845260048401525af1801561042257611083575b50506001600160a01b03168352600460205261103a8160408520611378565b50825260056020526fffffffffffffffffffffffffffffffff6040832091167fffffffffffffffffffffffffffffffff0000000000000000000000000000000082541617905580f35b61108c906112ae565b61109757833861101b565b8380fd5b915091506080813d82116110d4575b816110b7608093836112de565b8101031261045f576110cd60208251920161132d565b9138610fd1565b3d91506110aa565b600080fd5b6110ed909691966112ae565b9438610e3a565b6040513d89823e3d90fd5b60248562ffffff604051917f7da9b5c3000000000000000000000000000000000000000000000000000000008352166004820152fd5b90506020813d60201161116b575b81611150602093836112de565b81010312611167576111619061131f565b38610df3565b8780fd5b3d9150611143565b6040513d8a823e3d90fd5b8480fd5b50346100ec5760603660031901126100ec576111fa61119f611270565b60206111a9611286565b916111b261129c565b8554604051630b4c774160e11b81526001600160a01b039384166004820152948316602486015262ffffff909116604485015292939092849190841690829081906064820190565b03915afa9182156103725760209392611218575b5060405191168152f35b611230919250833d811161036b5761035c81836112de565b903861120e565b90503461042d57602036600319011261042d576fffffffffffffffffffffffffffffffff60406020936004358152600585522054168152f35b600435906001600160a01b03821682036110dc57565b602435906001600160a01b03821682036110dc57565b6044359062ffffff821682036110dc57565b67ffffffffffffffff811161075157604052565b60a0810190811067ffffffffffffffff82111761075157604052565b90601f8019910116810190811067ffffffffffffffff82111761075157604052565b908160209103126110dc57516001600160a01b03811681036110dc5790565b51908160020b82036110dc57565b51906fffffffffffffffffffffffffffffffff821682036110dc57565b80548210156113625760005260206000200190600090565b634e487b7160e01b600052603260045260246000fd5b919060018301600090828252806020526040822054156000146113f457845494680100000000000000008610156113e0576113bd86600160409697980183558261134a565b81549060031b9087821b91600019901b1916179055549382526020522055600190565b602483634e487b7160e01b81526041600452fd5b50925050565b91908260409103126110dc576020825192015190565b519081151582036110dc57565b90917fffffff0000000000000000000000000000000000000000000000000000000000906040519260208401946bffffffffffffffffffffffff19809260601b16865260601b16603484015260e81b166048820152602b81526060810181811067ffffffffffffffff8211176107515760405251902090565b519061ffff821682036110dc5756fea264697066735822122004e0250dd2869564f9e8b318c6c87a9844085f6d6b23bc8eb8eb95cb3251cd9464736f6c63430008140033",
+  "devdoc": {
+    "details": "The  Pool Manager contract manages liquidity pools and positions on Uniswap V3.",
+    "errors": {
+      "NoAdmin(address)": [
+        {
+          "details": "Error thrown when no admin is found for the given address.",
+          "params": {
+            "sender": "The address for which no admin was found."
+          }
+        }
+      ],
+      "NoEnabledTickSpacing(uint256)": [
+        {
+          "details": "Error thrown when no enabled tick spacing is found for the given pool fee.",
+          "params": {
+            "poolFee": "The pool fee for which no enabled tick spacing was found."
+          }
+        }
+      ],
+      "NoInitialSqrtPrice(address,address,uint160)": [
+        {
+          "details": "Error thrown when no initial sqrt price is set for the given sell and buy assets.",
+          "params": {
+            "buyAsset": "The address of the buy asset.",
+            "fee": "The fee of the pool.",
+            "sellAsset": "The address of the sell asset."
+          }
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {
+      "constructor": {
+        "details": "Constructor to initialize the contract.",
+        "params": {
+          "_uniswapParams": "The Uniswap parameters."
+        }
+      },
+      "createPool(address,address,uint24)": {
+        "details": "Creates a new pool for the given tokens and fee.",
+        "params": {
+          "buyAsset": "The address of the buy asset.",
+          "poolFee": "The fee of the pool.",
+          "sellAsset": "The address of the sell asset."
+        }
+      },
+      "createPosition((address,uint256,uint256),(address,uint256,uint256),address,uint24,uint256,int24,int24)": {
+        "details": "Creates a new liquidity position for the given assets and owner.",
+        "params": {
+          "buyAsset": "The LP token for the buy asset.",
+          "deadline": "The deadline for the transaction.",
+          "owner": "The address of the owner.",
+          "poolFee": "The fee of the pool.",
+          "sellAsset": "The LP token for the sell asset.",
+          "tickLower": "The lower tick for the position.",
+          "tickUpper": "The upper tick for the position."
+        }
+      },
+      "decreaseLiquidity(address,uint256,uint256,uint256)": {
+        "details": "Decreases liquidity for a given position.",
+        "params": {
+          "amount0Min": "Minimum amount of token0.",
+          "amount1Min": "Minimum amount of token1.",
+          "deadline": "Deadline for the transaction.",
+          "owner": "Address of the position owner."
+        }
+      },
+      "exactInputSingle(address,address,uint24,uint256)": {
+        "details": "Executes a swap operation with exact input amount.",
+        "params": {
+          "amountIn": "Input token amount.",
+          "fee": "Fee tier of the pool.",
+          "tokenIn": "Address of the input token.",
+          "tokenOut": "Address of the output token."
+        },
+        "returns": {
+          "amountOut": "Output token amount."
+        }
+      },
+      "getPool(address,address,uint24)": {
+        "details": "Returns the address of the pool for the given tokens and fee.",
+        "params": {
+          "fee": "The fee of the pool.",
+          "tokenA": "The address of token A.",
+          "tokenB": "The address of token B."
+        },
+        "returns": {
+          "pool": "The address of the pool."
+        }
+      },
+      "getPoolPrice(address,address,uint24)": {
+        "details": "Gets the price of a pool.",
+        "params": {
+          "fee": "Fee tier of the pool.",
+          "tokenA": "Address of the first token.",
+          "tokenB": "Address of the second token."
+        },
+        "returns": {
+          "sqrtPriceX96": "Current sqrt price of the pool."
+        }
+      },
+      "increaseLiquidity(uint256,(address,uint256,uint256),(address,uint256,uint256),uint256)": {
+        "details": "Increases liquidity for a given position.",
+        "params": {
+          "buyAsset": "Details of the buy asset.",
+          "deadline": "Deadline for the transaction.",
+          "sellAsset": "Details of the sell asset.",
+          "tokenId": "Token ID of the position."
+        }
+      },
+      "setInitialSqrtPrice(address,address,uint24,uint160)": {
+        "details": "Sets the initial sqrt price for a pool.",
+        "params": {
+          "buyToken": "Address of the buy token.",
+          "fee": "Fee tier of the pool.",
+          "sellToken": "Address of the sell token.",
+          "sqrtPriceX96": "Initial sqrt price of the pool."
+        }
+      }
+    },
+    "stateVariables": {
+      "MIN_SWAP_OUT_AMOUNT": {
+        "details": "Minimum swap out amount."
+      },
+      "admin": {
+        "details": "The admin address."
+      },
+      "factory": {
+        "details": "The Uniswap V3 factory contract."
+      },
+      "initialSqrtPrice": {
+        "details": "Mapping of pool IDs to initial sqrt prices."
+      },
+      "liquidities": {
+        "details": "Mapping of token IDs to liquidity amounts."
+      },
+      "positionManager": {
+        "details": "The Uniswap position manager contract."
+      },
+      "router": {
+        "details": "The swap router contract."
+      },
+      "tokenIds": {
+        "details": "Mapping of token IDs to EnumerableSet of uints."
+      }
+    },
+    "title": "PoolManager",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "This contract is used to interact with Uniswap V3 pools and positions.",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 11701,
+        "contract": "contracts/PoolManager.sol:PoolManager",
+        "label": "factory",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_contract(IUniswapV3Factory)13846"
+      },
+      {
+        "astId": 11705,
+        "contract": "contracts/PoolManager.sol:PoolManager",
+        "label": "positionManager",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_contract(IUniswapPositionManager)13367"
+      },
+      {
+        "astId": 11709,
+        "contract": "contracts/PoolManager.sol:PoolManager",
+        "label": "router",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_contract(ISwapRouter)16297"
+      },
+      {
+        "astId": 11712,
+        "contract": "contracts/PoolManager.sol:PoolManager",
+        "label": "admin",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_address"
+      },
+      {
+        "astId": 11720,
+        "contract": "contracts/PoolManager.sol:PoolManager",
+        "label": "tokenIds",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_address,t_struct(UintSet)7238_storage)"
+      },
+      {
+        "astId": 11725,
+        "contract": "contracts/PoolManager.sol:PoolManager",
+        "label": "liquidities",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_uint256,t_uint128)"
+      },
+      {
+        "astId": 11730,
+        "contract": "contracts/PoolManager.sol:PoolManager",
+        "label": "initialSqrtPrice",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_bytes32,t_uint160)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_bytes32)dyn_storage": {
+        "base": "t_bytes32",
+        "encoding": "dynamic_array",
+        "label": "bytes32[]",
+        "numberOfBytes": "32"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_contract(ISwapRouter)16297": {
+        "encoding": "inplace",
+        "label": "contract ISwapRouter",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IUniswapPositionManager)13367": {
+        "encoding": "inplace",
+        "label": "contract IUniswapPositionManager",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IUniswapV3Factory)13846": {
+        "encoding": "inplace",
+        "label": "contract IUniswapV3Factory",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_struct(UintSet)7238_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct EnumerableSet.UintSet)",
+        "numberOfBytes": "32",
+        "value": "t_struct(UintSet)7238_storage"
+      },
+      "t_mapping(t_bytes32,t_uint160)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => uint160)",
+        "numberOfBytes": "32",
+        "value": "t_uint160"
+      },
+      "t_mapping(t_bytes32,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_uint256,t_uint128)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => uint128)",
+        "numberOfBytes": "32",
+        "value": "t_uint128"
+      },
+      "t_struct(Set)6766_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableSet.Set",
+        "members": [
+          {
+            "astId": 6761,
+            "contract": "contracts/PoolManager.sol:PoolManager",
+            "label": "_values",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_bytes32)dyn_storage"
+          },
+          {
+            "astId": 6765,
+            "contract": "contracts/PoolManager.sol:PoolManager",
+            "label": "_positions",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_bytes32,t_uint256)"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_struct(UintSet)7238_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableSet.UintSet",
+        "members": [
+          {
+            "astId": 7237,
+            "contract": "contracts/PoolManager.sol:PoolManager",
+            "label": "_inner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_struct(Set)6766_storage"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_uint128": {
+        "encoding": "inplace",
+        "label": "uint128",
+        "numberOfBytes": "16"
+      },
+      "t_uint160": {
+        "encoding": "inplace",
+        "label": "uint160",
+        "numberOfBytes": "20"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

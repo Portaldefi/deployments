@@ -1,0 +1,874 @@
+{
+  "address": "0x443025F0adC5f1d03eFCaF08432dA53F39DeAdAE",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_tokenAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address[]",
+          "name": "primaryValidators",
+          "type": "address[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "address[]",
+          "name": "secondaryValidators",
+          "type": "address[]"
+        }
+      ],
+      "name": "AuctionEnded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "AuctionStarted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "bidder",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "BidIncreased",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "bidder",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "BidSubmitted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "validator",
+          "type": "address"
+        }
+      ],
+      "name": "KeyGenerationParticipated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "status",
+          "type": "bool"
+        }
+      ],
+      "name": "KeygenCompleteStatus",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "auctionActive",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "bid",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "bidders",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "bids",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "endAuction",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPrimaryValidators",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getSecondaryValidators",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getVerifiedValidators",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "hasParticipated",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "increaseBid",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newValidatorSet",
+          "type": "address"
+        }
+      ],
+      "name": "isKeygenComplete",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "keyGen",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "keyGenSecondary",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "keyGenerationCompleted",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "minActiveBid",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "numPrimaryValidators",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "numSecondaryValidators",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "primaryParticipationEndTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "primaryValidators",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "secondaryParticipationEndTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "secondaryValidators",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_numPrimaryValidators",
+          "type": "uint256"
+        }
+      ],
+      "name": "setNumPrimaryValidators",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_numSecondaryValidators",
+          "type": "uint256"
+        }
+      ],
+      "name": "setNumSecondaryValidators",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_validatorThreshold",
+          "type": "uint256"
+        }
+      ],
+      "name": "setValidatorThreshold",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "startAuction",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "duration",
+          "type": "uint256"
+        }
+      ],
+      "name": "startKeyGenerationProcess",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokenContract",
+      "outputs": [
+        {
+          "internalType": "contract IPortalToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "validatorThreshold",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "verifiedValidators",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xfa6f495979d812bc8b224a695c7e9c9cff3e9cf5c1330b0e2fea3306845fb426",
+  "receipt": {
+    "to": null,
+    "from": "0xecF71FaeDabB5f47D3cC386Eaa45A41f29B8A7eb",
+    "contractAddress": "0x443025F0adC5f1d03eFCaF08432dA53F39DeAdAE",
+    "transactionIndex": 0,
+    "gasUsed": "1903296",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x7ecad10f4d2f0f811e2369573d04b845c21ef767c274cf3bcb8ab83b3c43b05d",
+    "transactionHash": "0xfa6f495979d812bc8b224a695c7e9c9cff3e9cf5c1330b0e2fea3306845fb426",
+    "logs": [],
+    "blockNumber": 311953,
+    "cumulativeGasUsed": "1903296",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x742f24592459e189f520214E2f2110C4528d784c"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "2fd20d911d8de013566405c6f17dd1a7",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_tokenAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"primaryValidators\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"secondaryValidators\",\"type\":\"address[]\"}],\"name\":\"AuctionEnded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"AuctionStarted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"bidder\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newAmount\",\"type\":\"uint256\"}],\"name\":\"BidIncreased\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"bidder\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"BidSubmitted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"KeyGenerationParticipated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"status\",\"type\":\"bool\"}],\"name\":\"KeygenCompleteStatus\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"auctionActive\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"bid\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"bidders\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"bids\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"endAuction\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPrimaryValidators\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSecondaryValidators\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getVerifiedValidators\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"hasParticipated\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"increaseBid\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newValidatorSet\",\"type\":\"address\"}],\"name\":\"isKeygenComplete\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"keyGen\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"keyGenSecondary\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"keyGenerationCompleted\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"minActiveBid\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"numPrimaryValidators\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"numSecondaryValidators\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"primaryParticipationEndTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"primaryValidators\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"secondaryParticipationEndTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"secondaryValidators\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_numPrimaryValidators\",\"type\":\"uint256\"}],\"name\":\"setNumPrimaryValidators\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_numSecondaryValidators\",\"type\":\"uint256\"}],\"name\":\"setNumSecondaryValidators\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_validatorThreshold\",\"type\":\"uint256\"}],\"name\":\"setValidatorThreshold\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"startAuction\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"duration\",\"type\":\"uint256\"}],\"name\":\"startKeyGenerationProcess\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokenContract\",\"outputs\":[{\"internalType\":\"contract IPortalToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"validatorThreshold\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"verifiedValidators\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Contract which manages the auction process, bids, keygen ceremony\",\"events\":{\"AuctionEnded(address[],address[])\":{\"params\":{\"primaryValidators\":\"The list of primary validators\",\"secondaryValidators\":\"The list of secondary validators\"}},\"BidIncreased(address,uint256)\":{\"params\":{\"bidder\":\"The address of the bidder\",\"newAmount\":\"The new amount of the bid\"}},\"BidSubmitted(address,uint256)\":{\"params\":{\"amount\":\"The amount of the bid\",\"bidder\":\"The address of the bidder\"}},\"KeyGenerationParticipated(address)\":{\"params\":{\"validator\":\"The address of the participated validator\"}},\"KeygenCompleteStatus(bool)\":{\"params\":{\"status\":\"The status of key generation completion\"}}},\"kind\":\"dev\",\"methods\":{\"bid(uint256)\":{\"details\":\"Function to submit a bid for the auction\",\"params\":{\"amount\":\"The amount of the bid\"}},\"constructor\":{\"details\":\"Constructor to initialize the Auction Management contract.\",\"params\":{\"_tokenAddress\":\"Address of the Portal Token contract.\"}},\"endAuction()\":{\"details\":\"Function to end the auction and select primary and secondary validators\"},\"getPrimaryValidators()\":{\"details\":\"returns list of products\"},\"getSecondaryValidators()\":{\"details\":\"returns list of secondary validators\"},\"increaseBid(uint256)\":{\"details\":\"Function to increase an existing bid\",\"params\":{\"amount\":\"The amount to increase the bid by\"}},\"isKeygenComplete(address)\":{\"params\":{\"_newValidatorSet\":\"address of the new validator set\"}},\"setNumPrimaryValidators(uint256)\":{\"details\":\"Function to adjust the number of primary validators, restricted to contract owner\",\"params\":{\"_numPrimaryValidators\":\"Number of primary validators\"}},\"setNumSecondaryValidators(uint256)\":{\"details\":\"Function to adjust the number of secondary validators, restricted to contract owner\",\"params\":{\"_numSecondaryValidators\":\"Number of secondary validators\"}},\"setValidatorThreshold(uint256)\":{\"details\":\"Function to adjust the validator threshold, restricted to contract owner\",\"params\":{\"_validatorThreshold\":\"Number of validators required to approve a transaction\"}},\"startAuction()\":{\"details\":\"Function to start the auction, restricted to contract owner\"},\"startKeyGenerationProcess(uint256)\":{\"params\":{\"duration\":\"The duration of the primary key generation process\"}}},\"title\":\"Auction Management Contract\",\"version\":1},\"userdoc\":{\"events\":{\"AuctionEnded(address[],address[])\":{\"notice\":\"Fired when the auction ends by validators.\"},\"AuctionStarted()\":{\"notice\":\"Fired when auction starts by validators.\"},\"BidIncreased(address,uint256)\":{\"notice\":\"Fired when a user increases their bid.\"},\"BidSubmitted(address,uint256)\":{\"notice\":\"Fired when a user submits a bid.\"},\"KeyGenerationParticipated(address)\":{\"notice\":\"Fired when a validator participates in key generation\"},\"KeygenCompleteStatus(bool)\":{\"notice\":\"Event to indicate key generation completion\"}},\"kind\":\"user\",\"methods\":{\"auctionActive()\":{\"notice\":\"current state of the Action\"},\"bidders(uint256)\":{\"notice\":\"list of bidders\"},\"bids(address)\":{\"notice\":\"mapping of bidders to their bids\"},\"getVerifiedValidators()\":{\"notice\":\"Function to get the list of verified validators\"},\"hasParticipated(address)\":{\"notice\":\"mapping to track validator participation\"},\"isKeygenComplete(address)\":{\"notice\":\"Helper function to check owners of newValidatorSet same as verifiedValidators\"},\"keyGen()\":{\"notice\":\"function to restrict the access to primary validators to perform keygen ceremony\"},\"keyGenSecondary()\":{\"notice\":\"function to restrict the access to secondary validators to perform keygen ceremony after primary validators keygen completes\"},\"keyGenerationCompleted()\":{\"notice\":\"Flag to indicate key generation completion\"},\"minActiveBid()\":{\"notice\":\"least amount of bid to be a validator\"},\"numPrimaryValidators()\":{\"notice\":\"number of primary validators initially set to 3\"},\"numSecondaryValidators()\":{\"notice\":\"number of secondary validators initially set to 2\"},\"primaryParticipationEndTime()\":{\"notice\":\"Time by which primary validators must participate\"},\"primaryValidators(uint256)\":{\"notice\":\"list of primary validators\"},\"secondaryParticipationEndTime()\":{\"notice\":\"Time by which secondary validators must participate\"},\"secondaryValidators(uint256)\":{\"notice\":\"list of secondary validators\"},\"startKeyGenerationProcess(uint256)\":{\"notice\":\"Function to start key generation process, callable by the contract owner\"},\"tokenContract()\":{\"notice\":\"Portal Token contract\"},\"validatorThreshold()\":{\"notice\":\"number of validators required to approve a transaction initially set to 2\"},\"verifiedValidators(uint256)\":{\"notice\":\"List of verified primary validators\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/AuctionManagement.sol\":\"AuctionManagement\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[],\"viaIR\":true},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the value of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the value of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves a `value` amount of tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 value) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets a `value` amount of tokens as the allowance of `spender` over the\\n     * caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 value) external returns (bool);\\n\\n    /**\\n     * @dev Moves a `value` amount of tokens from `from` to `to` using the\\n     * allowance mechanism. `value` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 value) external returns (bool);\\n}\\n\",\"keccak256\":\"0xc6a8ff0ea489379b61faa647490411b80102578440ab9d84e9a957cc12164e70\",\"license\":\"MIT\"},\"contracts/AuctionManagement.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n// solhint-disable-next-line compiler-version\\npragma solidity ^0.8.20;\\n\\nimport {IPortalToken} from \\\"./interfaces/IPortalToken.sol\\\";\\nimport {IMultiSigWallet} from \\\"./interfaces/IMultiSigWallet.sol\\\";\\n\\n/**\\n * @title Auction Management Contract\\n * @dev Contract which manages the auction process, bids, keygen ceremony\\n */\\ncontract AuctionManagement {\\n    /**\\n     * @notice current state of the Action\\n     */\\n    bool public auctionActive;\\n\\n    /**\\n     * @notice mapping of bidders to their bids\\n     */\\n    mapping(address => uint256) public bids;\\n\\n    /**\\n     * @notice list of bidders\\n     */\\n    address[] public bidders;\\n\\n    /**\\n     * @notice list of primary validators\\n     */\\n    address[] public primaryValidators;\\n\\n    /**\\n     * @notice list of secondary validators\\n     */\\n    address[] public secondaryValidators;\\n\\n    /**\\n     * @notice number of primary validators initially set to 3\\n     */\\n    uint public numPrimaryValidators = 3; // Default value\\n\\n    /**\\n     * @notice number of secondary validators initially set to 2\\n     */\\n    uint public numSecondaryValidators = 2; // Default value\\n\\n    /**\\n     * @notice number of validators required to approve a transaction initially set to 2\\n     */\\n    uint public validatorThreshold = 2;\\n\\n    /**\\n     * @notice least amount of bid to be a validator\\n     */\\n    uint public minActiveBid;\\n\\n    /**\\n     * @notice  Portal Token contract\\n     */\\n    IPortalToken public tokenContract;\\n\\n    /**\\n     * @dev Constructor to initialize the Auction Management contract.\\n     * @param _tokenAddress Address of the Portal Token contract.\\n     */\\n    constructor(address _tokenAddress) {\\n        tokenContract = IPortalToken(_tokenAddress);\\n    }\\n\\n    // Custom onlyOwner modifier that checks ownership against the tokenContract's owner\\n    modifier onlyOwner() {\\n        require(\\n            tokenContract.owner() == msg.sender,\\n            \\\"Caller is not the token contract owner\\\"\\n        );\\n        _;\\n    }\\n\\n    /**\\n     * @notice Fired when auction starts by validators.\\n     */\\n    event AuctionStarted();\\n\\n    /**\\n     * @notice Fired when a user submits a bid.\\n     * @param bidder The address of the bidder\\n     * @param amount The amount of the bid\\n     */\\n    event BidSubmitted(address bidder, uint256 amount);\\n\\n    /**\\n     * @notice Fired when a user increases their bid.\\n     * @param bidder The address of the bidder\\n     * @param newAmount The new amount of the bid\\n     */\\n    event BidIncreased(address bidder, uint256 newAmount);\\n\\n    /**\\n     * @notice Fired when the auction ends by validators.\\n     * @param primaryValidators The list of primary validators\\n     * @param secondaryValidators The list of secondary validators\\n     */\\n    event AuctionEnded(\\n        address[] primaryValidators,\\n        address[] secondaryValidators\\n    );\\n\\n    /**\\n     * @dev Function to adjust the number of primary validators, restricted to contract owner\\n     * @param _numPrimaryValidators Number of primary validators\\n     */\\n    function setNumPrimaryValidators(\\n        uint _numPrimaryValidators\\n    ) public onlyOwner {\\n        numPrimaryValidators = _numPrimaryValidators;\\n    }\\n\\n    /**\\n     * @dev Function to adjust the number of secondary validators, restricted to contract owner\\n     * @param _numSecondaryValidators Number of secondary validators\\n     */\\n    function setNumSecondaryValidators(\\n        uint _numSecondaryValidators\\n    ) public onlyOwner {\\n        numSecondaryValidators = _numSecondaryValidators;\\n    }\\n\\n    /**\\n     * @dev Function to adjust the validator threshold, restricted to contract owner\\n     * @param _validatorThreshold Number of validators required to approve a transaction\\n     */\\n    function setValidatorThreshold(uint _validatorThreshold) public onlyOwner {\\n        validatorThreshold = _validatorThreshold;\\n    }\\n\\n    /**\\n     * @dev Function to start the auction, restricted to contract owner\\n     */\\n    function startAuction() public onlyOwner {\\n        require(!auctionActive, \\\"Auction is already active.\\\");\\n        auctionActive = true;\\n        delete verifiedValidators;\\n        minActiveBid = 0;\\n        emit AuctionStarted();\\n    }\\n\\n    /**\\n     * @dev Function to submit a bid for the auction\\n     * @param amount The amount of the bid\\n     */\\n    function bid(uint256 amount) public {\\n        require(auctionActive, \\\"Auction is not active.\\\");\\n        require(amount > 0, \\\"Bid amount must be greater than zero.\\\");\\n        require(\\n            bids[msg.sender] == 0,\\n            \\\"Bid already placed, use increaseBid to increase your bid\\\"\\n        );\\n        require(\\n            amount <= tokenContract.getLockedTokens(msg.sender),\\n            \\\"Bid amount must be less than lockedTokens\\\"\\n        );\\n        bids[msg.sender] = amount;\\n        bidders.push(msg.sender);\\n        emit BidSubmitted(msg.sender, amount);\\n    }\\n\\n    /**\\n     * @dev Function to increase an existing bid\\n     * @param amount The amount to increase the bid by\\n     */\\n    function increaseBid(uint256 amount) public {\\n        require(bids[msg.sender] > 0, \\\"No existing bid to increase\\\");\\n        require(amount > 0, \\\"Increase amount must be greater than zero\\\");\\n        uint256 newAmount = bids[msg.sender] + amount;\\n        require(\\n            newAmount <= tokenContract.getLockedTokens(msg.sender),\\n            \\\"Bid amount must be less than lockedTokens\\\"\\n        );\\n\\n        bids[msg.sender] = newAmount;\\n        emit BidIncreased(msg.sender, newAmount);\\n    }\\n\\n    /**\\n     * @dev Function to end the auction and select primary and secondary validators\\n     */\\n    function endAuction() public onlyOwner {\\n        require(auctionActive, \\\"Auction is not active.\\\");\\n        auctionActive = false;\\n\\n        // Use quickSort to sort bidders based on their bids\\n        quickSort(0, int(bidders.length) - 1);\\n\\n        // Clear previous validators\\n        delete primaryValidators;\\n        delete secondaryValidators;\\n\\n        maxEligibleSecondary = 0;\\n\\n        // Select top N bidders as primary validators based on numPrimaryValidators\\n        for (uint i = 0; i < numPrimaryValidators && i < bidders.length; i++) {\\n            primaryValidators.push(bidders[bidders.length - i - 1]);\\n        }\\n\\n        // Select next M highest bidders as secondary validators based on numSecondaryValidators\\n        for (\\n            uint i = numPrimaryValidators;\\n            i < numPrimaryValidators + numSecondaryValidators &&\\n                i < bidders.length;\\n            i++\\n        ) {\\n            secondaryValidators.push(bidders[bidders.length - i - 1]);\\n        }\\n\\n        if (primaryValidators.length > 0) {\\n            minActiveBid = bids[\\n                primaryValidators[primaryValidators.length - 1]\\n            ];\\n        }\\n        for (uint i = 0; i < bidders.length; i++) {\\n            delete bids[bidders[i]];\\n        }\\n        delete bidders;\\n        keyGenerationCompleted = false; // Reset for a new key generation process\\n\\n        emit AuctionEnded(primaryValidators, secondaryValidators);\\n    }\\n\\n    /**\\n     * @dev private function to sort the bidders\\n     * @param left index to start sorting from\\n     * @param right index to end sorting from\\n     */\\n    function quickSort(int left, int right) private {\\n        if (left < right) {\\n            int pivotIndex = partition(left, right);\\n            quickSort(left, pivotIndex - 1);\\n            quickSort(pivotIndex + 1, right);\\n        }\\n    }\\n\\n    /**\\n     * @dev private function to partition the bidders\\n     * @param left index to start partitioning from\\n     * @param right index to end partitioning from\\n     * @return the pivot index\\n     */\\n    function partition(int left, int right) private returns (int) {\\n        uint pivotValue = bids[bidders[uint(right)]];\\n        int i = left - 1;\\n\\n        for (int j = left; j < right; j++) {\\n            if (bids[bidders[uint(j)]] <= pivotValue) {\\n                i++;\\n                (bidders[uint(i)], bidders[uint(j)]) = (\\n                    bidders[uint(j)],\\n                    bidders[uint(i)]\\n                );\\n            }\\n        }\\n\\n        (bidders[uint(i + 1)], bidders[uint(right)]) = (\\n            bidders[uint(right)],\\n            bidders[uint(i + 1)]\\n        );\\n        return i + 1;\\n    }\\n\\n    /**\\n     * @dev returns list of products\\n     */\\n    function getPrimaryValidators() public view returns (address[] memory) {\\n        return primaryValidators;\\n    }\\n\\n    /**\\n     * @dev returns list of secondary validators\\n     */\\n    function getSecondaryValidators() public view returns (address[] memory) {\\n        return secondaryValidators;\\n    }\\n\\n    /**\\n     * @notice mapping to track validator participation\\n     */\\n    mapping(address => bool) public hasParticipated;\\n\\n    /**\\n     * @notice Time by which primary validators must participate\\n     */\\n    uint256 public primaryParticipationEndTime;\\n\\n    /**\\n     * @notice Time by which secondary validators must participate\\n     */\\n    uint256 public secondaryParticipationEndTime;\\n\\n    /**\\n     * @notice Flag to indicate key generation completion\\n     */\\n    bool public keyGenerationCompleted = false;\\n\\n    /**\\n     * @notice List of verified primary validators\\n     */\\n    address[] public verifiedValidators;\\n\\n    /**\\n     * @notice maximum number of eligible secondary validators\\n     */\\n    uint256 private maxEligibleSecondary;\\n\\n    // Event to indicate key generation participation\\n    /**\\n     * @notice Fired when a validator participates in key generation\\n     * @param validator The address of the participated validator\\n     */\\n    event KeyGenerationParticipated(address validator);\\n\\n    /**\\n     * @notice modifier to restrict the access to primary validators\\n     */\\n    modifier onlyPrimaryValidators() {\\n        require(\\n            isPrimaryValidator(msg.sender),\\n            \\\"Caller is not a primary validator\\\"\\n        );\\n        _;\\n    }\\n\\n    /**\\n     * @notice function to restrict the access to primary validators to perform keygen ceremony\\n     */\\n    function keyGen() public onlyPrimaryValidators {\\n        require(\\n            block.timestamp <= primaryParticipationEndTime,\\n            \\\"Participation window has expired\\\"\\n        );\\n        require(\\n            !hasParticipated[msg.sender],\\n            \\\"Validator has already participated\\\"\\n        );\\n\\n        hasParticipated[msg.sender] = true;\\n        verifiedValidators.push(msg.sender);\\n        emit KeyGenerationParticipated(msg.sender);\\n\\n        // Check if all primary validators have participated\\n        if (verifiedValidators.length == numPrimaryValidators) {\\n            keyGenerationCompleted = true;\\n        }\\n    }\\n\\n    /**\\n     * @notice function to restrict the access to secondary validators to perform keygen ceremony after primary validators keygen completes\\n     */\\n    function keyGenSecondary() public {\\n        require(\\n            block.timestamp > primaryParticipationEndTime,\\n            \\\"Primary Participation window is still open\\\"\\n        );\\n        require(\\n            block.timestamp <= secondaryParticipationEndTime,\\n            \\\"Participation window is closed\\\"\\n        );\\n        require(\\n            !hasParticipated[msg.sender],\\n            \\\"Validator has already participated\\\"\\n        );\\n        require(!keyGenerationCompleted, \\\"Key generation already completed\\\");\\n        if (maxEligibleSecondary == 0) {\\n            maxEligibleSecondary =\\n                numPrimaryValidators -\\n                verifiedValidators.length;\\n        }\\n        for (\\n            uint i = 0;\\n            i < secondaryValidators.length && i < maxEligibleSecondary;\\n            i++\\n        ) {\\n            if (secondaryValidators[i] == msg.sender) {\\n                hasParticipated[msg.sender] = true;\\n                verifiedValidators.push(msg.sender);\\n                emit KeyGenerationParticipated(msg.sender);\\n            }\\n        }\\n        // Check if all eligible secondary validators have participated\\n        if (verifiedValidators.length == primaryValidators.length) {\\n            keyGenerationCompleted = true;\\n        }\\n    }\\n\\n    /**\\n     * @notice  Function to start key generation process, callable by the contract owner\\n     * @param duration The duration of the primary key generation process\\n     */\\n    function startKeyGenerationProcess(uint256 duration) public onlyOwner {\\n        require(\\n            !keyGenerationCompleted,\\n            \\\"Key generation already completed or in progress\\\"\\n        );\\n        primaryParticipationEndTime = block.timestamp + duration;\\n        secondaryParticipationEndTime = block.timestamp + 2 * duration;\\n    }\\n\\n    /**\\n     * @notice Function to verify primary validator address\\n     * @param validator The primary validator address to be verified\\n     */\\n    function isPrimaryValidator(address validator) private view returns (bool) {\\n        for (uint i = 0; i < primaryValidators.length; i++) {\\n            if (primaryValidators[i] == validator) {\\n                return true;\\n            }\\n        }\\n        return false;\\n    }\\n\\n    /**\\n     * @notice Event to indicate key generation completion\\n     * @param status The status of key generation completion\\n     */\\n    event KeygenCompleteStatus(bool status);\\n\\n    /**\\n     * @notice Helper function to check owners of newValidatorSet same as verifiedValidators\\n     * @param _newValidatorSet address of the new validator set\\n     */\\n    function isKeygenComplete(\\n        address _newValidatorSet\\n    ) public onlyOwner {\\n        require(keyGenerationCompleted, \\\"Key generation not completed\\\");\\n        require(\\n            IMultiSigWallet(_newValidatorSet).getOwners().length ==\\n                verifiedValidators.length,\\n            \\\"Owner count mismatch\\\"\\n        );\\n        require(\\n            IMultiSigWallet(_newValidatorSet).getThreshold() ==\\n                validatorThreshold,\\n            \\\"Threshold mismatch\\\"\\n        );\\n        for (uint i = 0; i < verifiedValidators.length; i++) {\\n            require(\\n                IMultiSigWallet(_newValidatorSet).isOwner(\\n                    verifiedValidators[i]\\n                ),\\n                \\\"verified primary validator is not part of validatorSet\\\"\\n            );\\n        }\\n        for (uint i = 0; i < verifiedValidators.length; i++) {\\n            delete hasParticipated[verifiedValidators[i]];\\n        }\\n        emit KeygenCompleteStatus(true);\\n    }\\n\\n    /**\\n     * @notice Function to get the list of verified validators\\n     */\\n    function getVerifiedValidators() public view returns (address[] memory) {\\n        return verifiedValidators;\\n    }\\n}\\n\",\"keccak256\":\"0x0364a5d835d189c9605c8d69686940f72ea19f086366d854d0ea282d6d3503f2\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/IMultiSigWallet.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n// solhint-disable-next-line compiler-version\\npragma solidity ^0.8.20;\\n\\n/**\\n * @title IMultiSigWallet\\n * @notice Interface for the MultiSigWallet contract deployed on the Ethereum network\\n */\\ninterface IMultiSigWallet {\\n    function isOwner(address owner) external view returns (bool);\\n    function getThreshold() external view returns (uint256);\\n    function getOwners() external view returns (address[] memory);\\n}\\n\",\"keccak256\":\"0x0f48fc4b439084776fa0076a3235c216fc19d1e256b1815dc6581f11f5fa0885\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/IPortalToken.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\npragma solidity ^0.8.20;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\n/**\\n * @title IPortalToken\\n * The Portal Token interface defines functions for the PORTAL token with\\n * respect to the auction process for validators. This contract is relevant on\\n * the Portal chain.\\n */\\ninterface IPortalToken is IERC20 {\\n    /**\\n     * @dev Returns the address of the owner of the PORTAL Token contract. This\\n     * should be the address of the Portal Foundation.\\n     */\\n    function owner() external view returns (address);\\n\\n    /**\\n     * Returns the number of tokens locked by a potential validator (bidder)\\n     * @param _user Address of the potential validator (bidder)\\n     * @return The number of tokens locked by the potential validator (bidder)\\n     */\\n    function getLockedTokens(address _user) external view returns (uint);\\n}\\n\",\"keccak256\":\"0xd76da518db488c619b5bd5da945593ca43998f47953bc1cc0ceae4bf7416c2f5\",\"license\":\"BUSL-1.1\"}},\"version\":1}",
+  "bytecode": "0x60803461008957601f61207938819003918201601f19168301916001600160401b0383118484101761008e5780849260209460405283398101031261008957516001600160a01b038116908190036100895760036005556002600655600260075560ff19600d5416600d5560018060a01b03196009541617600955604051611fd490816100a58239f35b600080fd5b634e487b7160e01b600052604160045260246000fdfe60806040908082526004918236101561001757600080fd5b600091823560e01c90816270c53714611764575080630ef99855146117315780630fa90002146115de5780631e58e5f6146113d3578063305937ae1461126d57806335132a6b1461123b57806338ff7119146112175780634264bd1d146111f9578063454a2ab314610fd657806346e124e814610f405780634fd101d714610f2257806355a373d614610efb5780635bc0fbc714610e655780635e1c519b14610de257806362ea82db14610da95780636b64c76914610c3f57806383faa2b814610ba05780638f64dd3d14610b825780639222800614610b615780639780f06714610b43578063ae5f681914610b25578063b4fb3ee314610ae7578063baa3492e14610aae578063bc9e8cc214610a90578063cbd737ff14610a4e578063cff29dfd14610a09578063dab4f165146109e6578063ec93d8b5146105665763fe67a54b1461016357600080fd5b346105625781600319360112610562576001600160a01b039182600954169282518094638da5cb5b60e01b8252818760209788935afa801561055857839061051e575b6101b4915082163314611aac565b81546101c260ff8216611b1d565b60ff1980911683556002906101e06101da8354611c26565b85611d3d565b6003948554858755806104dd575b5087548589558061049c575b5084600f55845b600554811080610492575b156102b35761021c818554611c47565b60001981019081116102a05761023286916119e0565b905490891b1c1687546801000000000000000081101561028d57610288929161026382600161028394018c556119a9565b90919082549060031b916001600160a01b03809116831b921b1916179055565b611c38565b610201565b60248860418d634e487b7160e01b835252fd5b60248760118c634e487b7160e01b835252fd5b5090959492939460059687545b6102ce895460065490611c03565b811080610488575b1561035e576102e6818654611c47565b600019810190811161034b576102fc88916119e0565b905490881b1c168a5468010000000000000000811015610338579161028361033192610263858f60016102ce98019055611972565b90506102c0565b60248a60418e634e487b7160e01b835252fd5b60248960118d634e487b7160e01b835252fd5b50938693948982549081610443575b5050845b86548110156103a457808861038861039f936119e0565b905490861b1c168752600185528686812055611c38565b610371565b5090508480549085815581610408575b857fd405c6708d1fd70eafbcffe5fa89c389fddaf066f08a30a7445d15f3713eeb5f6103f5876104028888600d5416600d5582519383859485528401611c54565b9083820390840152611cba565b0390a180f35b85527f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace908101905b818110156103b457858155600101610430565b6000198201918211610475575061045a88916119a9565b905490841b1c1685526001835283852054600855878061036d565b866011602492634e487b7160e01b835252fd5b50845481106102d6565b508354811061020c565b8886527f8a35acfbc15ff81a39ae7d344fd709f28e8600b4aa8c65c6b64bfe7fe36bd19b908101905b8181106104d257506101fa565b8681556001016104c5565b8686527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b908101905b81811061051357506101ee565b868155600101610506565b508481813d8311610551575b6105348183611a5b565b8101031261054d576105486101b491611a93565b6101a6565b8280fd5b503d61052a565b84513d85823e3d90fd5b5080fd5b5082903461054d576020806003193601126109e2578235926001600160a01b03908185168095036109de5780838360095416865192838092638da5cb5b60e01b82525afa80156109585787906109a4575b6105c5915083163314611aac565b60ff600d5416156109625783517fa0e67e2b00000000000000000000000000000000000000000000000000000000815286818381895afa9081156109585787916108a5575b505190600e9586548093036108635785517fe75235b800000000000000000000000000000000000000000000000000000000815285818481855afa908115610859578991610828575b50600754036107e657875b8381106106d25750505050845b84548110156106a55780826106826106a093611925565b90549060031b1c168752600a845284872060ff198154169055611c38565b61066b565b857fa98a3aa9ddc21c4a0acb3387d501abc1b4634ba389bac61775822f079c3565cd84865160018152a180f35b846106dc82611925565b9190548951927f2f54bf6e00000000000000000000000000000000000000000000000000000000845260031b1c168482015260249087818381875afa9081156107dc578b916107a2575b501561073b575061073690611c38565b61065e565b836036608492898b519362461bcd60e51b85528401528201527f7665726966696564207072696d6172792076616c696461746f72206973206e6f60448201527f742070617274206f662076616c696461746f72536574000000000000000000006064820152fd5b90508781813d83116107d5575b6107b98183611a5b565b810103126107d1575180151581036107d1578b610726565b8a80fd5b503d6107af565b89513d8d823e3d90fd5b6064828688519162461bcd60e51b8352820152601260248201527f5468726573686f6c64206d69736d6174636800000000000000000000000000006044820152fd5b90508581813d8311610852575b61083f8183611a5b565b8101031261084e575189610653565b8880fd5b503d610835565b87513d8b823e3d90fd5b6064828688519162461bcd60e51b8352820152601460248201527f4f776e657220636f756e74206d69736d617463680000000000000000000000006044820152fd5b90503d8088833e6108b68183611a5b565b8101848282031261095457815167ffffffffffffffff9283821161093d570181601f8201121561084e578051928311610941578260051b908751936108fd88840186611a5b565b8452868085019282010192831161093d5786809101915b83831061092557505050508761060a565b819061093084611a93565b8152019101908690610914565b8980fd5b602489604186634e487b7160e01b835252fd5b8780fd5b85513d89823e3d90fd5b6064908385519162461bcd60e51b8352820152601c60248201527f4b65792067656e65726174696f6e206e6f7420636f6d706c65746564000000006044820152fd5b508381813d83116109d7575b6109ba8183611a5b565b810103126109d3576109ce6105c591611a93565b6105b7565b8680fd5b503d6109b0565b8580fd5b8380fd5b503461056257816003193601126105625760209060ff600d541690519015158152f35b50823461054d57602036600319011261054d573591600254831015610a4b57506001600160a01b03610a3c6020936119e0565b92905490519260031b1c168152f35b80fd5b50823461054d57602036600319011261054d573591600354831015610a4b57506001600160a01b03610a816020936119a9565b90549060031b1c169051908152f35b50346105625781600319360112610562576020906008549051908152f35b50346105625781600319360112610562578051610ae391610ad982610ad281611cba565b0383611a5b565b5191829182611a17565b0390f35b50823461054d57602036600319011261054d57356001600160a01b03811680910361054d57818360ff9260209552600a855220541690519015158152f35b50346105625781600319360112610562576020906006549051908152f35b50346105625781600319360112610562576020906005549051908152f35b503461056257816003193601126105625760ff602092541690519015158152f35b5034610562578160031936011261056257602090600b549051908152f35b5082903461054d57602036600319011261054d5781906001600160a01b0360208160095416835194858092638da5cb5b60e01b82525afa918215610c3657508491610bfa575b610bf39250163314611aac565b3560065580f35b90506020823d8211610c2e575b81610c1460209383611a5b565b810103126109e257610c28610bf392611a93565b90610be6565b3d9150610c07565b513d86823e3d90fd5b50823461054d578260031936011261054d57806001600160a01b0360208160095416855193848092638da5cb5b60e01b82525afa908115610d9f578591610d5f575b610c8e9250163314611aac565b82549160ff8316610d1c5750506001809160ff1916178255600e5482600e5580610cdf575b82806008557fc8f99b9ac2a284b93c3652b9f064a6706724088cdafa9e0a8437c026191b2f038180a180f35b7fbb7b4a454dc3493923482f07822329ed19e8244eff582cc204f8554c3620c3fd908101905b818110610d125750610cb3565b8381558201610d05565b906020606492519162461bcd60e51b8352820152601a60248201527f41756374696f6e20697320616c7265616479206163746976652e0000000000006044820152fd5b90506020823d8211610d97575b81610d7960209383611a5b565b81010312610d9357610d8d610c8e92611a93565b90610c81565b8480fd5b3d9150610d6c565b84513d87823e3d90fd5b50823461054d57602036600319011261054d57356001600160a01b03811680910361054d57828291602094526001845220549051908152f35b509034610a4b5780600319360112610a4b578151918291600e54808552602080950194600e83527fbb7b4a454dc3493923482f07822329ed19e8244eff582cc204f8554c3620c3fd92905b828210610e4557610ae38686610ad9828b0383611a5b565b83546001600160a01b031687529586019560019384019390910190610e2d565b5082903461054d57602036600319011261054d5781906001600160a01b0360208160095416835194858092638da5cb5b60e01b82525afa918215610c3657508491610ebf575b610eb89250163314611aac565b3560075580f35b90506020823d8211610ef3575b81610ed960209383611a5b565b810103126109e257610eed610eb892611a93565b90610eab565b3d9150610ecc565b50346105625781600319360112610562576020906001600160a01b03600954169051908152f35b50346105625781600319360112610562576020906007549051908152f35b5082903461054d57602036600319011261054d5781906001600160a01b0360208160095416835194858092638da5cb5b60e01b82525afa918215610c3657508491610f9a575b610f939250163314611aac565b3560055580f35b90506020823d8211610fce575b81610fb460209383611a5b565b810103126109e257610fc8610f9392611a93565b90610f86565b3d9150610fa7565b5034610562576020908160031936011261054d57833591610ffa60ff855416611b1d565b8215611191573384526001815281842054611129576024816001600160a01b0360095416845192838092631acb657560e21b8252338b8301525afa90811561111f5785916110f0575b5090611053600192851115611b68565b338552528181842055600254680100000000000000008110156110dd5791610402916110c76110a98560017f0862512267aa2317caa9475b7e771425e6b897509aade0be0d8fc6f5ce5fdd1897016002556119e0565b81546001600160a01b0360039290921b91821b19163390911b179055565b5133815260208101919091529081906040820190565b602484604187634e487b7160e01b835252fd5b90508181813d8311611118575b6111078183611a5b565b81010312610d935751611053611043565b503d6110fd565b83513d87823e3d90fd5b8490608492519162461bcd60e51b8352820152603860248201527f42696420616c726561647920706c616365642c2075736520696e63726561736560448201527f42696420746f20696e63726561736520796f75722062696400000000000000006064820152fd5b8490608492519162461bcd60e51b8352820152602560248201527f42696420616d6f756e74206d7573742062652067726561746572207468616e2060448201527f7a65726f2e0000000000000000000000000000000000000000000000000000006064820152fd5b5034610562578160031936011261056257602090600c549051908152f35b50346105625781600319360112610562578051610ae391610ad982610ad281611c54565b509034610a4b576020366003190112610a4b5782359254831015610a4b57506001600160a01b03610a3c602093611972565b50346105625760208060031936011261054d578335916001600160a01b0385838260095416845192838092638da5cb5b60e01b82525afa9081156113c957869161138f575b506112bf91163314611aac565b60ff600d54166113275750506112d58142611c03565b600b557f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff811681036113145761130e9060011b42611c03565b600c5580f35b506011602492634e487b7160e01b835252fd5b6084918591519162461bcd60e51b8352820152602f60248201527f4b65792067656e65726174696f6e20616c726561647920636f6d706c6574656460448201527f206f7220696e2070726f677265737300000000000000000000000000000000006064820152fd5b90508381813d83116113c2575b6113a68183611a5b565b810103126109de57906113bb6112bf92611a93565b90916112b2565b503d61139c565b83513d88823e3d90fd5b50919034610a4b5780600319360112610a4b57600b5442111561157557600c54421161153257338152600a9260209084825261141560ff828520541615611eda565b60ff600d54166114f157600f8054156114db575b835b85548110806114d1575b156114b257806001600160a01b0361144f61146393611972565b919054339260031b1c161461146857611c38565b61142b565b338652878552838620600160ff1982541617905561148533611bd9565b7fdddc6f374eef133bf649361e9ba485cf2039bcbdc620a75cfdcdee9ac59f6b74858551338152a1611c38565b84600e54600354146114c15780f35b600160ff19600d541617600d5580f35b5081548110611435565b6114ea600554600e5490611c47565b8155611429565b816064928592519262461bcd60e51b845283015260248201527f4b65792067656e65726174696f6e20616c726561647920636f6d706c657465646044820152fd5b506020606492519162461bcd60e51b8352820152601e60248201527f50617274696369706174696f6e2077696e646f7720697320636c6f73656400006044820152fd5b506020608492519162461bcd60e51b8352820152602a60248201527f5072696d6172792050617274696369706174696f6e2077696e646f772069732060448201527f7374696c6c206f70656e000000000000000000000000000000000000000000006064820152fd5b50823461054d578260031936011261054d576115f933611f4b565b156116c957600b5442116116875750338252600a60205261162060ff828420541615611eda565b338252600a6020527fdddc6f374eef133bf649361e9ba485cf2039bcbdc620a75cfdcdee9ac59f6b7460208284209260ff199360018582541617905561166533611bd9565b51338152a1600e5460055414611679575080f35b600190600d541617600d5580f35b6020606492519162461bcd60e51b8352820152602060248201527f50617274696369706174696f6e2077696e646f772068617320657870697265646044820152fd5b6020608492519162461bcd60e51b8352820152602160248201527f43616c6c6572206973206e6f742061207072696d6172792076616c696461746f60448201527f72000000000000000000000000000000000000000000000000000000000000006064820152fd5b50823461054d57602036600319011261054d573591600e54831015610a4b57506001600160a01b03610a3c602093611925565b90508391346109e25760209182600319360112610d93578335903386526001845282862054156118e55750801561187d576117a9903386526001845282862054611c03565b91806001600160a01b0360095416946024845180978193631acb657560e21b835233908301525afa93841561187357859461183f575b5090600183926118157fcf84a46a93294358c23e7c87e557feb461890c72f3547fb25b455167dcea9efb96610402961115611b68565b338752528181862055519182913383602090939291936001600160a01b0360408201951681520152565b935091908284813d831161186c575b6118588183611a5b565b81010312610d9357925192909160016117df565b503d61184e565b82513d87823e3d90fd5b5060849350519162461bcd60e51b8352820152602960248201527f496e63726561736520616d6f756e74206d75737420626520677265617465722060448201527f7468616e207a65726f00000000000000000000000000000000000000000000006064820152fd5b80848662461bcd60e51b60649452820152601b60248201527f4e6f206578697374696e672062696420746f20696e63726561736500000000006044820152fd5b600e5481101561195c57600e6000527fbb7b4a454dc3493923482f07822329ed19e8244eff582cc204f8554c3620c3fd0190600090565b634e487b7160e01b600052603260045260246000fd5b60045481101561195c5760046000527f8a35acfbc15ff81a39ae7d344fd709f28e8600b4aa8c65c6b64bfe7fe36bd19b0190600090565b60035481101561195c5760036000527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0190600090565b60025481101561195c5760026000527f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace0190600090565b6020908160408183019282815285518094520193019160005b828110611a3e575050505090565b83516001600160a01b031685529381019392810192600101611a30565b90601f8019910116810190811067ffffffffffffffff821117611a7d57604052565b634e487b7160e01b600052604160045260246000fd5b51906001600160a01b0382168203611aa757565b600080fd5b15611ab357565b608460405162461bcd60e51b815260206004820152602660248201527f43616c6c6572206973206e6f742074686520746f6b656e20636f6e747261637460448201527f206f776e657200000000000000000000000000000000000000000000000000006064820152fd5b15611b2457565b606460405162461bcd60e51b815260206004820152601660248201527f41756374696f6e206973206e6f74206163746976652e000000000000000000006044820152fd5b15611b6f57565b608460405162461bcd60e51b815260206004820152602960248201527f42696420616d6f756e74206d757374206265206c657373207468616e206c6f6360448201527f6b6564546f6b656e7300000000000000000000000000000000000000000000006064820152fd5b600e549068010000000000000000821015611a7d57610263826001611c019401600e55611925565b565b91908201809211611c1057565b634e487b7160e01b600052601160045260246000fd5b906000198201918213600116611c1057565b6000198114611c105760010190565b91908203918211611c1057565b6003549081815260208091019160036000527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b916000905b828210611c9a575050505090565b83546001600160a01b031685529384019360019384019390910190611c8c565b6004549081815260208091019160046000527f8a35acfbc15ff81a39ae7d344fd709f28e8600b4aa8c65c6b64bfe7fe36bd19b916000905b828210611d00575050505090565b83546001600160a01b031685529384019360019384019390910190611cf2565b9060018201916000600184129112908015821691151617611c1057565b90808212611d49575050565b611d52816119e0565b906001600160a01b0390549080600392600094841b1c16835260019260209084825260408082205491611d8489611c26565b96895b898112611e295750505050505091611e03611e0892611de485611e1896611dad896119e0565b905490851b1c1692611dc6611dc187611d20565b6119e0565b9054911b1c16611dd8611dc186611d20565b9290916102638a6119e0565b919082549060031b916001600160a01b03809116831b921b1916179055565b611d20565b92611e1284611c26565b90611d3d565b611e24611c0192611d20565b611d3d565b86611e33826119e0565b9054908a1b1c16835281865284848420541115611e59575b611e5490611ead565b611d87565b97611e66611e5491611ead565b98611ea689611de48c611e9a8c80611e7d886119e0565b905490871b1c1694611e8e846119e0565b9054911b1c16916119e0565b929091610263876119e0565b9050611e4b565b7f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8114611c105760010190565b15611ee157565b608460405162461bcd60e51b815260206004820152602260248201527f56616c696461746f722068617320616c7265616479207061727469636970617460448201527f65640000000000000000000000000000000000000000000000000000000000006064820152fd5b60009060038054925b838110611f645750505050600090565b611f6d816119a9565b906001600160a01b039182915490851b1c1690841614611f9557611f9090611c38565b611f54565b5050505060019056fea264697066735822122046067ec19608004cf652c3f24e940d0ba36b575cf42a27da038624b777c6ef7264736f6c63430008140033",
+  "deployedBytecode": "0x60806040908082526004918236101561001757600080fd5b600091823560e01c90816270c53714611764575080630ef99855146117315780630fa90002146115de5780631e58e5f6146113d3578063305937ae1461126d57806335132a6b1461123b57806338ff7119146112175780634264bd1d146111f9578063454a2ab314610fd657806346e124e814610f405780634fd101d714610f2257806355a373d614610efb5780635bc0fbc714610e655780635e1c519b14610de257806362ea82db14610da95780636b64c76914610c3f57806383faa2b814610ba05780638f64dd3d14610b825780639222800614610b615780639780f06714610b43578063ae5f681914610b25578063b4fb3ee314610ae7578063baa3492e14610aae578063bc9e8cc214610a90578063cbd737ff14610a4e578063cff29dfd14610a09578063dab4f165146109e6578063ec93d8b5146105665763fe67a54b1461016357600080fd5b346105625781600319360112610562576001600160a01b039182600954169282518094638da5cb5b60e01b8252818760209788935afa801561055857839061051e575b6101b4915082163314611aac565b81546101c260ff8216611b1d565b60ff1980911683556002906101e06101da8354611c26565b85611d3d565b6003948554858755806104dd575b5087548589558061049c575b5084600f55845b600554811080610492575b156102b35761021c818554611c47565b60001981019081116102a05761023286916119e0565b905490891b1c1687546801000000000000000081101561028d57610288929161026382600161028394018c556119a9565b90919082549060031b916001600160a01b03809116831b921b1916179055565b611c38565b610201565b60248860418d634e487b7160e01b835252fd5b60248760118c634e487b7160e01b835252fd5b5090959492939460059687545b6102ce895460065490611c03565b811080610488575b1561035e576102e6818654611c47565b600019810190811161034b576102fc88916119e0565b905490881b1c168a5468010000000000000000811015610338579161028361033192610263858f60016102ce98019055611972565b90506102c0565b60248a60418e634e487b7160e01b835252fd5b60248960118d634e487b7160e01b835252fd5b50938693948982549081610443575b5050845b86548110156103a457808861038861039f936119e0565b905490861b1c168752600185528686812055611c38565b610371565b5090508480549085815581610408575b857fd405c6708d1fd70eafbcffe5fa89c389fddaf066f08a30a7445d15f3713eeb5f6103f5876104028888600d5416600d5582519383859485528401611c54565b9083820390840152611cba565b0390a180f35b85527f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace908101905b818110156103b457858155600101610430565b6000198201918211610475575061045a88916119a9565b905490841b1c1685526001835283852054600855878061036d565b866011602492634e487b7160e01b835252fd5b50845481106102d6565b508354811061020c565b8886527f8a35acfbc15ff81a39ae7d344fd709f28e8600b4aa8c65c6b64bfe7fe36bd19b908101905b8181106104d257506101fa565b8681556001016104c5565b8686527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b908101905b81811061051357506101ee565b868155600101610506565b508481813d8311610551575b6105348183611a5b565b8101031261054d576105486101b491611a93565b6101a6565b8280fd5b503d61052a565b84513d85823e3d90fd5b5080fd5b5082903461054d576020806003193601126109e2578235926001600160a01b03908185168095036109de5780838360095416865192838092638da5cb5b60e01b82525afa80156109585787906109a4575b6105c5915083163314611aac565b60ff600d5416156109625783517fa0e67e2b00000000000000000000000000000000000000000000000000000000815286818381895afa9081156109585787916108a5575b505190600e9586548093036108635785517fe75235b800000000000000000000000000000000000000000000000000000000815285818481855afa908115610859578991610828575b50600754036107e657875b8381106106d25750505050845b84548110156106a55780826106826106a093611925565b90549060031b1c168752600a845284872060ff198154169055611c38565b61066b565b857fa98a3aa9ddc21c4a0acb3387d501abc1b4634ba389bac61775822f079c3565cd84865160018152a180f35b846106dc82611925565b9190548951927f2f54bf6e00000000000000000000000000000000000000000000000000000000845260031b1c168482015260249087818381875afa9081156107dc578b916107a2575b501561073b575061073690611c38565b61065e565b836036608492898b519362461bcd60e51b85528401528201527f7665726966696564207072696d6172792076616c696461746f72206973206e6f60448201527f742070617274206f662076616c696461746f72536574000000000000000000006064820152fd5b90508781813d83116107d5575b6107b98183611a5b565b810103126107d1575180151581036107d1578b610726565b8a80fd5b503d6107af565b89513d8d823e3d90fd5b6064828688519162461bcd60e51b8352820152601260248201527f5468726573686f6c64206d69736d6174636800000000000000000000000000006044820152fd5b90508581813d8311610852575b61083f8183611a5b565b8101031261084e575189610653565b8880fd5b503d610835565b87513d8b823e3d90fd5b6064828688519162461bcd60e51b8352820152601460248201527f4f776e657220636f756e74206d69736d617463680000000000000000000000006044820152fd5b90503d8088833e6108b68183611a5b565b8101848282031261095457815167ffffffffffffffff9283821161093d570181601f8201121561084e578051928311610941578260051b908751936108fd88840186611a5b565b8452868085019282010192831161093d5786809101915b83831061092557505050508761060a565b819061093084611a93565b8152019101908690610914565b8980fd5b602489604186634e487b7160e01b835252fd5b8780fd5b85513d89823e3d90fd5b6064908385519162461bcd60e51b8352820152601c60248201527f4b65792067656e65726174696f6e206e6f7420636f6d706c65746564000000006044820152fd5b508381813d83116109d7575b6109ba8183611a5b565b810103126109d3576109ce6105c591611a93565b6105b7565b8680fd5b503d6109b0565b8580fd5b8380fd5b503461056257816003193601126105625760209060ff600d541690519015158152f35b50823461054d57602036600319011261054d573591600254831015610a4b57506001600160a01b03610a3c6020936119e0565b92905490519260031b1c168152f35b80fd5b50823461054d57602036600319011261054d573591600354831015610a4b57506001600160a01b03610a816020936119a9565b90549060031b1c169051908152f35b50346105625781600319360112610562576020906008549051908152f35b50346105625781600319360112610562578051610ae391610ad982610ad281611cba565b0383611a5b565b5191829182611a17565b0390f35b50823461054d57602036600319011261054d57356001600160a01b03811680910361054d57818360ff9260209552600a855220541690519015158152f35b50346105625781600319360112610562576020906006549051908152f35b50346105625781600319360112610562576020906005549051908152f35b503461056257816003193601126105625760ff602092541690519015158152f35b5034610562578160031936011261056257602090600b549051908152f35b5082903461054d57602036600319011261054d5781906001600160a01b0360208160095416835194858092638da5cb5b60e01b82525afa918215610c3657508491610bfa575b610bf39250163314611aac565b3560065580f35b90506020823d8211610c2e575b81610c1460209383611a5b565b810103126109e257610c28610bf392611a93565b90610be6565b3d9150610c07565b513d86823e3d90fd5b50823461054d578260031936011261054d57806001600160a01b0360208160095416855193848092638da5cb5b60e01b82525afa908115610d9f578591610d5f575b610c8e9250163314611aac565b82549160ff8316610d1c5750506001809160ff1916178255600e5482600e5580610cdf575b82806008557fc8f99b9ac2a284b93c3652b9f064a6706724088cdafa9e0a8437c026191b2f038180a180f35b7fbb7b4a454dc3493923482f07822329ed19e8244eff582cc204f8554c3620c3fd908101905b818110610d125750610cb3565b8381558201610d05565b906020606492519162461bcd60e51b8352820152601a60248201527f41756374696f6e20697320616c7265616479206163746976652e0000000000006044820152fd5b90506020823d8211610d97575b81610d7960209383611a5b565b81010312610d9357610d8d610c8e92611a93565b90610c81565b8480fd5b3d9150610d6c565b84513d87823e3d90fd5b50823461054d57602036600319011261054d57356001600160a01b03811680910361054d57828291602094526001845220549051908152f35b509034610a4b5780600319360112610a4b578151918291600e54808552602080950194600e83527fbb7b4a454dc3493923482f07822329ed19e8244eff582cc204f8554c3620c3fd92905b828210610e4557610ae38686610ad9828b0383611a5b565b83546001600160a01b031687529586019560019384019390910190610e2d565b5082903461054d57602036600319011261054d5781906001600160a01b0360208160095416835194858092638da5cb5b60e01b82525afa918215610c3657508491610ebf575b610eb89250163314611aac565b3560075580f35b90506020823d8211610ef3575b81610ed960209383611a5b565b810103126109e257610eed610eb892611a93565b90610eab565b3d9150610ecc565b50346105625781600319360112610562576020906001600160a01b03600954169051908152f35b50346105625781600319360112610562576020906007549051908152f35b5082903461054d57602036600319011261054d5781906001600160a01b0360208160095416835194858092638da5cb5b60e01b82525afa918215610c3657508491610f9a575b610f939250163314611aac565b3560055580f35b90506020823d8211610fce575b81610fb460209383611a5b565b810103126109e257610fc8610f9392611a93565b90610f86565b3d9150610fa7565b5034610562576020908160031936011261054d57833591610ffa60ff855416611b1d565b8215611191573384526001815281842054611129576024816001600160a01b0360095416845192838092631acb657560e21b8252338b8301525afa90811561111f5785916110f0575b5090611053600192851115611b68565b338552528181842055600254680100000000000000008110156110dd5791610402916110c76110a98560017f0862512267aa2317caa9475b7e771425e6b897509aade0be0d8fc6f5ce5fdd1897016002556119e0565b81546001600160a01b0360039290921b91821b19163390911b179055565b5133815260208101919091529081906040820190565b602484604187634e487b7160e01b835252fd5b90508181813d8311611118575b6111078183611a5b565b81010312610d935751611053611043565b503d6110fd565b83513d87823e3d90fd5b8490608492519162461bcd60e51b8352820152603860248201527f42696420616c726561647920706c616365642c2075736520696e63726561736560448201527f42696420746f20696e63726561736520796f75722062696400000000000000006064820152fd5b8490608492519162461bcd60e51b8352820152602560248201527f42696420616d6f756e74206d7573742062652067726561746572207468616e2060448201527f7a65726f2e0000000000000000000000000000000000000000000000000000006064820152fd5b5034610562578160031936011261056257602090600c549051908152f35b50346105625781600319360112610562578051610ae391610ad982610ad281611c54565b509034610a4b576020366003190112610a4b5782359254831015610a4b57506001600160a01b03610a3c602093611972565b50346105625760208060031936011261054d578335916001600160a01b0385838260095416845192838092638da5cb5b60e01b82525afa9081156113c957869161138f575b506112bf91163314611aac565b60ff600d54166113275750506112d58142611c03565b600b557f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff811681036113145761130e9060011b42611c03565b600c5580f35b506011602492634e487b7160e01b835252fd5b6084918591519162461bcd60e51b8352820152602f60248201527f4b65792067656e65726174696f6e20616c726561647920636f6d706c6574656460448201527f206f7220696e2070726f677265737300000000000000000000000000000000006064820152fd5b90508381813d83116113c2575b6113a68183611a5b565b810103126109de57906113bb6112bf92611a93565b90916112b2565b503d61139c565b83513d88823e3d90fd5b50919034610a4b5780600319360112610a4b57600b5442111561157557600c54421161153257338152600a9260209084825261141560ff828520541615611eda565b60ff600d54166114f157600f8054156114db575b835b85548110806114d1575b156114b257806001600160a01b0361144f61146393611972565b919054339260031b1c161461146857611c38565b61142b565b338652878552838620600160ff1982541617905561148533611bd9565b7fdddc6f374eef133bf649361e9ba485cf2039bcbdc620a75cfdcdee9ac59f6b74858551338152a1611c38565b84600e54600354146114c15780f35b600160ff19600d541617600d5580f35b5081548110611435565b6114ea600554600e5490611c47565b8155611429565b816064928592519262461bcd60e51b845283015260248201527f4b65792067656e65726174696f6e20616c726561647920636f6d706c657465646044820152fd5b506020606492519162461bcd60e51b8352820152601e60248201527f50617274696369706174696f6e2077696e646f7720697320636c6f73656400006044820152fd5b506020608492519162461bcd60e51b8352820152602a60248201527f5072696d6172792050617274696369706174696f6e2077696e646f772069732060448201527f7374696c6c206f70656e000000000000000000000000000000000000000000006064820152fd5b50823461054d578260031936011261054d576115f933611f4b565b156116c957600b5442116116875750338252600a60205261162060ff828420541615611eda565b338252600a6020527fdddc6f374eef133bf649361e9ba485cf2039bcbdc620a75cfdcdee9ac59f6b7460208284209260ff199360018582541617905561166533611bd9565b51338152a1600e5460055414611679575080f35b600190600d541617600d5580f35b6020606492519162461bcd60e51b8352820152602060248201527f50617274696369706174696f6e2077696e646f772068617320657870697265646044820152fd5b6020608492519162461bcd60e51b8352820152602160248201527f43616c6c6572206973206e6f742061207072696d6172792076616c696461746f60448201527f72000000000000000000000000000000000000000000000000000000000000006064820152fd5b50823461054d57602036600319011261054d573591600e54831015610a4b57506001600160a01b03610a3c602093611925565b90508391346109e25760209182600319360112610d93578335903386526001845282862054156118e55750801561187d576117a9903386526001845282862054611c03565b91806001600160a01b0360095416946024845180978193631acb657560e21b835233908301525afa93841561187357859461183f575b5090600183926118157fcf84a46a93294358c23e7c87e557feb461890c72f3547fb25b455167dcea9efb96610402961115611b68565b338752528181862055519182913383602090939291936001600160a01b0360408201951681520152565b935091908284813d831161186c575b6118588183611a5b565b81010312610d9357925192909160016117df565b503d61184e565b82513d87823e3d90fd5b5060849350519162461bcd60e51b8352820152602960248201527f496e63726561736520616d6f756e74206d75737420626520677265617465722060448201527f7468616e207a65726f00000000000000000000000000000000000000000000006064820152fd5b80848662461bcd60e51b60649452820152601b60248201527f4e6f206578697374696e672062696420746f20696e63726561736500000000006044820152fd5b600e5481101561195c57600e6000527fbb7b4a454dc3493923482f07822329ed19e8244eff582cc204f8554c3620c3fd0190600090565b634e487b7160e01b600052603260045260246000fd5b60045481101561195c5760046000527f8a35acfbc15ff81a39ae7d344fd709f28e8600b4aa8c65c6b64bfe7fe36bd19b0190600090565b60035481101561195c5760036000527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0190600090565b60025481101561195c5760026000527f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace0190600090565b6020908160408183019282815285518094520193019160005b828110611a3e575050505090565b83516001600160a01b031685529381019392810192600101611a30565b90601f8019910116810190811067ffffffffffffffff821117611a7d57604052565b634e487b7160e01b600052604160045260246000fd5b51906001600160a01b0382168203611aa757565b600080fd5b15611ab357565b608460405162461bcd60e51b815260206004820152602660248201527f43616c6c6572206973206e6f742074686520746f6b656e20636f6e747261637460448201527f206f776e657200000000000000000000000000000000000000000000000000006064820152fd5b15611b2457565b606460405162461bcd60e51b815260206004820152601660248201527f41756374696f6e206973206e6f74206163746976652e000000000000000000006044820152fd5b15611b6f57565b608460405162461bcd60e51b815260206004820152602960248201527f42696420616d6f756e74206d757374206265206c657373207468616e206c6f6360448201527f6b6564546f6b656e7300000000000000000000000000000000000000000000006064820152fd5b600e549068010000000000000000821015611a7d57610263826001611c019401600e55611925565b565b91908201809211611c1057565b634e487b7160e01b600052601160045260246000fd5b906000198201918213600116611c1057565b6000198114611c105760010190565b91908203918211611c1057565b6003549081815260208091019160036000527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b916000905b828210611c9a575050505090565b83546001600160a01b031685529384019360019384019390910190611c8c565b6004549081815260208091019160046000527f8a35acfbc15ff81a39ae7d344fd709f28e8600b4aa8c65c6b64bfe7fe36bd19b916000905b828210611d00575050505090565b83546001600160a01b031685529384019360019384019390910190611cf2565b9060018201916000600184129112908015821691151617611c1057565b90808212611d49575050565b611d52816119e0565b906001600160a01b0390549080600392600094841b1c16835260019260209084825260408082205491611d8489611c26565b96895b898112611e295750505050505091611e03611e0892611de485611e1896611dad896119e0565b905490851b1c1692611dc6611dc187611d20565b6119e0565b9054911b1c16611dd8611dc186611d20565b9290916102638a6119e0565b919082549060031b916001600160a01b03809116831b921b1916179055565b611d20565b92611e1284611c26565b90611d3d565b611e24611c0192611d20565b611d3d565b86611e33826119e0565b9054908a1b1c16835281865284848420541115611e59575b611e5490611ead565b611d87565b97611e66611e5491611ead565b98611ea689611de48c611e9a8c80611e7d886119e0565b905490871b1c1694611e8e846119e0565b9054911b1c16916119e0565b929091610263876119e0565b9050611e4b565b7f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8114611c105760010190565b15611ee157565b608460405162461bcd60e51b815260206004820152602260248201527f56616c696461746f722068617320616c7265616479207061727469636970617460448201527f65640000000000000000000000000000000000000000000000000000000000006064820152fd5b60009060038054925b838110611f645750505050600090565b611f6d816119a9565b906001600160a01b039182915490851b1c1690841614611f9557611f9090611c38565b611f54565b5050505060019056fea264697066735822122046067ec19608004cf652c3f24e940d0ba36b575cf42a27da038624b777c6ef7264736f6c63430008140033",
+  "devdoc": {
+    "details": "Contract which manages the auction process, bids, keygen ceremony",
+    "events": {
+      "AuctionEnded(address[],address[])": {
+        "params": {
+          "primaryValidators": "The list of primary validators",
+          "secondaryValidators": "The list of secondary validators"
+        }
+      },
+      "BidIncreased(address,uint256)": {
+        "params": {
+          "bidder": "The address of the bidder",
+          "newAmount": "The new amount of the bid"
+        }
+      },
+      "BidSubmitted(address,uint256)": {
+        "params": {
+          "amount": "The amount of the bid",
+          "bidder": "The address of the bidder"
+        }
+      },
+      "KeyGenerationParticipated(address)": {
+        "params": {
+          "validator": "The address of the participated validator"
+        }
+      },
+      "KeygenCompleteStatus(bool)": {
+        "params": {
+          "status": "The status of key generation completion"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "bid(uint256)": {
+        "details": "Function to submit a bid for the auction",
+        "params": {
+          "amount": "The amount of the bid"
+        }
+      },
+      "constructor": {
+        "details": "Constructor to initialize the Auction Management contract.",
+        "params": {
+          "_tokenAddress": "Address of the Portal Token contract."
+        }
+      },
+      "endAuction()": {
+        "details": "Function to end the auction and select primary and secondary validators"
+      },
+      "getPrimaryValidators()": {
+        "details": "returns list of products"
+      },
+      "getSecondaryValidators()": {
+        "details": "returns list of secondary validators"
+      },
+      "increaseBid(uint256)": {
+        "details": "Function to increase an existing bid",
+        "params": {
+          "amount": "The amount to increase the bid by"
+        }
+      },
+      "isKeygenComplete(address)": {
+        "params": {
+          "_newValidatorSet": "address of the new validator set"
+        }
+      },
+      "setNumPrimaryValidators(uint256)": {
+        "details": "Function to adjust the number of primary validators, restricted to contract owner",
+        "params": {
+          "_numPrimaryValidators": "Number of primary validators"
+        }
+      },
+      "setNumSecondaryValidators(uint256)": {
+        "details": "Function to adjust the number of secondary validators, restricted to contract owner",
+        "params": {
+          "_numSecondaryValidators": "Number of secondary validators"
+        }
+      },
+      "setValidatorThreshold(uint256)": {
+        "details": "Function to adjust the validator threshold, restricted to contract owner",
+        "params": {
+          "_validatorThreshold": "Number of validators required to approve a transaction"
+        }
+      },
+      "startAuction()": {
+        "details": "Function to start the auction, restricted to contract owner"
+      },
+      "startKeyGenerationProcess(uint256)": {
+        "params": {
+          "duration": "The duration of the primary key generation process"
+        }
+      }
+    },
+    "title": "Auction Management Contract",
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "AuctionEnded(address[],address[])": {
+        "notice": "Fired when the auction ends by validators."
+      },
+      "AuctionStarted()": {
+        "notice": "Fired when auction starts by validators."
+      },
+      "BidIncreased(address,uint256)": {
+        "notice": "Fired when a user increases their bid."
+      },
+      "BidSubmitted(address,uint256)": {
+        "notice": "Fired when a user submits a bid."
+      },
+      "KeyGenerationParticipated(address)": {
+        "notice": "Fired when a validator participates in key generation"
+      },
+      "KeygenCompleteStatus(bool)": {
+        "notice": "Event to indicate key generation completion"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "auctionActive()": {
+        "notice": "current state of the Action"
+      },
+      "bidders(uint256)": {
+        "notice": "list of bidders"
+      },
+      "bids(address)": {
+        "notice": "mapping of bidders to their bids"
+      },
+      "getVerifiedValidators()": {
+        "notice": "Function to get the list of verified validators"
+      },
+      "hasParticipated(address)": {
+        "notice": "mapping to track validator participation"
+      },
+      "isKeygenComplete(address)": {
+        "notice": "Helper function to check owners of newValidatorSet same as verifiedValidators"
+      },
+      "keyGen()": {
+        "notice": "function to restrict the access to primary validators to perform keygen ceremony"
+      },
+      "keyGenSecondary()": {
+        "notice": "function to restrict the access to secondary validators to perform keygen ceremony after primary validators keygen completes"
+      },
+      "keyGenerationCompleted()": {
+        "notice": "Flag to indicate key generation completion"
+      },
+      "minActiveBid()": {
+        "notice": "least amount of bid to be a validator"
+      },
+      "numPrimaryValidators()": {
+        "notice": "number of primary validators initially set to 3"
+      },
+      "numSecondaryValidators()": {
+        "notice": "number of secondary validators initially set to 2"
+      },
+      "primaryParticipationEndTime()": {
+        "notice": "Time by which primary validators must participate"
+      },
+      "primaryValidators(uint256)": {
+        "notice": "list of primary validators"
+      },
+      "secondaryParticipationEndTime()": {
+        "notice": "Time by which secondary validators must participate"
+      },
+      "secondaryValidators(uint256)": {
+        "notice": "list of secondary validators"
+      },
+      "startKeyGenerationProcess(uint256)": {
+        "notice": "Function to start key generation process, callable by the contract owner"
+      },
+      "tokenContract()": {
+        "notice": "Portal Token contract"
+      },
+      "validatorThreshold()": {
+        "notice": "number of validators required to approve a transaction initially set to 2"
+      },
+      "verifiedValidators(uint256)": {
+        "notice": "List of verified primary validators"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 10454,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "auctionActive",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 10459,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "bids",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 10463,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "bidders",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_array(t_address)dyn_storage"
+      },
+      {
+        "astId": 10467,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "primaryValidators",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_array(t_address)dyn_storage"
+      },
+      {
+        "astId": 10471,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "secondaryValidators",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_array(t_address)dyn_storage"
+      },
+      {
+        "astId": 10475,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "numPrimaryValidators",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 10479,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "numSecondaryValidators",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 10483,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "validatorThreshold",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 10486,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "minActiveBid",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 10490,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "tokenContract",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_contract(IPortalToken)13202"
+      },
+      {
+        "astId": 11053,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "hasParticipated",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 11056,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "primaryParticipationEndTime",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 11059,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "secondaryParticipationEndTime",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 11063,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "keyGenerationCompleted",
+        "offset": 0,
+        "slot": "13",
+        "type": "t_bool"
+      },
+      {
+        "astId": 11067,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "verifiedValidators",
+        "offset": 0,
+        "slot": "14",
+        "type": "t_array(t_address)dyn_storage"
+      },
+      {
+        "astId": 11070,
+        "contract": "contracts/AuctionManagement.sol:AuctionManagement",
+        "label": "maxEligibleSecondary",
+        "offset": 0,
+        "slot": "15",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_contract(IPortalToken)13202": {
+        "encoding": "inplace",
+        "label": "contract IPortalToken",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

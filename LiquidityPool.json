@@ -1,0 +1,473 @@
+{
+  "address": "0x1425C0c80c5798490e29d2005768e5C549659E26",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "portalTokenContractAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "NotOwner",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "liquidityPoolId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "LiquidityPoolCreated",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "baseAsset",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "quoteAsset",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "poolFee",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "minOrderSize",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxOrderSize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ILiquidityPool.LiquidityPool",
+          "name": "pool",
+          "type": "tuple"
+        }
+      ],
+      "name": "createLiquidityPool",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "listPools",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "baseAsset",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "quoteAsset",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "poolFee",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "minOrderSize",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxOrderSize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ILiquidityPool.LiquidityPool[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "retrievePool",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "baseAsset",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "quoteAsset",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "poolFee",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "minOrderSize",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxOrderSize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ILiquidityPool.LiquidityPool",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sellAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "buyAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "poolFee",
+          "type": "uint256"
+        }
+      ],
+      "name": "retrievePoolId",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokenContract",
+      "outputs": [
+        {
+          "internalType": "contract IPortalToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x0eab007087b5159f09d822f04ed6e7fb2406729173d712183832390eb4af75b4",
+  "receipt": {
+    "to": null,
+    "from": "0xecF71FaeDabB5f47D3cC386Eaa45A41f29B8A7eb",
+    "contractAddress": "0x1425C0c80c5798490e29d2005768e5C549659E26",
+    "transactionIndex": 0,
+    "gasUsed": "577906",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x0248944deb2f9ea9d3694396968f089b27919a8287df59d42d5f55208f0a8e6b",
+    "transactionHash": "0x0eab007087b5159f09d822f04ed6e7fb2406729173d712183832390eb4af75b4",
+    "logs": [],
+    "blockNumber": 311951,
+    "cumulativeGasUsed": "577906",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x742f24592459e189f520214E2f2110C4528d784c"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "2fd20d911d8de013566405c6f17dd1a7",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"portalTokenContractAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"NotOwner\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"liquidityPoolId\",\"type\":\"bytes32\"}],\"name\":\"LiquidityPoolCreated\",\"type\":\"event\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"baseAsset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"quoteAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"poolFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"minOrderSize\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxOrderSize\",\"type\":\"uint256\"}],\"internalType\":\"struct ILiquidityPool.LiquidityPool\",\"name\":\"pool\",\"type\":\"tuple\"}],\"name\":\"createLiquidityPool\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"listPools\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"baseAsset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"quoteAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"poolFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"minOrderSize\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxOrderSize\",\"type\":\"uint256\"}],\"internalType\":\"struct ILiquidityPool.LiquidityPool[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"retrievePool\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"baseAsset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"quoteAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"poolFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"minOrderSize\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxOrderSize\",\"type\":\"uint256\"}],\"internalType\":\"struct ILiquidityPool.LiquidityPool\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sellAsset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"buyAsset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"poolFee\",\"type\":\"uint256\"}],\"name\":\"retrievePoolId\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokenContract\",\"outputs\":[{\"internalType\":\"contract IPortalToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Manages the registration and maintanence of LiquidityPool on the Portal Chain. Only the owner (Portal Foundation) can perform these actions. It interacts with LiquidityPool contracts and maintains  LiquidityPool-related mappings.\",\"errors\":{\"NotOwner(address)\":[{\"details\":\"Error that is thrown when the caller is not the owner of the contract\",\"params\":{\"sender\":\"the address of the sender\"}}]},\"events\":{\"LiquidityPoolCreated(bytes32)\":{\"details\":\"Event emitted after a pair is registered\",\"params\":{\"liquidityPoolId\":\"The liquidityPoolId of the pair\"}}},\"kind\":\"dev\",\"methods\":{\"constructor\":{\"details\":\"Initializes the contract setting the portal token address\",\"params\":{\"portalTokenContractAddress\":\"The address of the portalToken  on the portal chain\"}},\"createLiquidityPool((bytes32,address,address,uint256,uint256,uint256))\":{\"details\":\"creation of a liquidity pool for new pair and emit the event\",\"params\":{\"pool\":\"Properties of the liquidity pool\"}},\"listPools()\":{\"returns\":{\"_0\":\"The list of all liquidity pools\"}},\"retrievePool(bytes32)\":{\"params\":{\"id\":\"The unique identifier of the liquidity pool\"},\"returns\":{\"_0\":\"The liquidity pool whose id was provided\"}},\"retrievePoolId(address,address,uint256)\":{\"params\":{\"buyAsset\":\"Trader's buy asset address\",\"poolFee\":\"Fee of the trading pool\",\"sellAsset\":\"Trader's sell asset address\"},\"returns\":{\"_0\":\"liquidityPoolId liquidityPoolId of the pool\"}}},\"title\":\"LiquidityPool\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"listPools()\":{\"notice\":\"Lists all liquidity pools on the portal chain\"},\"retrievePool(bytes32)\":{\"notice\":\"Retrieves a liquidity pool by its unique identifier\"},\"retrievePoolId(address,address,uint256)\":{\"notice\":\"function to retrieve liquidityPoolId from pair details\"},\"tokenContract()\":{\"notice\":\"Address of the PORTAL Token contract on portal chain\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/LiquidityPool.sol\":\"LiquidityPool\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[],\"viaIR\":true},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the value of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the value of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves a `value` amount of tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 value) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets a `value` amount of tokens as the allowance of `spender` over the\\n     * caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 value) external returns (bool);\\n\\n    /**\\n     * @dev Moves a `value` amount of tokens from `from` to `to` using the\\n     * allowance mechanism. `value` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 value) external returns (bool);\\n}\\n\",\"keccak256\":\"0xc6a8ff0ea489379b61faa647490411b80102578440ab9d84e9a957cc12164e70\",\"license\":\"MIT\"},\"contracts/LiquidityPool.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n// solhint-disable-next-line compiler-version\\npragma solidity ^0.8.20;\\n\\nimport \\\"./interfaces/IPortalToken.sol\\\";\\nimport {ILiquidityPool} from \\\"./interfaces/ILiquidityPool.sol\\\";\\n\\n/**\\n * @title LiquidityPool\\n * @dev Manages the registration and maintanence of LiquidityPool\\n * on the Portal Chain.\\n * Only the owner (Portal Foundation) can perform these actions.\\n * It interacts with LiquidityPool contracts and maintains \\n * LiquidityPool-related mappings.\\n */\\ncontract LiquidityPool is ILiquidityPool {\\n    /**\\n     * @notice Address of the PORTAL Token contract on portal chain\\n     */\\n    IPortalToken public tokenContract;\\n\\n    /**\\n     * @notice Mapping of liquidityPoolId to LiquidityPool\\n     */\\n    mapping(bytes32 => LiquidityPool) private poolsById;\\n\\n    /**\\n     * @notice Mapping of pair details to liquidityPoolId\\n     */\\n    mapping(address => mapping(address => mapping(uint => bytes32)))\\n        private poolsIdsByAssets; // Map asset pairs to their ID for quick lookup\\n\\n     /**\\n     * @notice list of all asset pairs\\n     */\\n    LiquidityPool[] private pools;\\n\\n        /**\\n     * @dev Initializes the contract setting the portal token address\\n     * @param portalTokenContractAddress The address of the portalToken \\n     * on the portal chain\\n     */\\n    constructor(address portalTokenContractAddress) {\\n        tokenContract = IPortalToken(portalTokenContractAddress);\\n    }\\n\\n        /**\\n     * @dev Modifier that restricts the execution of the function to \\n     * only the current owners of the contract.\\n     * It reverts the transaction if the condition is not met.\\n     */\\n    modifier onlyOwner() {\\n        if (tokenContract.owner() != msg.sender) {\\n            revert NotOwner(msg.sender);\\n        }\\n        _;\\n    }\\n\\n    /**\\n     * @inheritdoc ILiquidityPool\\n     */\\n    function createLiquidityPool(\\n        LiquidityPool memory pool\\n    ) external onlyOwner{\\n        address baseAsset = pool.baseAsset;\\n        address quoteAsset = pool.quoteAsset;\\n        (address asset0, address asset1) = baseAsset < quoteAsset\\n        ? (baseAsset, quoteAsset)\\n        : (quoteAsset, baseAsset);\\n\\n        bytes32 liquidityPoolId = sha256(abi.encodePacked(\\n            asset0, asset1, pool.poolFee\\n        ));\\n        require(\\n            poolsById[liquidityPoolId].baseAsset == address(0),\\n            \\\"LiquidityPool already exists\\\"\\n        );\\n        pool.id = liquidityPoolId;\\n        pool.baseAsset = baseAsset;\\n        pool.quoteAsset = quoteAsset;\\n        \\n        poolsById[liquidityPoolId] = pool;\\n        poolsIdsByAssets[asset0][asset1][pool.poolFee] = liquidityPoolId;\\n        pools.push(poolsById[liquidityPoolId]);\\n        emit LiquidityPoolCreated(liquidityPoolId);\\n    }\\n\\n        /**\\n     * @notice function to retrieve liquidityPoolId from pair details\\n     * @param sellAsset Trader's sell asset address\\n     * @param buyAsset Trader's buy asset address\\n     * @param poolFee Fee of the trading pool\\n     * @return liquidityPoolId liquidityPoolId of the pool\\n     */\\n    function retrievePoolId(\\n        address sellAsset,\\n        address buyAsset,\\n        uint poolFee\\n    )\\n        external\\n        view\\n        returns (bytes32)\\n    {\\n        (address asset0, address asset1) = sellAsset < buyAsset\\n        ? (sellAsset, buyAsset)\\n        : (buyAsset, sellAsset);\\n\\n        bytes32 liquidityPoolId = poolsIdsByAssets[asset0][asset1][poolFee];\\n        require(liquidityPoolId != bytes32(0), \\\"Asset pair not registered\\\");\\n\\n        return liquidityPoolId;\\n    }\\n\\n    /**\\n     * @inheritdoc ILiquidityPool\\n     */\\n    function retrievePool(\\n        bytes32 id\\n    ) external view override returns (LiquidityPool memory) {\\n        LiquidityPool memory pool = poolsById[id];\\n        require(pool.baseAsset != address(0), \\\"POOL_NOT_FOUND\\\");\\n        return pool;\\n    }\\n\\n    /**\\n     * @inheritdoc ILiquidityPool\\n     */\\n    function listPools() external view returns (LiquidityPool[] memory) {\\n        return pools;\\n    }\\n}\\n\",\"keccak256\":\"0x1b556c0648097d07e3861e8fbbc3e6c50fd79f0634b4beb47671872a7e048e00\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/ILiquidityPool.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\n// solhint-disable-next-line compiler-version\\npragma solidity ^0.8.20;\\n\\n/**\\n * @title ILiquidityPool\\n * @dev Interface for the LiquidityPool contract that defines functions for managing liquidity pools.\\n */\\ninterface ILiquidityPool {\\n      /**\\n     * @dev Data Structure of AssetPair\\n     * @param id The unique identifier of the pool\\n     * @param baseAsset The address of the base asset\\n     * @param quoteAsset The address of the quote asset\\n     * @param poolFee The pool fee\\n     * @param minOrderSize The minimum order size for the base asset\\n     * @param maxOrderSize The maximum order size for the base asset\\n     */\\n    struct LiquidityPool {\\n        bytes32 id;\\n        address baseAsset;\\n        address quoteAsset;\\n        uint poolFee;\\n        uint minOrderSize;\\n        uint maxOrderSize;\\n    }\\n\\n    /**\\n     * @dev creation of a liquidity pool for new pair and emit the event\\n     * @param pool Properties of the liquidity pool\\n     */\\n    function createLiquidityPool(LiquidityPool memory pool) external;\\n\\n    /**\\n     * @notice function to retrieve liquidityPoolId from pair details\\n     * @param sellAsset Trader's sell asset address\\n     * @param buyAsset Trader's buy asset address\\n     * @param poolFee Fee of the trading pool\\n     * @return liquidityPoolId liquidityPoolId of the pool\\n     */\\n    function retrievePoolId(\\n        address sellAsset,\\n        address buyAsset,\\n        uint poolFee\\n    ) external view returns (bytes32);\\n\\n    /**\\n     * Retrieves a liquidity pool by its unique identifier\\n     * @param id The unique identifier of the liquidity pool\\n     * @return The liquidity pool whose id was provided\\n     */\\n    function retrievePool(bytes32 id) external view returns (LiquidityPool memory);\\n\\n    /**\\n     * Lists all liquidity pools on the portal chain\\n     * @return The list of all liquidity pools\\n     */\\n    function listPools() external view returns (LiquidityPool[] memory);\\n\\n    /**\\n     * @dev Event emitted after a pair is registered\\n     * @param liquidityPoolId The liquidityPoolId of the pair\\n     */\\n    event LiquidityPoolCreated(\\n        bytes32 liquidityPoolId\\n    );\\n\\n    // Custom errors\\n    /**\\n     * @dev Error that is thrown when the caller is not the owner of the contract\\n     * @param sender the address of the sender\\n     */\\n    error NotOwner(address sender);\\n\\n}\\n\",\"keccak256\":\"0x752c9f901f33cf76f3bbdafde6c390d3d9b3aa3d4a61bd12e92cc499aa4c967c\",\"license\":\"BUSL-1.1\"},\"contracts/interfaces/IPortalToken.sol\":{\"content\":\"// SPDX-License-Identifier: BUSL-1.1\\npragma solidity ^0.8.20;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\n/**\\n * @title IPortalToken\\n * The Portal Token interface defines functions for the PORTAL token with\\n * respect to the auction process for validators. This contract is relevant on\\n * the Portal chain.\\n */\\ninterface IPortalToken is IERC20 {\\n    /**\\n     * @dev Returns the address of the owner of the PORTAL Token contract. This\\n     * should be the address of the Portal Foundation.\\n     */\\n    function owner() external view returns (address);\\n\\n    /**\\n     * Returns the number of tokens locked by a potential validator (bidder)\\n     * @param _user Address of the potential validator (bidder)\\n     * @return The number of tokens locked by the potential validator (bidder)\\n     */\\n    function getLockedTokens(address _user) external view returns (uint);\\n}\\n\",\"keccak256\":\"0xd76da518db488c619b5bd5da945593ca43998f47953bc1cc0ceae4bf7416c2f5\",\"license\":\"BUSL-1.1\"}},\"version\":1}",
+  "bytecode": "0x60803461007457601f6109a238819003918201601f19168301916001600160401b038311848410176100795780849260209460405283398101031261007457516001600160a01b0381169081900361007457600080546001600160a01b03191691909117905560405161091290816100908239f35b600080fd5b634e487b7160e01b600052604160045260246000fdfe608080604052600436101561001357600080fd5b60003560e01c90816346965e25146107755750806355a373d61461074e578063687958621461063b578063a84663141461053f5763e2d97bb71461005657600080fd5b346105325760c0366003190112610532576040516100738161084d565b6004358152610080610837565b60208201526044356001600160a01b03811681036105325760408201526064356060820152608435608082015260a43560a0820152600460206001600160a01b0360005416604051928380927f8da5cb5b0000000000000000000000000000000000000000000000000000000082525afa9081156104a0576000916104f8575b506001600160a01b03339116036104c8576001600160a01b036020820151166001600160a01b03604083015116918282106000146104c1578192805b6060830151604051906bffffffffffffffffffffffff19808860601b1660208401528460601b16603483015260488201526048815280608081011067ffffffffffffffff6080830111176104465760808101604052805160005b8181106104ac57508160808160009360209501848382015203910160025afa156104a0576000519360016020526001600160a01b036001604060002001541661045c57848452602084015260408301528260005260016020526001600160a01b0360406000209483518655600186019582602086015116967fffffffffffffffffffffffff000000000000000000000000000000000000000097888254161790556002810183604087015116888254161790556060850151600382015560808501516004820155600560a08601519101551660005260026020526001600160a01b036040600020911660005260205260606040600020910151600052602052806040600020558060005260016020526040600020906003549168010000000000000000831015610446576001830180600355831015610430577fbe8088a2cf60fc2dc751d7ff521d88cd279db343a3bf49024a5c156769b9400a93600660209460036000520291827fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0190808203610336575b50505050604051908152a1005b7fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f86092600592825490557fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85c85016001600160a01b03600184015416828254161790557fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85d8501906001600160a01b036002840154169082541617905560038101547fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85e85015560048101547fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85f850155015491015538808080610329565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052604160045260246000fd5b606460405162461bcd60e51b815260206004820152601c60248201527f4c6971756964697479506f6f6c20616c726561647920657869737473000000006044820152fd5b6040513d6000823e3d90fd5b80602091840160808382015191015201610196565b818361013c565b60246040517f245aecd3000000000000000000000000000000000000000000000000000000008152336004820152fd5b90506020813d602011610537575b8161051360209383610869565b8101031261053257516001600160a01b03811681036105325738610100565b600080fd5b3d9150610506565b3461053257602036600319011261053257600060a06040516105608161084d565b82815282602082015282604082015282606082015282608082015201526004356000526001602052610595604060002061088b565b6001600160a01b03602082015116156105f75760c0906105f5604051809260a08091805184526001600160a01b03806020830151166020860152604082015116604085015260608101516060850152608081015160808501520151910152565bf35b606460405162461bcd60e51b815260206004820152600e60248201527f504f4f4c5f4e4f545f464f554e440000000000000000000000000000000000006044820152fd5b346105325760003660031901126105325760035467ffffffffffffffff811161044657604051602090610673828460051b0182610869565b828152818101928360036000527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b6000915b8383106107315760408051878152865181890181905289928201908960005b8281106106d15784840385f35b9091928260c0826107226001948a5160a08091805184526001600160a01b03806020830151166020860152604082015116604085015260608101516060850152608081015160808501520151910152565b019601910194929190946106c4565b6006866001926107408561088b565b8152019201920191906106a5565b346105325760003660031901126105325760206001600160a01b0360005416604051908152f35b34610532576060366003190112610532576004356001600160a01b0380821691828103610532576107a4610837565b92828416111561082f5781905b1660005260026020526040600020911660005260205260406000206044356000526020526040600020549081156107ed57602082604051908152f35b8062461bcd60e51b6064925260206004820152601960248201527f41737365742070616972206e6f742072656769737465726564000000000000006044820152fd5b9181906107b1565b602435906001600160a01b038216820361053257565b60c0810190811067ffffffffffffffff82111761044657604052565b90601f8019910116810190811067ffffffffffffffff82111761044657604052565b906040516108988161084d565b60a060058294805484526001600160a01b0380600183015416602086015260028201541660408501526003810154606085015260048101546080850152015491015256fea2646970667358221220e866b032e5168c8be618bbc246d4b4d8902c34ea0069dae0ad842d048795ebfd64736f6c63430008140033",
+  "deployedBytecode": "0x608080604052600436101561001357600080fd5b60003560e01c90816346965e25146107755750806355a373d61461074e578063687958621461063b578063a84663141461053f5763e2d97bb71461005657600080fd5b346105325760c0366003190112610532576040516100738161084d565b6004358152610080610837565b60208201526044356001600160a01b03811681036105325760408201526064356060820152608435608082015260a43560a0820152600460206001600160a01b0360005416604051928380927f8da5cb5b0000000000000000000000000000000000000000000000000000000082525afa9081156104a0576000916104f8575b506001600160a01b03339116036104c8576001600160a01b036020820151166001600160a01b03604083015116918282106000146104c1578192805b6060830151604051906bffffffffffffffffffffffff19808860601b1660208401528460601b16603483015260488201526048815280608081011067ffffffffffffffff6080830111176104465760808101604052805160005b8181106104ac57508160808160009360209501848382015203910160025afa156104a0576000519360016020526001600160a01b036001604060002001541661045c57848452602084015260408301528260005260016020526001600160a01b0360406000209483518655600186019582602086015116967fffffffffffffffffffffffff000000000000000000000000000000000000000097888254161790556002810183604087015116888254161790556060850151600382015560808501516004820155600560a08601519101551660005260026020526001600160a01b036040600020911660005260205260606040600020910151600052602052806040600020558060005260016020526040600020906003549168010000000000000000831015610446576001830180600355831015610430577fbe8088a2cf60fc2dc751d7ff521d88cd279db343a3bf49024a5c156769b9400a93600660209460036000520291827fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0190808203610336575b50505050604051908152a1005b7fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f86092600592825490557fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85c85016001600160a01b03600184015416828254161790557fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85d8501906001600160a01b036002840154169082541617905560038101547fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85e85015560048101547fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85f850155015491015538808080610329565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052604160045260246000fd5b606460405162461bcd60e51b815260206004820152601c60248201527f4c6971756964697479506f6f6c20616c726561647920657869737473000000006044820152fd5b6040513d6000823e3d90fd5b80602091840160808382015191015201610196565b818361013c565b60246040517f245aecd3000000000000000000000000000000000000000000000000000000008152336004820152fd5b90506020813d602011610537575b8161051360209383610869565b8101031261053257516001600160a01b03811681036105325738610100565b600080fd5b3d9150610506565b3461053257602036600319011261053257600060a06040516105608161084d565b82815282602082015282604082015282606082015282608082015201526004356000526001602052610595604060002061088b565b6001600160a01b03602082015116156105f75760c0906105f5604051809260a08091805184526001600160a01b03806020830151166020860152604082015116604085015260608101516060850152608081015160808501520151910152565bf35b606460405162461bcd60e51b815260206004820152600e60248201527f504f4f4c5f4e4f545f464f554e440000000000000000000000000000000000006044820152fd5b346105325760003660031901126105325760035467ffffffffffffffff811161044657604051602090610673828460051b0182610869565b828152818101928360036000527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b6000915b8383106107315760408051878152865181890181905289928201908960005b8281106106d15784840385f35b9091928260c0826107226001948a5160a08091805184526001600160a01b03806020830151166020860152604082015116604085015260608101516060850152608081015160808501520151910152565b019601910194929190946106c4565b6006866001926107408561088b565b8152019201920191906106a5565b346105325760003660031901126105325760206001600160a01b0360005416604051908152f35b34610532576060366003190112610532576004356001600160a01b0380821691828103610532576107a4610837565b92828416111561082f5781905b1660005260026020526040600020911660005260205260406000206044356000526020526040600020549081156107ed57602082604051908152f35b8062461bcd60e51b6064925260206004820152601960248201527f41737365742070616972206e6f742072656769737465726564000000000000006044820152fd5b9181906107b1565b602435906001600160a01b038216820361053257565b60c0810190811067ffffffffffffffff82111761044657604052565b90601f8019910116810190811067ffffffffffffffff82111761044657604052565b906040516108988161084d565b60a060058294805484526001600160a01b0380600183015416602086015260028201541660408501526003810154606085015260048101546080850152015491015256fea2646970667358221220e866b032e5168c8be618bbc246d4b4d8902c34ea0069dae0ad842d048795ebfd64736f6c63430008140033",
+  "devdoc": {
+    "details": "Manages the registration and maintanence of LiquidityPool on the Portal Chain. Only the owner (Portal Foundation) can perform these actions. It interacts with LiquidityPool contracts and maintains  LiquidityPool-related mappings.",
+    "errors": {
+      "NotOwner(address)": [
+        {
+          "details": "Error that is thrown when the caller is not the owner of the contract",
+          "params": {
+            "sender": "the address of the sender"
+          }
+        }
+      ]
+    },
+    "events": {
+      "LiquidityPoolCreated(bytes32)": {
+        "details": "Event emitted after a pair is registered",
+        "params": {
+          "liquidityPoolId": "The liquidityPoolId of the pair"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "constructor": {
+        "details": "Initializes the contract setting the portal token address",
+        "params": {
+          "portalTokenContractAddress": "The address of the portalToken  on the portal chain"
+        }
+      },
+      "createLiquidityPool((bytes32,address,address,uint256,uint256,uint256))": {
+        "details": "creation of a liquidity pool for new pair and emit the event",
+        "params": {
+          "pool": "Properties of the liquidity pool"
+        }
+      },
+      "listPools()": {
+        "returns": {
+          "_0": "The list of all liquidity pools"
+        }
+      },
+      "retrievePool(bytes32)": {
+        "params": {
+          "id": "The unique identifier of the liquidity pool"
+        },
+        "returns": {
+          "_0": "The liquidity pool whose id was provided"
+        }
+      },
+      "retrievePoolId(address,address,uint256)": {
+        "params": {
+          "buyAsset": "Trader's buy asset address",
+          "poolFee": "Fee of the trading pool",
+          "sellAsset": "Trader's sell asset address"
+        },
+        "returns": {
+          "_0": "liquidityPoolId liquidityPoolId of the pool"
+        }
+      }
+    },
+    "title": "LiquidityPool",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "listPools()": {
+        "notice": "Lists all liquidity pools on the portal chain"
+      },
+      "retrievePool(bytes32)": {
+        "notice": "Retrieves a liquidity pool by its unique identifier"
+      },
+      "retrievePoolId(address,address,uint256)": {
+        "notice": "function to retrieve liquidityPoolId from pair details"
+      },
+      "tokenContract()": {
+        "notice": "Address of the PORTAL Token contract on portal chain"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 11423,
+        "contract": "contracts/LiquidityPool.sol:LiquidityPool",
+        "label": "tokenContract",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_contract(IPortalToken)13202"
+      },
+      {
+        "astId": 11429,
+        "contract": "contracts/LiquidityPool.sol:LiquidityPool",
+        "label": "poolsById",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_bytes32,t_struct(LiquidityPool)12950_storage)"
+      },
+      {
+        "astId": 11438,
+        "contract": "contracts/LiquidityPool.sol:LiquidityPool",
+        "label": "poolsIdsByAssets",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_bytes32)))"
+      },
+      {
+        "astId": 11443,
+        "contract": "contracts/LiquidityPool.sol:LiquidityPool",
+        "label": "pools",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_array(t_struct(LiquidityPool)12950_storage)dyn_storage"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_struct(LiquidityPool)12950_storage)dyn_storage": {
+        "base": "t_struct(LiquidityPool)12950_storage",
+        "encoding": "dynamic_array",
+        "label": "struct ILiquidityPool.LiquidityPool[]",
+        "numberOfBytes": "32"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_contract(IPortalToken)13202": {
+        "encoding": "inplace",
+        "label": "contract IPortalToken",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_mapping(t_uint256,t_bytes32)))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => mapping(uint256 => bytes32)))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_mapping(t_uint256,t_bytes32))"
+      },
+      "t_mapping(t_address,t_mapping(t_uint256,t_bytes32))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(uint256 => bytes32))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint256,t_bytes32)"
+      },
+      "t_mapping(t_bytes32,t_struct(LiquidityPool)12950_storage)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => struct ILiquidityPool.LiquidityPool)",
+        "numberOfBytes": "32",
+        "value": "t_struct(LiquidityPool)12950_storage"
+      },
+      "t_mapping(t_uint256,t_bytes32)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => bytes32)",
+        "numberOfBytes": "32",
+        "value": "t_bytes32"
+      },
+      "t_struct(LiquidityPool)12950_storage": {
+        "encoding": "inplace",
+        "label": "struct ILiquidityPool.LiquidityPool",
+        "members": [
+          {
+            "astId": 12939,
+            "contract": "contracts/LiquidityPool.sol:LiquidityPool",
+            "label": "id",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 12941,
+            "contract": "contracts/LiquidityPool.sol:LiquidityPool",
+            "label": "baseAsset",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 12943,
+            "contract": "contracts/LiquidityPool.sol:LiquidityPool",
+            "label": "quoteAsset",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_address"
+          },
+          {
+            "astId": 12945,
+            "contract": "contracts/LiquidityPool.sol:LiquidityPool",
+            "label": "poolFee",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 12947,
+            "contract": "contracts/LiquidityPool.sol:LiquidityPool",
+            "label": "minOrderSize",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 12949,
+            "contract": "contracts/LiquidityPool.sol:LiquidityPool",
+            "label": "maxOrderSize",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "192"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
