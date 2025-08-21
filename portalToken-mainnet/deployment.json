@@ -1,0 +1,62 @@
+{
+  "network": "mainnet",
+  "timestamp": "2025-08-21T15:27:52.862Z",
+  "addresses": {
+    "implementation": "0x248BDc3F65ce4199228aEEe05EcA6d2809d29056",
+    "proxy": "0x30a25CC9c9EADe4D4d9e9349BE6e68c3411367D3",
+    "safe": "0xf39e50962BE5b049a13CF08EE8dc3D558E1F04Cd",
+    "create2Factory": "0x0000000000FFe8B47B3e2130213B802212439497"
+  },
+  "tokenInfo": {
+    "name": "Portal To Bitcoin",
+    "symbol": "PTB",
+    "maxSupply": "8400000000",
+    "initialSupply": "5258400000"
+  },
+  "distribution": {
+    "earlyContributors": {
+      "label": "Early Contributors (Investors)",
+      "amount": "685500000",
+      "address": "0xe95e5E724D3980055C72aCd4F0f089C0D0F193fB",
+      "description": "Seed and early investors"
+    },
+    "team": {
+      "label": "Team",
+      "amount": "1814500000",
+      "address": "0x8F3d901780EBEeFA165F5BbD98B8843794AD58F4",
+      "description": "Core team allocation"
+    },
+    "foundationTreasury": {
+      "label": "Foundation Treasury",
+      "amount": "624120000",
+      "address": "0xf731E69cA9798E3f6fb6C62C883B791D8Ac77b3C",
+      "description": "Foundation operating treasury"
+    },
+    "liquidity": {
+      "label": "Liquidity",
+      "amount": "336000000",
+      "address": "0x4758AC4b5eFe4688DAbdEf1581D92f4b96a6A049",
+      "description": "liquidity provision"
+    },
+    "ecosystemDevelopment": {
+      "label": "Ecosystem Development",
+      "amount": "897880000",
+      "address": "0x0A284104d82716CEA5489A0B08c274Afe92BbCA8",
+      "description": "Ecosystem growth"
+    },
+    "community": {
+      "label": "Community",
+      "amount": "900400000",
+      "address": "0x0C84e3697029987FBe61186199f376e555937179",
+      "description": "Community rewards and airdrops"
+    }
+  },
+  "Salts": {
+    "implementationSalt": "0xf39e50962be5b049a13cf08ee8dc3d558e1f04cde0d0df7a43a3ae81fdca81e7",
+    "proxySalt": "0xf39e50962be5b049a13cf08ee8dc3d558e1f04cd19b3203d10d989785d642d6c"
+  },
+  "Addresses": {
+    "implementation": "0x248BDc3F65ce4199228aEEe05EcA6d2809d29056",
+    "proxy": "0x30a25CC9c9EADe4D4d9e9349BE6e68c3411367D3"
+  }
+}
